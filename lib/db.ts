@@ -7,6 +7,8 @@ interface DatabaseSchema {
   packages: TravelPackage[];
   destinations: Destination[];
   enquiries: Enquiry[];
+  bookings?: any[];
+  payments?: any[];
   adminUser: {
     id: string;
     email: string;
@@ -294,3 +296,33 @@ export function getDashboardStats() {
     recentEnquiries: db.enquiries.slice(0, 5)
   };
 }
+
+// =================== BOOKINGS & PAYMENTS ===================
+
+export function recordBooking(booking: any) {
+  const db = readDb();
+  if (!db.bookings) db.bookings = [];
+  db.bookings.unshift(booking);
+  writeDb(db);
+  return booking;
+}
+
+export function getAllBookings() {
+  const db = readDb();
+  return db.bookings || [];
+}
+
+export function getBookingByRef(ref: string) {
+  const db = readDb();
+  if (!db.bookings) return null;
+  return db.bookings.find((b: any) => b.bookingRef === ref || b.bookingId === ref) || null;
+}
+
+export function recordPayment(payment: any) {
+  const db = readDb();
+  if (!db.payments) db.payments = [];
+  db.payments.unshift(payment);
+  writeDb(db);
+  return payment;
+}
+

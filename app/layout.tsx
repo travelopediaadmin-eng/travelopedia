@@ -38,6 +38,9 @@ export const metadata: Metadata = {
   },
 };
 
+import { LanguageProvider } from '@/context/LanguageContext';
+import { CurrencyProvider } from '@/context/CurrencyContext';
+
 export default function RootLayout({
   children,
 }: {
@@ -46,8 +49,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={`scroll-smooth ${sansFont.variable} ${serifFont.variable}`}>
       <body className="min-h-screen flex flex-col bg-slate-50 text-slate-800 antialiased selection:bg-brand-500 selection:text-white font-sans">
-        {children}
+        <LanguageProvider>
+          <CurrencyProvider>
+            {children}
+          </CurrencyProvider>
+        </LanguageProvider>
       </body>
     </html>
   );
 }
+

@@ -96,3 +96,140 @@ export interface AdminUser {
   name: string;
   role: 'admin' | 'superadmin';
 }
+
+// =================== 8 CORE TRAVEL SERVICES ===================
+
+export interface FlightTicket {
+  id: string;
+  airline: string;
+  airlineCode: string;
+  flightNumber: string;
+  fromCity: string;
+  fromCode: string;
+  toCity: string;
+  toCode: string;
+  departureTime: string;
+  arrivalTime: string;
+  duration: string;
+  stops: number;
+  layoverCity?: string;
+  cabinClass: 'Economy' | 'Premium Economy' | 'Business';
+  price: number;
+  baggage: string;
+  cabinBaggage: string;
+  refundable: boolean;
+  jainMealAvailable: boolean;
+  seatsLeft: number;
+}
+
+export interface HotelRoom {
+  id: string;
+  name: string;
+  bedType: string;
+  sizeSqFt: number;
+  maxGuests: number;
+  pricePerNight: number;
+  mealPlan: 'Room Only' | 'Breakfast Included' | 'All Meals (Jain Friendly)';
+  freeCancellation: boolean;
+  amenities: string[];
+}
+
+export interface HotelProperty {
+  id: string;
+  slug: string;
+  name: string;
+  city: string;
+  country: string;
+  stars: number;
+  address: string;
+  images: string[];
+  startingPrice: number;
+  rating: number;
+  reviewCount: number;
+  pureVegKitchen: boolean;
+  amenities: string[];
+  overview: string;
+  rooms: HotelRoom[];
+}
+
+export interface CabOption {
+  id: string;
+  vehicleName: string;
+  category: 'Sedan' | 'Executive SUV' | 'Luxury Van';
+  passengerCapacity: number;
+  luggageCapacity: number;
+  ac: boolean;
+  baseFare: number;
+  includedKms: number;
+  perExtraKm: number;
+  tollStateTaxIncluded: boolean;
+  driverAllowanceIncluded: boolean;
+  idealFor: string;
+  image: string;
+}
+
+export interface BusOption {
+  id: string;
+  operatorName: string;
+  busType: string; // e.g. Volvo Multi-Axle AC Sleeper
+  fromCity: string;
+  toCity: string;
+  departureTime: string;
+  arrivalTime: string;
+  duration: string;
+  boardingPoint: string;
+  droppingPoint: string;
+  price: number;
+  rating: number;
+  totalSeats: number;
+  availableSeats: number;
+  liveTracking: boolean;
+}
+
+export interface TrainSchedule {
+  trainNumber: string;
+  trainName: string;
+  fromStation: string;
+  fromCode: string;
+  toStation: string;
+  toCode: string;
+  departureTime: string;
+  arrivalTime: string;
+  duration: string;
+  runningDays: string[];
+  classes: { code: string; name: string; fare: number; availability: string }[];
+  pantryPureVeg: boolean;
+}
+
+export interface ActivityTour {
+  id: string;
+  title: string;
+  destination: string;
+  country: string;
+  duration: string;
+  price: number;
+  rating: number;
+  reviewsCount: number;
+  highlights: string[];
+  image: string;
+  guideLanguages: string[];
+  skipTheLine: boolean;
+  instantConfirmation: boolean;
+  includesPickUp: boolean;
+}
+
+export interface VisaRequirement {
+  id: string;
+  country: string;
+  flag: string;
+  visaType: string;
+  processingTimeDays: string;
+  validity: string;
+  embassyFee: number;
+  serviceFee: number;
+  approvalRatePercentage: number;
+  checklist: string[];
+  biometricsRequired: boolean;
+  expressAvailable: boolean;
+}
+

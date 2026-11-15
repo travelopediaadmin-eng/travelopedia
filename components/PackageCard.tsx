@@ -21,7 +21,8 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { TravelPackage } from '@/types/travel';
-import { formatPrice, getWhatsAppInquiryUrl } from '@/lib/utils';
+import { getWhatsAppInquiryUrl } from '@/lib/utils';
+import { useCurrency } from '@/context/CurrencyContext';
 
 interface PackageCardProps {
   pkg: TravelPackage;
@@ -29,6 +30,7 @@ interface PackageCardProps {
 }
 
 export default function PackageCard({ pkg, onQuickInquire }: PackageCardProps) {
+  const { formatPrice } = useCurrency();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const images = pkg.gallery && pkg.gallery.length > 0 ? pkg.gallery : [pkg.heroImage];
