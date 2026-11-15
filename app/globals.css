@@ -1,0 +1,251 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, Cambria, serif;
+  --logo-lavender: #BAC4E2;
+  --logo-coral: #F7B8B0;
+  --logo-peach: #FACFA6;
+  --logo-charcoal: #2D2B2D;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: #2D2B2D;
+  background-color: #faf9f7;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom modern scrollbar matching brand periwinkle & coral */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f0ee;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #bac4e2;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e86351;
+}
+
+/* Logo Color Text Gradients */
+.logo-gradient-text {
+  background: linear-gradient(135deg, #2D2B2D 0%, #6376BD 50%, #E86351 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.logo-coral-gradient {
+  background: linear-gradient(135deg, #F7B8B0 0%, #E86351 50%, #D14533 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.logo-periwinkle-gradient {
+  background: linear-gradient(135deg, #BAC4E2 0%, #6376BD 60%, #3A4B8C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.logo-peach-gradient {
+  background: linear-gradient(135deg, #FACFA6 0%, #F39C46 60%, #E86351 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.glass-nav {
+  background: rgba(23, 21, 24, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(186, 196, 226, 0.15);
+}
+
+.dark-glass {
+  background: rgba(23, 21, 24, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Ken Burns slow background motion */
+@keyframes kenburns {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  50% {
+    transform: scale(1.08) translate(-1%, -1%);
+  }
+  100% {
+    transform: scale(1) translate(0, 0);
+  }
+}
+
+.animate-kenburns {
+  animation: kenburns 28s ease-in-out infinite;
+}
+
+/* Floating bubble drifts based on logo geometry */
+@keyframes bubbleFloat1 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -40px) scale(1.05);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.95);
+  }
+}
+
+@keyframes bubbleFloat2 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(-40px, 30px) scale(0.98);
+  }
+  66% {
+    transform: translate(25px, -30px) scale(1.06);
+  }
+}
+
+@keyframes bubbleFloat3 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  50% {
+    transform: translate(35px, 25px) scale(1.04);
+  }
+}
+
+.animate-bubble-1 {
+  animation: bubbleFloat1 18s ease-in-out infinite;
+}
+
+.animate-bubble-2 {
+  animation: bubbleFloat2 22s ease-in-out infinite 2s;
+}
+
+.animate-bubble-3 {
+  animation: bubbleFloat3 20s ease-in-out infinite 4s;
+}
+
+/* Floating badges bobbing animation */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes floatMedium {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes floatFast {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-float-1 {
+  animation: floatSlow 5s ease-in-out infinite;
+}
+
+.animate-float-2 {
+  animation: floatMedium 6s ease-in-out infinite 0.8s;
+}
+
+.animate-float-3 {
+  animation: floatFast 4.5s ease-in-out infinite 1.5s;
+}
+
+.animate-float-4 {
+  animation: floatSlow 5.5s ease-in-out infinite 2.2s;
+}
+
+.animate-float-5 {
+  animation: floatMedium 6.5s ease-in-out infinite 3s;
+}
+
+/* Shimmer card hover effect */
+@keyframes cardShimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.shimmer-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-effect::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.25) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: translateX(-100%);
+  pointer-events: none;
+}
+
+.shimmer-effect:hover::after {
+  animation: cardShimmer 1.2s ease-in-out;
+}
+
+/* Blinking cursor for animated search typing */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink 1s infinite;
+}
+
+/* Animated flight arc dash flow on World Route Radar - Slow, elegant radar glide */
+@keyframes flightDash {
+  to {
+    stroke-dashoffset: -48;
+  }
+}
+
+.animate-flight-dash {
+  animation: flightDash 4.5s linear infinite;
+}
+

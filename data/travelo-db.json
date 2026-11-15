@@ -1,0 +1,1554 @@
+{
+  "packages": [
+    {
+      "id": "pkg-1",
+      "slug": "dubai-extravaganza-luxury",
+      "title": "Dubai Extravaganza: Skyline & Desert Dunes Luxury",
+      "subtitle": "Burj Khalifa At The Top, Premium 4x4 Desert Safari & Marina Dhow Cruise",
+      "category": "international",
+      "subcategory": "Middle East",
+      "destination": "Dubai, UAE",
+      "durationNights": 5,
+      "durationDays": 6,
+      "tripType": "Customized",
+      "basePrice": 58000,
+      "discountedPrice": 47999,
+      "heroImage": "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "overview": "Experience the glitz, glamour, and futuristic allure of Dubai with The TraveloPedia. From ascending the iconic Burj Khalifa to enjoying high-octane dune bashing and dining under Arabian stars in the desert, this itinerary blends ultra-modern marvels with rich Bedouin traditions.",
+      "highlights": [
+        "Burj Khalifa 124th & 125th Floor Observatory Entry with panoramic sunset views",
+        "Luxury Red Dune Desert Safari with BBQ Dinner, Tanoura Dance & Fire Show",
+        "Glass-enclosed Dhow Dinner Cruise along Dubai Marina with live acoustic music",
+        "Half-day Dubai City Tour covering Dubai Frame, Palm Jumeirah & Gold Souk",
+        "Visit to Dubai Mall, Fountain Show, and Museum of the Future photo stop",
+        "Luxury 4-Star / 5-Star Hotel Stay with daily gourmet breakfast buffet"
+      ],
+      "inclusions": [
+        "5 Nights luxury accommodation in Dubai at 4-Star / 5-Star Hotel",
+        "Daily lavish buffet breakfast at the hotel",
+        "Burj Khalifa Non-Prime Slot ticket with observatory access",
+        "Desert Safari in 4x4 Land Cruiser with BBQ Dinner & cultural shows",
+        "Marina Dhow Cruise with international buffet dinner",
+        "Dubai Frame entry ticket",
+        "Private airport pick-up & drop-off in air-conditioned luxury vehicle",
+        "UAE Tourist Visa & OK To Board processing fees included",
+        "24/7 dedicated Surat concierge support"
+      ],
+      "exclusions": [
+        "International roundtrip airfare (available at lowest group rates on request)",
+        "Tourism Dirham Fee payable directly at the hotel (approx. AED 15-20 per night)",
+        "Personal expenses, mini-bar, laundry, and telephone calls",
+        "Any meals not mentioned in the inclusions",
+        "Optional travel insurance (strongly recommended)"
+      ],
+      "itinerary": [
+        {
+          "dayNumber": 1,
+          "title": "Arrival in Dubai & Marina Dhow Cruise",
+          "description": "Touch down at Dubai International Airport. Meet our courteous chauffeur who will transfer you in a private luxury vehicle to your hotel. Settle in, refresh, and get ready for an enchanting evening on a glass-bottomed Dhow Cruise along the gleaming Dubai Marina canal.",
+          "meals": "Dinner on Cruise",
+          "hotel": "Millennium Place Marina / Grand Excelsior Hotel (4-Star Superior)",
+          "activities": [
+            "Airport Meet & Greet",
+            "Hotel Check-in",
+            "Dubai Marina Dhow Cruise",
+            "Buffet Dinner"
+          ]
+        },
+        {
+          "dayNumber": 2,
+          "title": "Dubai City Tour, Dubai Frame & Museum of the Future",
+          "description": "After a hearty breakfast, embark on a curated city tour. Gaze up at the iconic Dubai Frame offering split views of Old Dubai and New Dubai. Drive past the opulent Burj Al Arab, explore the Spice and Gold Souks, and stop for photographs outside the stunning calligraphy facade of the Museum of the Future.",
+          "meals": "Breakfast",
+          "hotel": "Millennium Place Marina (4-Star Superior)",
+          "activities": [
+            "Dubai Frame Visit",
+            "Palm Jumeirah Monorail Drive",
+            "Gold & Spice Souk",
+            "Museum of the Future Photo Stop"
+          ]
+        },
+        {
+          "dayNumber": 3,
+          "title": "Burj Khalifa 124th Floor & Dubai Mall Fountain Show",
+          "description": "Spend your morning exploring the world’s largest retail paradise, The Dubai Mall. In the afternoon, ascend the world’s tallest tower to the 124th & 125th floor observation deck for breathtaking 360-degree vistas. In the evening, witness the synchronized Dubai Fountain water dance at the base of the tower.",
+          "meals": "Breakfast",
+          "hotel": "Millennium Place Marina (4-Star Superior)",
+          "activities": [
+            "The Dubai Mall",
+            "Burj Khalifa 124th Floor Observation Deck",
+            "Dubai Aquarium view",
+            "Dubai Fountain Spectacle"
+          ]
+        },
+        {
+          "dayNumber": 4,
+          "title": "Luxury 4x4 Red Dunes Desert Safari & Bedouin Camp",
+          "description": "Enjoy a leisurely morning shopping or swimming. By mid-afternoon, our 4x4 Land Cruiser will pick you up for thrilling dune bashing across the Lahbab red dunes. Experience sandboarding, camel rides, henna painting, and feast on a lavish barbecue dinner under the desert sky accompanied by fire dancers and belly dance performances.",
+          "meals": "Breakfast, BBQ Dinner",
+          "hotel": "Millennium Place Marina (4-Star Superior)",
+          "activities": [
+            "Red Dune Bashing",
+            "Sandboarding",
+            "Sunset Photography",
+            "Camel Riding",
+            "Barbecue Dinner & Cultural Shows"
+          ]
+        },
+        {
+          "dayNumber": 5,
+          "title": "Day at Leisure or Optional Abu Dhabi Day Excursion",
+          "description": "Keep this day relaxed for shopping at Mall of the Emirates or take an optional excursion to Abu Dhabi to witness the grand Sheikh Zayed Grand Mosque, BAPS Hindu Mandir Abu Dhabi, and Ferrari World.",
+          "meals": "Breakfast",
+          "hotel": "Millennium Place Marina (4-Star Superior)",
+          "activities": [
+            "Free day for luxury shopping or Abu Dhabi Grand Mosque tour"
+          ]
+        },
+        {
+          "dayNumber": 6,
+          "title": "Fond Farewell & Departure to Surat/India",
+          "description": "Savor your final lavish breakfast in Dubai. Complete hotel check-out and enjoy some last-minute duty-free shopping before our private chauffeur escorts you to Dubai International Airport for your flight back home.",
+          "meals": "Breakfast",
+          "hotel": "Check-out",
+          "activities": [
+            "Hotel Check-out",
+            "Souvenir Shopping",
+            "Airport Transfer"
+          ]
+        }
+      ],
+      "hotelRating": 4,
+      "flightsIncluded": false,
+      "mealsIncluded": true,
+      "transfersIncluded": true,
+      "bestTimeToVisit": "October to April",
+      "badge": "Bestseller",
+      "featured": true,
+      "active": true,
+      "createdAt": "2026-01-15T10:00:00.000Z"
+    },
+    {
+      "id": "pkg-2",
+      "slug": "enchanting-bali-island-escape",
+      "title": "Enchanting Bali: Ubud Rainforest & Private Pool Villa",
+      "subtitle": "Nusa Penida Island Tour, Tegalalang Rice Terraces, Bali Swing & Waterfalls",
+      "category": "international",
+      "subcategory": "Southeast Asia",
+      "destination": "Bali, Indonesia",
+      "durationNights": 6,
+      "durationDays": 7,
+      "tripType": "Honeymoon",
+      "basePrice": 62000,
+      "discountedPrice": 51999,
+      "heroImage": "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1200&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1573790387438-4da905039392?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "overview": "Discover the Island of the Gods with a curated journey split between the tranquil arts and rice terraces of Ubud and the vibrant coastal luxury of Seminyak. Indulge in private pool villa stays, exotic Balinese massages, and the jaw-dropping cliffs of Nusa Penida.",
+      "highlights": [
+        "2 Nights in Ubud Forest Resort + 4 Nights in Luxury Seminyak Private Pool Villa",
+        "Full Day Speedboat Excursion to Nusa Penida (Kelingking Beach, Broken Beach, Angel’s Billabong)",
+        "Iconic Aloha Ubud Jungle Swing & Tegalalang Rice Terrace walk",
+        "Uluwatu Sunset Temple Cliff tour with Kecak Fire Dance performance",
+        "Tegenungan Waterfall and Kintamani Volcano scenic overlook",
+        "Complimentary Romantic Candlelight Dinner for couples & 60-min Balinese Spa massage"
+      ],
+      "inclusions": [
+        "6 Nights accommodation (4-Star Deluxe Resort + Private Pool Villa)",
+        "Daily breakfast including 1 Signature Floating Breakfast in your private pool",
+        "Speedboat transfers and private island car tour for Nusa Penida",
+        "All sightseeing entries, temple sarongs, and jungle swing tickets",
+        "Private air-conditioned car with English-speaking local guide/driver",
+        "Airport pick-up and drop-off transfers",
+        "1 Romantic Candlelight Dinner setup"
+      ],
+      "exclusions": [
+        "International flights to Denpasar (DPS)",
+        "Indonesia Visa on Arrival (approx. USD 35 / IDR 500,000 paid at airport)",
+        "Bali Tourist Levy (approx. IDR 150,000)",
+        "Personal expenses, water sports at Tanjung Benoa (available add-on)"
+      ],
+      "itinerary": [
+        {
+          "dayNumber": 1,
+          "title": "Arrival in Bali & Transfer to Ubud",
+          "description": "Arrive at Ngurah Rai International Airport in Denpasar. Receive a traditional frangipani flower garland welcome from our chauffeur and transfer directly into the emerald heart of Ubud. Check into your tropical resort and relax.",
+          "meals": "Welcome Drink",
+          "hotel": "The Payogan Villa Resort & Spa Ubud (4-Star Deluxe)",
+          "activities": [
+            "Warm Frangipani Welcome",
+            "Scenic Ubud Transfer",
+            "Leisure Evening"
+          ]
+        },
+        {
+          "dayNumber": 2,
+          "title": "Kintamani Volcano, Coffee Plantation & Tegalalang Swing",
+          "description": "Journey to Mount Batur viewpoint at Kintamani for panoramic volcanic scenery. Taste authentic Luwak coffee at a traditional spice plantation. Later, soar over the emerald canyon on the famous Ubud swing and stroll the UNESCO-listed Tegalalang terraces.",
+          "meals": "Breakfast, Lunch",
+          "hotel": "The Payogan Villa Resort Ubud",
+          "activities": [
+            "Mount Batur View",
+            "Coffee Plantation",
+            "Aloha Swing Experience",
+            "Tegalalang Terraces"
+          ]
+        },
+        {
+          "dayNumber": 3,
+          "title": "Tegenungan Waterfall & Check-in to Private Pool Villa",
+          "description": "Visit the rushing cascades of Tegenungan Waterfall. In the afternoon, transfer to the coastal town of Seminyak / Kuta and step into your private luxury pool villa complete with personalized amenities.",
+          "meals": "Breakfast",
+          "hotel": "The Kayana Seminyak / Aksari Villa Seminyak (Private Pool Villa)",
+          "activities": [
+            "Tegenungan Waterfall",
+            "Transfer to Seminyak",
+            "Private Pool Villa Check-in"
+          ]
+        },
+        {
+          "dayNumber": 4,
+          "title": "Nusa Penida Island Tour by Speedboat",
+          "description": "Early morning speedboat to the rugged paradise of Nusa Penida. Marvel at the T-Rex shaped cliff of Kelingking Secret Point, the natural rock arch of Broken Beach, and the crystal infinity pool of Angel’s Billabong. Savor beachfront lunch before returning to Bali.",
+          "meals": "Breakfast, Island Lunch",
+          "hotel": "The Kayana Seminyak (Private Pool Villa)",
+          "activities": [
+            "Fast Boat Crossing",
+            "Kelingking Beach",
+            "Broken Beach & Angel Billabong",
+            "Crystal Bay"
+          ]
+        },
+        {
+          "dayNumber": 5,
+          "title": "Uluwatu Cliff Temple & Sunset Kecak Fire Dance",
+          "description": "Morning at leisure to enjoy your private plunge pool and floating breakfast. In late afternoon, visit the dramatic Uluwatu Temple perched 70 meters above the crashing Indian Ocean. Witness the captivating Kecak Fire Dance as the sun melts into the ocean.",
+          "meals": "Floating Breakfast, Romantic Dinner",
+          "hotel": "The Kayana Seminyak (Private Pool Villa)",
+          "activities": [
+            "Floating Breakfast in Villa",
+            "Uluwatu Cliff Temple",
+            "Kecak Fire Dance at Sunset",
+            "Seafood / Vegetarian Dinner"
+          ]
+        },
+        {
+          "dayNumber": 6,
+          "title": "Day at Leisure & Authentic 60-Minute Balinese Spa",
+          "description": "Unwind with an authentic 60-minute Balinese Aromatherapy massage. Spend the afternoon exploring Seminyak’s chic boutiques, beach clubs like Potato Head, or taking a stroll down Double Six Beach.",
+          "meals": "Breakfast",
+          "hotel": "The Kayana Seminyak (Private Pool Villa)",
+          "activities": [
+            "60-Min Couples Balinese Spa",
+            "Beach Club Sunset or Boutique Shopping"
+          ]
+        },
+        {
+          "dayNumber": 7,
+          "title": "Farewell Bali & Return Home",
+          "description": "Enjoy a relaxed breakfast, pack fond memories and handcrafted souvenirs, and transfer to Denpasar Airport for your return flight to India.",
+          "meals": "Breakfast",
+          "hotel": "Check-out",
+          "activities": [
+            "Villa Check-out",
+            "Airport Transfer"
+          ]
+        }
+      ],
+      "hotelRating": 5,
+      "flightsIncluded": false,
+      "mealsIncluded": true,
+      "transfersIncluded": true,
+      "bestTimeToVisit": "April to October",
+      "badge": "Honeymoon Special",
+      "featured": true,
+      "active": true,
+      "createdAt": "2026-01-20T10:00:00.000Z"
+    },
+    {
+      "id": "pkg-3",
+      "slug": "swiss-paris-european-odyssey",
+      "title": "Swiss Alps & Romantic Paris: Grand European Odyssey",
+      "subtitle": "Mount Titlis Rotair, Zurich, Lucerne, Eiffel Tower 2nd Tier & Seine River Cruise",
+      "category": "international",
+      "subcategory": "Europe",
+      "destination": "Switzerland & Paris, France",
+      "durationNights": 7,
+      "durationDays": 8,
+      "tripType": "Luxury Expedition",
+      "basePrice": 198000,
+      "discountedPrice": 178500,
+      "heroImage": "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?auto=format&fit=crop&w=1200&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1508873696983-2df5293cb32f?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "overview": "Our flagship luxury European vacation brings together the pristine alpine majesty of Central Switzerland with the timeless elegance of the French capital. Curated with Swiss rail passes, luxury coach tours, 4-Star city-center hotels, and authentic Indian/Continental dining options.",
+      "highlights": [
+        "Mount Titlis Cable Car with World’s First Revolving Rotair & Cliff Walk suspension bridge",
+        "Lucerne city tour with Chapel Bridge, Lion Monument & Lake Lucerne Boat Cruise",
+        "High-speed TGV Train journey from Zurich/Basel across the French countryside to Paris",
+        "Eiffel Tower 2nd Floor Priority Access with breathtaking 360-degree Paris panorama",
+        "Romantic Seine River Glass-Topped Cruise passing Notre Dame & Louvre Museum",
+        "Illuminated Paris Night City Tour passing Champs-Élysées, Arc de Triomphe & Place de la Concorde",
+        "Indian Meals option available with Gujarati & Jain dietary accommodations"
+      ],
+      "inclusions": [
+        "4 Nights in Zurich / Engelberg / Lucerne Area (4-Star Hotel)",
+        "3 Nights in Paris (4-Star Central Hotel)",
+        "Daily hot breakfast buffet at all hotels",
+        "Mount Titlis Cable Car + Ice Flyer + Cliff Walk entry ticket",
+        "High-Speed TGV Train ticket (2nd Class Reserved) from Switzerland to Paris",
+        "Eiffel Tower 2nd Level Entry Ticket",
+        "1-Hour Seine River Cruise ticket",
+        "All luxury coach sightseeing transfers as per itinerary",
+        "Schengen Visa guidance and biometric appointment scheduling from Surat"
+      ],
+      "exclusions": [
+        "International roundtrip airfare",
+        "Schengen Visa embassy fee & VFS service charges",
+        "Overseas travel insurance",
+        "City tourist taxes payable directly to hotels (approx. €3-€6 per person per night)"
+      ],
+      "itinerary": [
+        {
+          "dayNumber": 1,
+          "title": "Arrival in Zurich & Transfer to Central Switzerland",
+          "description": "Arrive at Zurich Kloten Airport. Transfer to your luxury Swiss hotel. Spend the evening walking around Lake Zurich and exploring the historic Bahnhofstrasse luxury shopping boulevard.",
+          "meals": "Dinner",
+          "hotel": "Radisson Blu Hotel Zurich / Swissôtel (4-Star)",
+          "activities": [
+            "Airport Meet & Greet",
+            "Lake Zurich Promenade Walk",
+            "Welcome Dinner"
+          ]
+        },
+        {
+          "dayNumber": 2,
+          "title": "Mount Titlis Snow Mountain & Lucerne City Tour",
+          "description": "Ascend to 10,000 feet on the world’s first revolving cable car, Titlis Rotair. Experience eternal snow, the Glacier Cave, and the daring Cliff Walk. In the afternoon, descend to charming Lucerne to view the Chapel Bridge and the weeping Lion Monument.",
+          "meals": "Breakfast, Dinner",
+          "hotel": "Radisson Blu Hotel Zurich",
+          "activities": [
+            "Titlis Rotair Cable Car",
+            "Cliff Walk & Ice Flyer",
+            "Chapel Bridge",
+            "Lucerne Old Town"
+          ]
+        },
+        {
+          "dayNumber": 3,
+          "title": "Interlaken, Jungfraujoch Excursion (Optional) & Lake Brienz",
+          "description": "Explore the scenic town of Interlaken tucked between Lake Thun and Lake Brienz. Optional full-day excursion to Jungfraujoch - Top of Europe via the high-tech Eiger Express tricable gondola.",
+          "meals": "Breakfast, Dinner",
+          "hotel": "Radisson Blu Hotel Zurich",
+          "activities": [
+            "Interlaken Town Walk",
+            "Scenic Alpine Vista",
+            "Optional Jungfraujoch"
+          ]
+        },
+        {
+          "dayNumber": 4,
+          "title": "Rhine Falls Boat Ride & TGV High Speed Train to Paris",
+          "description": "Witness Europe’s most powerful waterfall, the Rhine Falls at Schaffhausen. In the afternoon, board the high-speed TGV train darting into France. Arrive in the romantic City of Lights, Paris, and check in to your hotel.",
+          "meals": "Breakfast, Dinner in Paris",
+          "hotel": "Novotel Paris Centre Tour Eiffel / Mercure Paris (4-Star)",
+          "activities": [
+            "Rhine Falls Boat Ride",
+            "TGV High Speed Train Journey",
+            "Arrival in Paris"
+          ]
+        },
+        {
+          "dayNumber": 5,
+          "title": "Eiffel Tower 2nd Tier, Seine Cruise & Paris Highlights",
+          "description": "Ascend to the 2nd Floor of the Eiffel Tower for commanding perspectives over Paris. Embark on a glass-canopied Seine River cruise gliding beneath historic stone bridges. Complete the day with a panoramic drive past the Arc de Triomphe and Champs-Élysées.",
+          "meals": "Breakfast, Dinner",
+          "hotel": "Novotel Paris Centre Tour Eiffel (4-Star)",
+          "activities": [
+            "Eiffel Tower 2nd Floor",
+            "Seine River Cruise",
+            "Champs-Élysées & Arc de Triomphe"
+          ]
+        },
+        {
+          "dayNumber": 6,
+          "title": "Disneyland Paris Magic Day (or Louvre & Montmartre)",
+          "description": "Full day of thrilling fantasy and fun at Disneyland Paris (1-Park / 2-Park pass) or take a cultural deep-dive into the Louvre Museum to witness the Mona Lisa followed by the bohemian artist square of Montmartre and Sacré-Cœur basilica.",
+          "meals": "Breakfast",
+          "hotel": "Novotel Paris Centre Tour Eiffel (4-Star)",
+          "activities": [
+            "Disneyland Paris or Louvre Museum Excursion",
+            "Montmartre Artists Quarter"
+          ]
+        },
+        {
+          "dayNumber": 7,
+          "title": "Palace of Versailles & Luxury Department Store Shopping",
+          "description": "Visit the opulent royal Palace of Versailles and its gilded Hall of Mirrors. In the afternoon, explore Galeries Lafayette Haussmann for premier European perfume and fashion shopping.",
+          "meals": "Breakfast, Farewell Dinner",
+          "hotel": "Novotel Paris Centre Tour Eiffel (4-Star)",
+          "activities": [
+            "Versailles Palace & Gardens",
+            "Galeries Lafayette Haussmann",
+            "Gala Farewell Dinner"
+          ]
+        },
+        {
+          "dayNumber": 8,
+          "title": "Au Revoir Paris & Homeward Bound",
+          "description": "Enjoy a final French croissant and café au lait. Chauffeur transfer to Charles de Gaulle Airport for your flight back to India with a heart full of European memories.",
+          "meals": "Breakfast",
+          "hotel": "Check-out",
+          "activities": [
+            "Hotel Check-out",
+            "Airport Chauffeur Transfer"
+          ]
+        }
+      ],
+      "hotelRating": 4,
+      "flightsIncluded": false,
+      "mealsIncluded": true,
+      "transfersIncluded": true,
+      "bestTimeToVisit": "May to October & December for Christmas",
+      "badge": "Luxury Special",
+      "featured": true,
+      "active": true,
+      "createdAt": "2026-01-25T10:00:00.000Z"
+    },
+    {
+      "id": "pkg-4",
+      "slug": "kashmir-paradise-on-earth",
+      "title": "Paradise on Earth: Kashmir Valley & Gulmarg Gondola",
+      "subtitle": "Srinagar Luxury Houseboat, Gulmarg Phase 1 Gondola, Pahalgam Valley & Sonmarg",
+      "category": "domestic",
+      "subcategory": "North India",
+      "destination": "Srinagar & Gulmarg, Kashmir",
+      "durationNights": 5,
+      "durationDays": 6,
+      "tripType": "Family Holiday",
+      "basePrice": 38000,
+      "discountedPrice": 31999,
+      "heroImage": "https://images.unsplash.com/photo-1595815771614-ade9d652a65d?auto=format&fit=crop&w=1200&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1595815771614-ade9d652a65d?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1598091383021-15ddea10925d?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1566837945700-30057527ade0?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "overview": "Dubbed \"Heaven on Earth\", Kashmir enchants with snow-capped Pir Panjal peaks, shimmering Dal Lake shikaras, blossoming Mughal gardens, and cedar-scented pine valleys in Pahalgam. Includes a stay in a handcrafted luxury cedarwood houseboat.",
+      "highlights": [
+        "1 Night in Luxury Handcrafted Cedar Houseboat on Dal Lake + 4 Nights Premium Hotel",
+        "Gulmarg Gondola Ride (Phase 1 guaranteed cable car ride to Kongdoori)",
+        "Scenic Shikara boat ride on Dal Lake visiting floating vegetable markets and Char Chinar",
+        "Pahalgam Lidder Valley excursion visiting Betaab Valley, Aru Valley & Chandanwari",
+        "Mughal Gardens of Srinagar: Nishat Bagh, Shalimar Bagh & Chashme Shahi",
+        "Pure Vegetarian & Jain food options available with warm Kashmiri hospitality"
+      ],
+      "inclusions": [
+        "5 Nights accommodation (1 Night Dal Lake Houseboat + 2N Srinagar + 2N Pahalgam)",
+        "Daily breakfast and dinner (MAP Meal Plan)",
+        "All transfers and sightseeing by dedicated private non-AC Innova / Crysta vehicle",
+        "1-Hour Shikara ride on Dal Lake",
+        "Gulmarg Gondola Phase 1 Cable Car tickets included",
+        "Toll taxes, parking, driver allowances included"
+      ],
+      "exclusions": [
+        "Airfare to/from Srinagar (SXR)",
+        "Pony rides, sledges, and snow activities",
+        "Local union vehicle for Betaab / Aru Valley in Pahalgam (as per state regulations)",
+        "Personal tips and laundry"
+      ],
+      "itinerary": [
+        {
+          "dayNumber": 1,
+          "title": "Arrival in Srinagar & Dal Lake Shikara Ride",
+          "description": "Arrive at Srinagar Sheikh-ul-Alam Airport. Greet your private driver and transfer to Dal Lake. Check into a traditional carved cedar houseboat. In the golden evening light, embark on a tranquil Shikara ride across the lotus-dappled waters.",
+          "meals": "Dinner",
+          "hotel": "Wangnoo Heritage Luxury Houseboat Dal Lake",
+          "activities": [
+            "Airport Pick-up",
+            "Houseboat Check-in",
+            "1-Hour Sunset Shikara Ride"
+          ]
+        },
+        {
+          "dayNumber": 2,
+          "title": "Srinagar to Gulmarg: Meadow of Flowers & Gondola",
+          "description": "Drive through weeping willow avenues to Gulmarg. Board the famous Gulmarg Gondola, one of the world’s highest cable cars, up to Kongdoori meadow at 10,000 feet. Enjoy breathtaking views of Apharwat peak and roll in snow.",
+          "meals": "Breakfast, Dinner",
+          "hotel": "The Grand Mumtaz Resorts / Kolahoi Green Srinagar",
+          "activities": [
+            "Scenic Drive to Gulmarg",
+            "Gondola Phase 1 Ride",
+            "Snow Activities"
+          ]
+        },
+        {
+          "dayNumber": 3,
+          "title": "Srinagar to Pahalgam: Valley of Shepherds",
+          "description": "Depart for the tranquil valley of Pahalgam. En route, pass the fragrant saffron fields of Pampore and historic Avantipur ruins. Follow the rushing emerald Lidder river. Check into your riverfront hotel and enjoy evening strolls along the pine forest trails.",
+          "meals": "Breakfast, Dinner",
+          "hotel": "Hotel Heevan / Pine N Peak Pahalgam (4-Star)",
+          "activities": [
+            "Pampore Saffron Fields",
+            "Lidder River Walk",
+            "Pahalgam Bazaar Shopping"
+          ]
+        },
+        {
+          "dayNumber": 4,
+          "title": "Pahalgam: Betaab Valley, Aru Valley & Chandanwari",
+          "description": "Spend the day soaking in the ethereal beauty of Betaab Valley (named after the Bollywood film), the quaint alpine village of Aru, and the starting point of Amarnath Yatra at Chandanwari.",
+          "meals": "Breakfast, Dinner",
+          "hotel": "Hotel Heevan / Pine N Peak Pahalgam",
+          "activities": [
+            "Betaab Valley",
+            "Aru Valley Panorama",
+            "Chandanwari Snow Point"
+          ]
+        },
+        {
+          "dayNumber": 5,
+          "title": "Mughal Gardens of Srinagar & Old City Handicrafts",
+          "description": "Return to Srinagar. Explore the terraced royal fountains and Chinar trees of Nishat Bagh (Garden of Bliss) and Shalimar Bagh (Abode of Love). Visit local artisans weaving authentic Pashmina shawls and hand-carving walnut wood furniture.",
+          "meals": "Breakfast, Dinner",
+          "hotel": "Kolahoi Green Hotel Srinagar",
+          "activities": [
+            "Nishat & Shalimar Mughal Gardens",
+            "Pashmina Shawl & Walnut Wood Emporium"
+          ]
+        },
+        {
+          "dayNumber": 6,
+          "title": "Departure from Srinagar",
+          "description": "Relish a warm cup of Kashmiri Kahwa tea with crushed almonds and saffron. Chauffeur transfer to Srinagar Airport for your onward journey back to Gujarat.",
+          "meals": "Breakfast",
+          "hotel": "Check-out",
+          "activities": [
+            "Hotel Check-out",
+            "Airport Transfer"
+          ]
+        }
+      ],
+      "hotelRating": 4,
+      "flightsIncluded": false,
+      "mealsIncluded": true,
+      "transfersIncluded": true,
+      "bestTimeToVisit": "March to October (Summer/Autumn) & Dec-Feb (Snow)",
+      "badge": "Bestseller",
+      "featured": true,
+      "active": true,
+      "createdAt": "2026-02-01T10:00:00.000Z"
+    },
+    {
+      "id": "pkg-5",
+      "slug": "royal-rajasthan-heritage-trail",
+      "title": "Royal Rajasthan: Palaces of Udaipur & Jaipur Forts",
+      "subtitle": "Lake Pichola Boat Cruise, Amber Fort Elephant Ride & Mehrangarh Jodhpur",
+      "category": "domestic",
+      "subcategory": "West India",
+      "destination": "Udaipur, Jodhpur & Jaipur, Rajasthan",
+      "durationNights": 5,
+      "durationDays": 6,
+      "tripType": "Customized",
+      "basePrice": 34000,
+      "discountedPrice": 28500,
+      "heroImage": "https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=1200&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1609137144822-2617f694600e?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1597040663342-45b6af3d91a5?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "overview": "Step into the glorious royal past of the Rajput maharajas. Stroll the romantic lakefront marble courtyards of Udaipur, the towering desert bastion of Jodhpur, and the Pink City of Jaipur with its honeycombed Hawa Mahal and formidable Amber Fort.",
+      "highlights": [
+        "Private sunset boat ride on Lake Pichola overlooking Jag Mandir Palace",
+        "City Palace Udaipur and vintage car museum tour",
+        "Magnificent Mehrangarh Fort and Jaswant Thada royal cenotaph in Jodhpur",
+        "Amber Fort exploration with elephant/jeep ride up the ramparts",
+        "Photo stop at Hawa Mahal and visit to City Palace & Jantar Mantar observatory in Jaipur",
+        "Stay in heritage-style boutique hotels with authentic Rajasthani cultural shows"
+      ],
+      "inclusions": [
+        "5 Nights in 4-Star Heritage boutique hotels (2N Udaipur, 1N Jodhpur, 2N Jaipur)",
+        "Daily breakfast and royal dinner buffet",
+        "Private AC Sedan / Ertiga vehicle for all inter-city transfers and local sightseeing",
+        "Lake Pichola boat cruise tickets",
+        "All toll taxes, interstate permits, parking fees, and driver allowances"
+      ],
+      "exclusions": [
+        "Monument entry tickets and camera fees",
+        "Lunch and beverages",
+        "Personal expenses and shopping"
+      ],
+      "itinerary": [
+        {
+          "dayNumber": 1,
+          "title": "Arrival in Udaipur: The City of Lakes",
+          "description": "Arrive in Udaipur. Check into your heritage hotel. In the evening, enjoy a sunset boat ride on Lake Pichola, taking in panoramic views of the Lake Palace and City Palace bathed in amber twilight.",
+          "meals": "Dinner",
+          "hotel": "Fateh Garh Heritage Hotel / Chunda Palace (Heritage 4-Star)",
+          "activities": [
+            "Airport / Station Pick-up",
+            "Lake Pichola Sunset Boat Cruise"
+          ]
+        },
+        {
+          "dayNumber": 2,
+          "title": "Udaipur City Palace & Saheliyon-ki-Bari",
+          "description": "Explore Udaipur’s City Palace complex with its peacock mosaics, mirrored galleries, and miniature paintings. Visit Jagdish Temple and the lush royal gardens of Saheliyon-ki-Bari with fountains sculpted from black marble.",
+          "meals": "Breakfast, Dinner",
+          "hotel": "Fateh Garh Heritage Hotel",
+          "activities": [
+            "City Palace Tour",
+            "Jagdish Temple",
+            "Saheliyon-ki-Bari Gardens"
+          ]
+        },
+        {
+          "dayNumber": 3,
+          "title": "Udaipur to Jodhpur via Ranakpur Jain Temple",
+          "description": "Drive towards Jodhpur, stopping at the breathtaking 15th-century marble temple of Ranakpur featuring 1,444 uniquely carved marble pillars. Arrive in the Blue City of Jodhpur and explore the grand Mehrangarh Fort.",
+          "meals": "Breakfast, Dinner",
+          "hotel": "Ajit Bhawan Palace / Indana Palace Jodhpur (Heritage 4-Star)",
+          "activities": [
+            "Ranakpur Marble Temple",
+            "Mehrangarh Fort",
+            "Jaswant Thada Cenotaph"
+          ]
+        },
+        {
+          "dayNumber": 4,
+          "title": "Jodhpur to Jaipur: The Pink City",
+          "description": "Drive to the majestic state capital, Jaipur. Check into your hotel. Spend the evening browsing Johari Bazaar for blue pottery, lac bangles, and Jaipuri block-printed quilts.",
+          "meals": "Breakfast, Dinner",
+          "hotel": "Shahpura House / Alsisar Haveli Jaipur (Heritage 4-Star)",
+          "activities": [
+            "Drive to Jaipur",
+            "Old City Heritage Bazaar Walk"
+          ]
+        },
+        {
+          "dayNumber": 5,
+          "title": "Amber Fort, Hawa Mahal & City Palace Jaipur",
+          "description": "Ascend the hillside battlements of Amber Fort. Visit the gleaming Sheesh Mahal (Mirror Palace). In the afternoon, marvel at the honeycomb windows of Hawa Mahal, the astronomy instruments of Jantar Mantar, and the City Palace museum.",
+          "meals": "Breakfast, Dinner",
+          "hotel": "Shahpura House Jaipur",
+          "activities": [
+            "Amber Fort & Sheesh Mahal",
+            "Hawa Mahal Photo Stop",
+            "Jantar Mantar",
+            "City Palace Jaipur"
+          ]
+        },
+        {
+          "dayNumber": 6,
+          "title": "Departure from Jaipur",
+          "description": "After breakfast, complete check-out. Chauffeur transfer to Jaipur Airport or Railway Station for your return journey to Surat.",
+          "meals": "Breakfast",
+          "hotel": "Check-out",
+          "activities": [
+            "Hotel Check-out",
+            "Departure Transfer"
+          ]
+        }
+      ],
+      "hotelRating": 4,
+      "flightsIncluded": false,
+      "mealsIncluded": true,
+      "transfersIncluded": true,
+      "bestTimeToVisit": "October to March",
+      "badge": "Heritage",
+      "featured": true,
+      "active": true,
+      "createdAt": "2026-02-05T10:00:00.000Z"
+    },
+    {
+      "id": "pkg-6",
+      "slug": "serene-kerala-backwaters-tea-gardens",
+      "title": "Serene Kerala: Munnar Tea Hills & Alleppey Houseboat",
+      "subtitle": "Mattupetty Dam, Eravikulam National Park, Spice Plantations & Vembanad Lake Cruise",
+      "category": "domestic",
+      "subcategory": "South India",
+      "destination": "Munnar, Thekkady & Alleppey, Kerala",
+      "durationNights": 5,
+      "durationDays": 6,
+      "tripType": "Customized",
+      "basePrice": 32000,
+      "discountedPrice": 25999,
+      "heroImage": "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=1200&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1588668214407-6ea9a6d8c272?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "overview": "Unwind in \"God’s Own Country\". Breathe in crisp mountain air among Munnar’s emerald tea carpeted hills, experience aromatic spice plantations in Thekkady, and cruise the gentle palms and tranquil backwaters of Alleppey aboard a traditional thatched Kettuvallam houseboat.",
+      "highlights": [
+        "2 Nights in Munnar mist hills + 1 Night in Thekkady + 1 Night Alleppey Luxury Houseboat + 1N Cochin",
+        "Full Day Munnar sightseeing: Tea Museum, Mattupetty Dam, Echo Point & Kundala Lake",
+        "Guided Spice Plantation walk smelling fresh cardamom, cinnamon, and pepper vines",
+        "Exclusive Private AC Premium Houseboat cruise along backwaters with all meals prepared on board",
+        "Periyar Wildlife Sanctuary boat safari in Thekkady",
+        "Kathakali Classical Dance and Kalaripayattu Martial Arts live cultural show"
+      ],
+      "inclusions": [
+        "5 Nights accommodation (4 Nights Premium Resorts + 1 Night Private Houseboat)",
+        "Daily breakfast & dinner at resorts, and All Meals (Lunch, Tea, Dinner, Breakfast) on Houseboat",
+        "Private air-conditioned car with seasoned English/Hindi speaking chauffeur",
+        "Guided spice plantation tour entry",
+        "All toll, parking, and driver allowances"
+      ],
+      "exclusions": [
+        "Airfare / Train tickets to Cochin (COK)",
+        "Periyar Lake boating tickets (online booking recommended)",
+        "Ayurvedic massage therapies (available at resort spas)"
+      ],
+      "itinerary": [
+        {
+          "dayNumber": 1,
+          "title": "Cochin to Munnar: Hill Station Ascent",
+          "description": "Arrive at Cochin Airport or Ernakulam Railway Station. Drive up through the Western Ghats to Munnar. En route, stop at Cheeyappara and Valara waterfalls. Check into your tea garden resort.",
+          "meals": "Dinner",
+          "hotel": "Blanket Hotel & Spa / Tea County Munnar (4-Star Deluxe)",
+          "activities": [
+            "Scenic Western Ghats Drive",
+            "Cheeyappara Waterfalls",
+            "Resort Check-in"
+          ]
+        },
+        {
+          "dayNumber": 2,
+          "title": "Munnar Tea Estates, Mattupetty & Eravikulam",
+          "description": "Visit Eravikulam National Park to spot the endangered Nilgiri Tahr mountain goat. Drive to Mattupetty Dam, Echo Point, and Kundala Lake for pedal boating. Visit the Tata Tea Museum to learn the art of tea making.",
+          "meals": "Breakfast, Dinner",
+          "hotel": "Blanket Hotel & Spa Munnar",
+          "activities": [
+            "Eravikulam National Park",
+            "Mattupetty Dam & Echo Point",
+            "Tea Museum Tasting"
+          ]
+        },
+        {
+          "dayNumber": 3,
+          "title": "Munnar to Thekkady: Spices & Wildlife Sanctuary",
+          "description": "Drive past cardamom hills to Thekkady. Embark on a guided stroll through a local spice plantation. In the evening, watch a spellbinding Kathakali dance and Kalaripayattu martial arts performance.",
+          "meals": "Breakfast, Dinner",
+          "hotel": "The Elephant Court / Poetree Sarovar Thekkady (4-Star)",
+          "activities": [
+            "Spice Garden Tour",
+            "Periyar Wildlife Lake Boating",
+            "Cultural Dance Performance"
+          ]
+        },
+        {
+          "dayNumber": 4,
+          "title": "Thekkady to Alleppey: Luxury Backwater Houseboat Cruise",
+          "description": "Descend to Alleppey and board your private thatched-roof Kettuvallam houseboat by 12:30 PM. Cruise past paddy fields, rustic village canals, and coconut groves while enjoying freshly prepared Kerala delicacies.",
+          "meals": "Breakfast, Authentic Kerala Lunch, Evening Tea, Dinner",
+          "hotel": "Lakes & Lagoons Private Deluxe Houseboat Alleppey",
+          "activities": [
+            "Houseboat Boarding",
+            "Backwater Canal Cruising",
+            "Village Stroll",
+            "Sunset on Vembanad Lake"
+          ]
+        },
+        {
+          "dayNumber": 5,
+          "title": "Alleppey to Cochin: Colonial Fort Kochi Heritage",
+          "description": "Disembark after breakfast and drive to Cochin. Tour Fort Kochi, Chinese Fishing Nets, St. Francis Church, and Jew Town with the Paradesi Synagogue. Indulge in some evening shopping at LuLu Mall.",
+          "meals": "Breakfast, Dinner",
+          "hotel": "Casino Hotel / Crowne Plaza Cochin (5-Star)",
+          "activities": [
+            "Fort Kochi Chinese Nets",
+            "Jew Town & Synagogue",
+            "LuLu Mall Shopping"
+          ]
+        },
+        {
+          "dayNumber": 6,
+          "title": "Departure from Cochin",
+          "description": "Enjoy breakfast and transfer to Cochin International Airport for your journey back home.",
+          "meals": "Breakfast",
+          "hotel": "Check-out",
+          "activities": [
+            "Hotel Check-out",
+            "Airport Transfer"
+          ]
+        }
+      ],
+      "hotelRating": 4,
+      "flightsIncluded": false,
+      "mealsIncluded": true,
+      "transfersIncluded": true,
+      "bestTimeToVisit": "September to March",
+      "badge": "Popular",
+      "featured": true,
+      "active": true,
+      "createdAt": "2026-02-10T10:00:00.000Z"
+    },
+    {
+      "id": "pkg-7",
+      "slug": "vietnam-ha-long-bay-luxury-cruise",
+      "title": "Vietnam Discovery: Hanoi, Ha Long Bay Cruise & Da Nang",
+      "subtitle": "Overnight 5-Star Ha Long Bay Cruise, Ba Na Hills Golden Hands Bridge & Hoi An Lanterns",
+      "category": "international",
+      "subcategory": "Southeast Asia",
+      "destination": "Hanoi, Ha Long Bay & Da Nang, Vietnam",
+      "durationNights": 6,
+      "durationDays": 7,
+      "tripType": "Group Tour",
+      "basePrice": 72000,
+      "discountedPrice": 58999,
+      "heroImage": "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1200&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "overview": "From the timeless charm of Hanoi’s French Quarter to cruising emerald waters among limestone karsts on a 5-star Ha Long Bay luxury vessel, walking the world-famous Golden Bridge held aloft by colossal stone hands in Ba Na Hills, and releasing floating lanterns in Hoi An.",
+      "highlights": [
+        "1 Night Overnight 5-Star Luxury Cruise on Ha Long Bay with private balcony cabin",
+        "Walk across the world-famous Golden Bridge held by giant stone hands at Ba Na Hills",
+        "Cable car ride at Sun World Ba Na Hills and French Village exploration",
+        "Hoi An Ancient Town lantern boat ride and night street market",
+        "Hanoi Old Quarter Cyclo ride, Hoan Kiem Lake, and Train Street photo spot",
+        "All local transfers, domestic flight from Hanoi to Da Nang included"
+      ],
+      "inclusions": [
+        "6 Nights accommodation (5 Nights 4-Star/5-Star hotels + 1 Night 5-Star Cruise Cabin)",
+        "Domestic Flight Ticket: Hanoi to Da Nang with check-in luggage",
+        "Daily breakfast and all meals on Ha Long Bay cruise",
+        "Ba Na Hills Cable Car + Golden Bridge entrance ticket",
+        "Private air-conditioned touring coaches",
+        "English speaking licensed tour guide",
+        "Vietnam E-Visa assistance"
+      ],
+      "exclusions": [
+        "International flights to Hanoi / from Da Nang",
+        "Vietnam E-Visa government fee ($25)",
+        "Beverages and personal expenses"
+      ],
+      "itinerary": [
+        {
+          "dayNumber": 1,
+          "title": "Arrival in Hanoi: Capital City Heritage",
+          "description": "Arrive at Noi Bai International Airport in Hanoi. Private transfer to your hotel. Stroll through the historic 36 Guild Streets of the Old Quarter and take photos along the picturesque Hoan Kiem Lake.",
+          "meals": "Dinner",
+          "hotel": "The Q Hotel / Grand Mercure Hanoi (4-Star Superior)",
+          "activities": [
+            "Airport Meet & Greet",
+            "Old Quarter Exploration",
+            "Water Puppet Show or Stroll"
+          ]
+        },
+        {
+          "dayNumber": 2,
+          "title": "Hanoi to Ha Long Bay: Boarding the 5-Star Luxury Cruise",
+          "description": "Drive through Red River Delta to Ha Long Bay. Embark on a luxury 5-star cruise. Sail through thousands of limestone pinnacles rising dramatically from emerald waters. Enjoy kayaking in hidden caves and sunset cocktails on the sundeck.",
+          "meals": "Breakfast, Seafood Lunch, Gourmet Dinner",
+          "hotel": "Doris Cruise / Mon Chéri 5-Star Luxury Cruise (Balcony Cabin)",
+          "activities": [
+            "Cruise Check-in",
+            "Limestone Karsts Sailing",
+            "Kayaking in Caves",
+            "Sunset Party"
+          ]
+        },
+        {
+          "dayNumber": 3,
+          "title": "Ha Long Bay Tai Chi & Flight to Da Nang",
+          "description": "Greet the sunrise with a peaceful Tai Chi session on the open sundeck. Visit Sung Sot (Surprise) Cave. Brunch on board before disembarking and transferring to Hanoi airport for a short flight to coastal Da Nang.",
+          "meals": "Brunch, Dinner in Da Nang",
+          "hotel": "Four Points by Sheraton / TMS Hotel Da Nang Beach (5-Star)",
+          "activities": [
+            "Sunrise Tai Chi",
+            "Surprise Cave Exploration",
+            "Flight to Da Nang",
+            "My Khe Beach Walk"
+          ]
+        },
+        {
+          "dayNumber": 4,
+          "title": "Ba Na Hills & The Iconic Golden Hands Bridge",
+          "description": "Board the world’s longest single-wire cable car to Sun World Ba Na Hills. Walk across the stunning Golden Bridge held by giant moss-covered hands in the clouds. Explore the French Village and Fantasy Park.",
+          "meals": "Breakfast, Buffet Lunch at Ba Na Hills",
+          "hotel": "Four Points by Sheraton Da Nang (5-Star)",
+          "activities": [
+            "World Record Cable Car",
+            "Golden Hands Bridge",
+            "French Village",
+            "Fantasy Park"
+          ]
+        },
+        {
+          "dayNumber": 5,
+          "title": "Marble Mountains & Enchanting Hoi An Ancient Town",
+          "description": "Visit the limestone peaks and sacred caverns of Marble Mountains. In the afternoon, head to UNESCO-heritage Hoi An. Stroll among yellow-hued merchant houses and release glowing paper lanterns onto the Thu Bon River.",
+          "meals": "Breakfast, Dinner",
+          "hotel": "Four Points by Sheraton Da Nang",
+          "activities": [
+            "Marble Mountains & Pagodas",
+            "Hoi An Ancient Town",
+            "Japanese Covered Bridge",
+            "Lantern Boat Ride"
+          ]
+        },
+        {
+          "dayNumber": 6,
+          "title": "Day at Leisure on My Khe Beach or Shopping",
+          "description": "Enjoy a leisurely day relaxing at the rooftop infinity pool, sunbathing on Forbes-voted My Khe Beach, or shopping for tailored silk clothing and Vietnamese coffee.",
+          "meals": "Breakfast",
+          "hotel": "Four Points by Sheraton Da Nang",
+          "activities": [
+            "Beach Relaxation",
+            "Optional Coconut Boat Tour in Cam Thanh"
+          ]
+        },
+        {
+          "dayNumber": 7,
+          "title": "Farewell Vietnam & Departure",
+          "description": "Enjoy a rich Vietnamese drip coffee with condensed milk. Transfer to Da Nang International Airport for your flight back home.",
+          "meals": "Breakfast",
+          "hotel": "Check-out",
+          "activities": [
+            "Hotel Check-out",
+            "Airport Transfer"
+          ]
+        }
+      ],
+      "hotelRating": 5,
+      "flightsIncluded": true,
+      "mealsIncluded": true,
+      "transfersIncluded": true,
+      "bestTimeToVisit": "October to April",
+      "badge": "Trending",
+      "featured": true,
+      "active": true,
+      "createdAt": "2026-02-15T10:00:00.000Z"
+    },
+    {
+      "id": "pkg-8",
+      "slug": "himachal-scenic-wonderland",
+      "title": "Himachal Wonderland: Manali Snow Peaks & Shimla Heritage",
+      "subtitle": "Solang Valley Adventure, Atal Tunnel, Rohtang Snow Point & Shimla Mall Road",
+      "category": "domestic",
+      "subcategory": "North India",
+      "destination": "Shimla & Manali, Himachal Pradesh",
+      "durationNights": 6,
+      "durationDays": 7,
+      "tripType": "Group Tour",
+      "basePrice": 36000,
+      "discountedPrice": 29500,
+      "heroImage": "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=1200&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1605649487212-47bdab064df8?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "overview": "Escape to the snow-crowned Himalayas. Wander the colonial ridge of British summer capital Shimla, drive through the engineering feat of Atal Tunnel to Lahaul valley, and experience paragliding, skiing, and hot sulphur springs in Manali.",
+      "highlights": [
+        "2 Nights Shimla + 3 Nights Manali + 1 Night Chandigarh in 4-Star scenic resorts",
+        "Atal Tunnel drive to Sissu Lahaul Valley and Solang Valley snow adventure arena",
+        "Shimla Ridge, Christ Church, Scandal Point & Kufri amusement park",
+        "Hadimba Devi Temple, Vashisht Hot Springs & Old Manali riverfront cafes",
+        "Scenic riverside drive along Beas River and visit to Kullu Shawl weaving factories",
+        "Pure Vegetarian & Gujarati / Jain meal options provided on request"
+      ],
+      "inclusions": [
+        "6 Nights accommodation in premium 4-Star resorts",
+        "Daily breakfast and hot buffet dinner",
+        "Dedicated AC vehicle from Delhi / Chandigarh pickup to drop-off",
+        "Atal Tunnel and Solang Valley sightseeing",
+        "All toll taxes, state road taxes, parking, and driver fees"
+      ],
+      "exclusions": [
+        "Airfare or train ticket to Delhi/Chandigarh",
+        "Rohtang Pass permit and local union taxi (if visited, subject to NGT permission)",
+        "Adventure activities (paragliding, zorbing, river rafting)",
+        "Personal expenses"
+      ],
+      "itinerary": [
+        {
+          "dayNumber": 1,
+          "title": "Chandigarh / Delhi to Shimla: The Queen of Hills",
+          "description": "Meet our chauffeur in Chandigarh or Delhi. Drive through winding pine hills up to Shimla (altitude 2,200m). Check into your resort with valley views. Spend the evening strolling on the pedestrian Mall Road.",
+          "meals": "Dinner",
+          "hotel": "Radisson Jass Shimla / Willow Banks (4-Star)",
+          "activities": [
+            "Chauffeur Pick-up",
+            "Scenic Himalayan Drive",
+            "Shimla Mall Road Walk"
+          ]
+        },
+        {
+          "dayNumber": 2,
+          "title": "Shimla: Kufri Snow Point & Heritage Ridge",
+          "description": "Drive to Kufri for horse rides, yak rides, and views of cedar forests. In the afternoon, explore the Neo-Gothic Christ Church, Scandal Point, and Gaiety Theatre along Shimla’s iconic Ridge.",
+          "meals": "Breakfast, Dinner",
+          "hotel": "Radisson Jass Shimla",
+          "activities": [
+            "Kufri Adventure Park",
+            "Christ Church",
+            "The Ridge & Lakkar Bazaar"
+          ]
+        },
+        {
+          "dayNumber": 3,
+          "title": "Shimla to Manali via Kullu Valley & Pandoh Dam",
+          "description": "A breathtaking 8-hour drive alongside the turquoise Beas River. Stop at Pandoh Dam, Hanogi Mata Temple, and a traditional Kullu Shawl weaving emporium. Arrive in Manali and check in.",
+          "meals": "Breakfast, Dinner",
+          "hotel": "The Himalayan Resort & Spa / Manuallaya Manali (4-Star)",
+          "activities": [
+            "Scenic Beas River Drive",
+            "Kullu Shawl Factory",
+            "Arrival in Manali"
+          ]
+        },
+        {
+          "dayNumber": 4,
+          "title": "Solang Valley, Atal Tunnel & Sissu Lahaul",
+          "description": "Pass through the 9.02km engineering marvel Atal Tunnel at 10,000 feet, emerging into the dramatic dry alpine terrain of Sissu Waterfall in Lahaul Valley. Return to Solang Valley for thrilling adventures.",
+          "meals": "Breakfast, Dinner",
+          "hotel": "The Himalayan Resort & Spa Manali",
+          "activities": [
+            "Atal Tunnel Crossing",
+            "Sissu Waterfall",
+            "Solang Valley Activities"
+          ]
+        },
+        {
+          "dayNumber": 5,
+          "title": "Manali Local: Hadimba Temple, Vashisht & Jogini Falls",
+          "description": "Visit the 450-year-old wooden pagoda Hadimba Devi Temple enveloped by giant deodar trees. Bathe in natural sulfur hot springs at Vashisht and walk to the cascading Jogini Waterfalls.",
+          "meals": "Breakfast, Dinner",
+          "hotel": "The Himalayan Resort & Spa Manali",
+          "activities": [
+            "Hadimba Devi Temple",
+            "Vashisht Hot Water Springs",
+            "Old Manali Cafes"
+          ]
+        },
+        {
+          "dayNumber": 6,
+          "title": "Manali to Chandigarh: Garden City",
+          "description": "Descend through Kullu valley with an optional river rafting stop at River Beas. Continue driving to the modern planned city of Chandigarh. Check in and relax.",
+          "meals": "Breakfast, Dinner",
+          "hotel": "JW Marriott / Hyatt Regency Chandigarh (5-Star)",
+          "activities": [
+            "Optional White Water Rafting Kullu",
+            "Chandigarh Check-in"
+          ]
+        },
+        {
+          "dayNumber": 7,
+          "title": "Rock Garden & Departure",
+          "description": "Visit Nek Chand’s famous Rock Garden and tranquil Sukhna Lake before transferring to Chandigarh Airport / Railway Station for your flight/train back to Surat.",
+          "meals": "Breakfast",
+          "hotel": "Check-out",
+          "activities": [
+            "Rock Garden",
+            "Sukhna Lake",
+            "Airport Transfer"
+          ]
+        }
+      ],
+      "hotelRating": 4,
+      "flightsIncluded": false,
+      "mealsIncluded": true,
+      "transfersIncluded": true,
+      "bestTimeToVisit": "Throughout the year (Snow in Dec-Feb, Pleasant in Mar-June)",
+      "badge": "Family Favorite",
+      "featured": true,
+      "active": true,
+      "createdAt": "2026-02-20T10:00:00.000Z"
+    },
+    {
+      "id": "pkg-9",
+      "slug": "greece-santorini-caldera-luxury-romance",
+      "title": "Greece & Santorini Caldera: Aegean Romance & Sunset Domes",
+      "subtitle": "Private Oia Caldera Cave Villa, Sunset Catamaran Cruise & Athens Acropolis VIP",
+      "category": "international",
+      "subcategory": "Europe",
+      "destination": "Greece (Santorini & Athens)",
+      "durationNights": 7,
+      "durationDays": 8,
+      "tripType": "Honeymoon",
+      "basePrice": 220000,
+      "discountedPrice": 195000,
+      "heroImage": "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=1200&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1530841377377-3ff06c0ca713?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "overview": "Immerse yourself in postcard-perfect Aegean luxury with The TraveloPedia. Marvel at the whitewashed cliffside villages of Oia, delve into ancient history at the Acropolis of Athens, sail across volcanic hot springs on a private luxury catamaran, and relax in a private caldera plunge pool suite.",
+      "highlights": [
+        "4 Nights in Santorini at a 5-Star Caldera Cliffside Cave Suite with private plunge pool",
+        "3 Nights in Athens at a Luxury Boutique Hotel overlooking the illuminated Acropolis",
+        "Exclusive Sunset Sailing Catamaran Cruise with Greek BBQ, local wines & volcano snorkeling",
+        "Private guided VIP walking tour through Oia, Fira & Megalochori traditional villages",
+        "Acropolis & Parthenon skip-the-line private archaeologist guided tour",
+        "Special pure vegetarian & Jain friendly Greek culinary arrangements throughout",
+        "High-speed ferry transfer between Athens (Piraeus) and Santorini with VIP lounge seats"
+      ],
+      "inclusions": [
+        "7 Nights luxury 5-star hotel & caldera cave suite accommodation",
+        "Daily champagne & gourmet breakfast with Aegean caldera panoramic views",
+        "Private luxury catamaran sunset cruise with fresh meals and drinks",
+        "VIP Acropolis private tour with all museum and archaeological site permits",
+        "High-speed business class ferry tickets (Athens - Santorini - Athens)",
+        "All airport, port, and excursion transfers in private air-conditioned Mercedes fleet",
+        "Schengen Visa assistance & comprehensive documentation service by Surat travel desk",
+        "24/7 dedicated WhatsApp concierge monitoring throughout the Greece tour"
+      ],
+      "exclusions": [
+        "International flight tickets (can be arranged via Emirates/Qatar/Lufthansa on request)",
+        "Schengen Visa embassy submission fee (paid directly at VFS)",
+        "Greek Climate Resilience Tax payable directly to hotels (approx. €7-10/night)",
+        "Personal expenses, tips, and optional helicopter island transfers"
+      ],
+      "itinerary": [
+        {
+          "dayNumber": 1,
+          "title": "Arrival in Athens & Historic Plaka Evening",
+          "description": "Arrive at Athens International Airport (Eleftherios Venizelos). Meet your private chauffeur and transfer to your 5-star hotel in central Athens. In the evening, enjoy a leisurely stroll through the historic cobblestone alleys of Plaka under the illuminated Acropolis.",
+          "meals": "Welcome Dinner",
+          "hotel": "Electra Metropolis Hotel Athens / NJV Athens Plaza (5-Star)",
+          "activities": [
+            "Airport Meet & Greet",
+            "Check-in",
+            "Evening Plaka Walk"
+          ]
+        },
+        {
+          "dayNumber": 2,
+          "title": "Acropolis VIP Archaeological Tour",
+          "description": "Embark on a private VIP guided exploration of the legendary Acropolis, Parthenon, Temple of Athena Nike, and the world-class Acropolis Museum. Afternoon at leisure for designer shopping along Ermou Street.",
+          "meals": "Breakfast",
+          "hotel": "Electra Metropolis Hotel Athens (5-Star)",
+          "activities": [
+            "Acropolis Private Tour",
+            "Parthenon Exploration",
+            "Acropolis Museum"
+          ]
+        },
+        {
+          "dayNumber": 3,
+          "title": "High-Speed Ferry to Santorini & Caldera Suite Check-in",
+          "description": "Board the premium high-speed ferry across the azure Aegean Sea to Santorini. Arrive at Athinios Port and transfer up the dramatic cliffs to your whitewashed cliffside cave suite in Oia. Enjoy your private heated plunge pool overlooking the volcanic caldera.",
+          "meals": "Breakfast",
+          "hotel": "Andronis Luxury Suites / Canaves Oia Suites (5-Star Caldera)",
+          "activities": [
+            "Ferry Transfer",
+            "Oia Check-in",
+            "Caldera Pool Sunset"
+          ]
+        },
+        {
+          "dayNumber": 4,
+          "title": "Santorini Sunset Sailing Catamaran Cruise",
+          "description": "Board a luxury catamaran for a semi-private sailing cruise across the caldera. Swim near the volcanic hot springs and Red Beach, snorkel in crystal clear waters, and watch the world-famous golden sunset over Oia from the open deck with Greek Mediterranean dining.",
+          "meals": "Breakfast & BBQ Lunch on Catamaran",
+          "hotel": "Andronis Luxury Suites / Canaves Oia Suites (5-Star Caldera)",
+          "activities": [
+            "Catamaran Sailing",
+            "Volcanic Hot Springs",
+            "Sunset Viewing from Sea"
+          ]
+        },
+        {
+          "dayNumber": 5,
+          "title": "Oia Blue Domes Photo Tour & Wine/Juice Tasting",
+          "description": "Early morning private photo walk around the iconic three blue domes of Oia before the crowds arrive. Afternoon visit to traditional Megalochori village and a cliffside estate for sunset juice/wine tasting overlooking the volcanic rim.",
+          "meals": "Breakfast",
+          "hotel": "Andronis Luxury Suites / Canaves Oia Suites (5-Star Caldera)",
+          "activities": [
+            "Blue Domes Photo Walk",
+            "Megalochori Village",
+            "Cliffside Sunset Experience"
+          ]
+        },
+        {
+          "dayNumber": 6,
+          "title": "Leisure Day: Black Sand Beach & Private Yachting",
+          "description": "Spend a tranquil day at Perivolos Black Sand Beach with reserved luxury cabanas, or indulge in a private caldera massage treatment at the hotel spa. In the evening, dine at a cliffside fine dining restaurant.",
+          "meals": "Breakfast",
+          "hotel": "Andronis Luxury Suites / Canaves Oia Suites (5-Star Caldera)",
+          "activities": [
+            "Perivolos Beach Cabana",
+            "Spa & Wellness",
+            "Romantic Cliffside Dinner"
+          ]
+        },
+        {
+          "dayNumber": 7,
+          "title": "Return Ferry to Athens & Farewell Aegean Evening",
+          "description": "Transfer to Santorini Port for your high-speed ferry back to Athens. Check in to your hotel and enjoy a panoramic rooftop dinner overlooking Syntagma Square.",
+          "meals": "Breakfast & Farewell Dinner",
+          "hotel": "Electra Metropolis Hotel Athens (5-Star)",
+          "activities": [
+            "Ferry to Athens",
+            "Athens Hotel Check-in",
+            "Rooftop Farewell Dinner"
+          ]
+        },
+        {
+          "dayNumber": 8,
+          "title": "Departure from Athens with Unforgettable Memories",
+          "description": "Enjoy a leisurely breakfast and some final souvenir shopping. Private chauffeur transfer to Athens International Airport for your departure flight back home to Surat.",
+          "meals": "Breakfast",
+          "hotel": "Check-out",
+          "activities": [
+            "Airport Chauffeur Transfer",
+            "Departure Flight"
+          ]
+        }
+      ],
+      "hotelRating": 5,
+      "flightsIncluded": true,
+      "mealsIncluded": true,
+      "transfersIncluded": true,
+      "bestTimeToVisit": "April to October (Sunniest & Most Vibrant)",
+      "badge": "Aesthetic Favorite 🇬🇷",
+      "featured": true,
+      "active": true,
+      "createdAt": "2026-02-25T10:00:00.000Z"
+    }
+  ],
+  "destinations": [
+    {
+      "id": "dest-1",
+      "slug": "dubai",
+      "name": "Dubai & UAE",
+      "countryOrState": "United Arab Emirates",
+      "category": "international",
+      "coverImage": "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80",
+      "tagline": "Futuristic Skylines, Gold Souks & Desert Safaris",
+      "packagesCount": 4,
+      "topAttractions": [
+        "Burj Khalifa",
+        "Palm Jumeirah",
+        "Desert Safari",
+        "Dubai Frame"
+      ],
+      "featured": true
+    },
+    {
+      "id": "dest-2",
+      "slug": "bali",
+      "name": "Bali",
+      "countryOrState": "Indonesia",
+      "category": "international",
+      "coverImage": "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=800&q=80",
+      "tagline": "Tropical Villas, Nusa Penida Cliffs & Forest Swings",
+      "packagesCount": 3,
+      "topAttractions": [
+        "Ubud Terraces",
+        "Nusa Penida",
+        "Uluwatu Temple",
+        "Kuta Beach"
+      ],
+      "featured": true
+    },
+    {
+      "id": "dest-3",
+      "slug": "switzerland",
+      "name": "Switzerland & Europe",
+      "countryOrState": "Switzerland & France",
+      "category": "international",
+      "coverImage": "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?auto=format&fit=crop&w=800&q=80",
+      "tagline": "Snowy Alps, Scenic Trains & Parisian Romance",
+      "packagesCount": 5,
+      "topAttractions": [
+        "Mount Titlis",
+        "Lucerne",
+        "Eiffel Tower",
+        "Interlaken"
+      ],
+      "featured": true
+    },
+    {
+      "id": "dest-4",
+      "slug": "kashmir",
+      "name": "Kashmir Valley",
+      "countryOrState": "Jammu & Kashmir, India",
+      "category": "domestic",
+      "coverImage": "https://images.unsplash.com/photo-1595815771614-ade9d652a65d?auto=format&fit=crop&w=800&q=80",
+      "tagline": "Dal Lake Houseboats, Gulmarg Snow & Pine Valleys",
+      "packagesCount": 4,
+      "topAttractions": [
+        "Gulmarg Gondola",
+        "Dal Lake Shikara",
+        "Pahalgam Lidder",
+        "Betaab Valley"
+      ],
+      "featured": true
+    },
+    {
+      "id": "dest-5",
+      "slug": "rajasthan",
+      "name": "Royal Rajasthan",
+      "countryOrState": "Rajasthan, India",
+      "category": "domestic",
+      "coverImage": "https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=800&q=80",
+      "tagline": "Grand Maharajah Palaces, Desert Forts & Lakes",
+      "packagesCount": 3,
+      "topAttractions": [
+        "Amber Fort",
+        "Lake Pichola",
+        "Mehrangarh Fort",
+        "Hawa Mahal"
+      ],
+      "featured": true
+    },
+    {
+      "id": "dest-6",
+      "slug": "kerala",
+      "name": "Serene Kerala",
+      "countryOrState": "Kerala, India",
+      "category": "domestic",
+      "coverImage": "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=800&q=80",
+      "tagline": "Munnar Tea Hills & Private Houseboat Backwaters",
+      "packagesCount": 3,
+      "topAttractions": [
+        "Alleppey Backwaters",
+        "Munnar Tea Estates",
+        "Thekkady Spices",
+        "Fort Kochi"
+      ],
+      "featured": true
+    },
+    {
+      "id": "dest-7",
+      "slug": "vietnam",
+      "name": "Vietnam",
+      "countryOrState": "Vietnam",
+      "category": "international",
+      "coverImage": "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80",
+      "tagline": "Ha Long Bay 5-Star Cruises & Golden Bridge in the Clouds",
+      "packagesCount": 2,
+      "topAttractions": [
+        "Ha Long Bay",
+        "Ba Na Hills Golden Bridge",
+        "Hoi An Lanterns",
+        "Hanoi Old Town"
+      ],
+      "featured": true
+    },
+    {
+      "id": "dest-8",
+      "slug": "himachal",
+      "name": "Himachal Pradesh",
+      "countryOrState": "Himachal Pradesh, India",
+      "category": "domestic",
+      "coverImage": "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=800&q=80",
+      "tagline": "Solang Valley Adventures, Atal Tunnel & Cedar Forests",
+      "packagesCount": 3,
+      "topAttractions": [
+        "Atal Tunnel",
+        "Solang Valley",
+        "Shimla Ridge",
+        "Hadimba Temple"
+      ],
+      "featured": true
+    },
+    {
+      "id": "dest-9",
+      "slug": "greece",
+      "name": "Greece & Santorini",
+      "countryOrState": "Greece",
+      "category": "international",
+      "coverImage": "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=800&q=80",
+      "tagline": "Oia Whitewashed Caldera Suites, Aegean Sunsets & Acropolis VIP",
+      "packagesCount": 1,
+      "topAttractions": [
+        "Oia Caldera & Blue Domes",
+        "Acropolis of Athens",
+        "Volcanic Catamaran Cruise",
+        "Megalochori Village"
+      ],
+      "featured": true
+    }
+  ],
+  "enquiries": [
+    {
+      "customerName": "fddewd",
+      "phone": "35210350564",
+      "email": "wefertgerg",
+      "packageTitle": "Custom 5-7 Days Dubai, UAE Tour",
+      "destination": "Dubai, UAE",
+      "travelDate": "Flexible",
+      "durationDays": "5-7 Days",
+      "adults": 2,
+      "children": 0,
+      "hotelCategory": "4-Star Deluxe",
+      "estimatedBudget": "₹50,000 - ₹1,00,000",
+      "specialRequests": "Departure City: Surat | Trip Type: Customized | Inclusions needed: Flights, Visa, Transfers | Special notes: fgfgbr",
+      "source": "Custom Tour",
+      "notes": "",
+      "id": "enq-1792520212135",
+      "createdAt": "2026-10-20T18:16:52.135Z",
+      "status": "New"
+    },
+    {
+      "customerName": "TEST ",
+      "phone": "6352031504",
+      "email": "TEST@GMAIL.COM",
+      "packageTitle": "Contact Form Inquiry",
+      "destination": "DUBAI",
+      "travelDate": "Flexible",
+      "durationDays": "5-7 Days",
+      "adults": 2,
+      "children": 0,
+      "hotelCategory": "4-Star",
+      "estimatedBudget": "Flexible",
+      "specialRequests": "HI I AM TEST MY WEB SITE \n",
+      "source": "Contact Form",
+      "notes": "",
+      "id": "enq-1792519382313",
+      "createdAt": "2026-10-20T18:03:02.313Z",
+      "status": "New"
+    },
+    {
+      "customerName": "Test Traveler Surat",
+      "phone": "+91 95129 35701",
+      "email": "",
+      "destination": "Dubai",
+      "travelDate": "Nov 2026",
+      "durationDays": "5-7 Days",
+      "adults": 2,
+      "children": 1,
+      "hotelCategory": "5-Star",
+      "estimatedBudget": "?1,50,000",
+      "specialRequests": "",
+      "source": "Custom Tour",
+      "notes": "",
+      "id": "enq-1792513995155",
+      "createdAt": "2026-10-20T16:33:15.155Z",
+      "status": "New"
+    },
+    {
+      "id": "enq-101",
+      "createdAt": "2026-10-20T18:30:00.000Z",
+      "customerName": "Pritesh Shah",
+      "phone": "+91 98251 44521",
+      "email": "pritesh.shah@gmail.com",
+      "packageId": "pkg-1",
+      "packageTitle": "Dubai Extravaganza: Skyline & Desert Dunes Luxury",
+      "destination": "Dubai, UAE",
+      "travelDate": "2026-11-15",
+      "durationDays": "6 Days",
+      "adults": 2,
+      "children": 2,
+      "hotelCategory": "5-Star",
+      "estimatedBudget": "₹2,00,000 - ₹2,50,000",
+      "specialRequests": "Looking for vegetarian/Jain meal options on the desert safari and private transfers from Surat/Ahmedabad airport.",
+      "status": "New",
+      "notes": "New inquiry from Vesu, Surat. Interested in Diwali vacation booking.",
+      "source": "Package Page"
+    },
+    {
+      "id": "enq-102",
+      "createdAt": "2026-10-20T14:15:00.000Z",
+      "customerName": "Ananya & Rohan Patel",
+      "phone": "+91 99099 87654",
+      "email": "rohan.patel@suratdiamond.com",
+      "packageId": "pkg-2",
+      "packageTitle": "Enchanting Bali: Ubud Rainforest & Private Pool Villa",
+      "destination": "Bali, Indonesia",
+      "travelDate": "2026-12-05",
+      "durationDays": "7 Days",
+      "adults": 2,
+      "children": 0,
+      "hotelCategory": "Luxury Private Pool Villa",
+      "estimatedBudget": "₹1,50,000 - ₹1,80,000",
+      "specialRequests": "Honeymoon couple. Require romantic candlelight dinner, flower bed decoration, and private pool floating breakfast.",
+      "status": "Contacted",
+      "notes": "Spoke with Rohan. Sent villa brochures over WhatsApp. Very enthusiastic.",
+      "source": "Custom Tour"
+    },
+    {
+      "id": "enq-103",
+      "createdAt": "2026-10-19T11:45:00.000Z",
+      "customerName": "Dr. Mehul Vashi",
+      "phone": "+91 98795 12345",
+      "email": "dr.mehul.vashi@vashiclinic.com",
+      "packageId": "pkg-3",
+      "packageTitle": "Swiss Alps & Romantic Paris: Grand European Odyssey",
+      "destination": "Switzerland & Paris",
+      "travelDate": "2027-05-10",
+      "durationDays": "8 Days",
+      "adults": 4,
+      "children": 0,
+      "hotelCategory": "4-Star Central",
+      "estimatedBudget": "₹8,00,000+",
+      "specialRequests": "Two senior couples traveling. Need Schengen visa appointment assistance in Gujarat.",
+      "status": "Proposal Sent",
+      "notes": "Drafted tailored itinerary with Indian dining and 1st class Swiss travel pass. Proposal sent on email and WhatsApp.",
+      "source": "Custom Tour"
+    },
+    {
+      "id": "enq-104",
+      "createdAt": "2026-10-18T16:20:00.000Z",
+      "customerName": "Chirag Desai",
+      "phone": "+91 97277 88990",
+      "email": "chirag.desai@texworld.in",
+      "packageId": "pkg-4",
+      "packageTitle": "Paradise on Earth: Kashmir Valley & Gulmarg Gondola",
+      "destination": "Kashmir",
+      "travelDate": "2026-12-24",
+      "durationDays": "6 Days",
+      "adults": 3,
+      "children": 1,
+      "hotelCategory": "4-Star",
+      "estimatedBudget": "₹1,20,000 - ₹1,50,000",
+      "specialRequests": "Wants guaranteed Phase 1 and Phase 2 Gondola tickets for Christmas snow.",
+      "status": "Confirmed",
+      "notes": "Advance token payment received. Gondola slots locked. Houseboat booked.",
+      "source": "Hero Search"
+    },
+    {
+      "id": "enq-105",
+      "createdAt": "2026-10-17T09:10:00.000Z",
+      "customerName": "Kavita Modi",
+      "phone": "+91 94268 77665",
+      "email": "kavita.modi@gmail.com",
+      "packageId": "pkg-6",
+      "packageTitle": "Serene Kerala: Munnar Tea Hills & Alleppey Houseboat",
+      "destination": "Kerala",
+      "travelDate": "2026-11-20",
+      "durationDays": "6 Days",
+      "adults": 2,
+      "children": 1,
+      "hotelCategory": "4-Star Deluxe",
+      "estimatedBudget": "₹80,000",
+      "specialRequests": "Parents anniversary gift. Special cake on houseboat.",
+      "status": "Contacted",
+      "notes": "Client requested WhatsApp call tomorrow at 4 PM.",
+      "source": "Quick Inquiry"
+    }
+  ],
+  "adminUser": {
+    "id": "admin-1",
+    "email": "admin@thetravelopedia.com",
+    "name": "The TraveloPedia Admin",
+    "passwordHash": "admin123",
+    "role": "superadmin"
+  }
+}
