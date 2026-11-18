@@ -35,42 +35,42 @@ const DESTINATION_PRESETS: { [key: string]: { code: string; flightNo: string; pr
   'Greece Santorini & Athens': {
     code: 'ATH',
     flightNo: 'TP-902',
-    price: '₹1,95,000',
+    price: 'Discuss on Call',
     duration: '7N / 8D',
     highlights: 'Caldera Cave Suite + Sunset Catamaran + Acropolis VIP'
   },
   'Dubai Marina & Desert Safari': {
     code: 'DXB',
     flightNo: 'TP-304',
-    price: '₹48,000',
+    price: 'Discuss on Call',
     duration: '5N / 6D',
     highlights: 'Private Yacht + Desert Dune Bashing + 5★ Marina Hotel'
   },
   'Switzerland Alpine Express': {
     code: 'ZRH',
     flightNo: 'TP-702',
-    price: '₹1,85,000',
+    price: 'Discuss on Call',
     duration: '8N / 9D',
     highlights: 'Glacier 3000 + First Cliff Walk + Swiss Train Pass'
   },
   'Bali Private Pool Villa': {
     code: 'DPS',
     flightNo: 'TP-508',
-    price: '₹62,000',
+    price: 'Discuss on Call',
     duration: '6N / 7D',
     highlights: 'Floating Breakfast + Nusa Penida Speedboat + Ubud Villa'
   },
   'Kashmir Snow & Dal Lake': {
     code: 'SXR',
     flightNo: 'TP-201',
-    price: '₹38,500',
+    price: 'Discuss on Call',
     duration: '5N / 6D',
     highlights: 'Gulmarg Gondola Phase 2 + Dal Lake Heated Houseboat'
   },
   'Vietnam Ha Long Bay Luxury': {
     code: 'HAN',
     flightNo: 'TP-412',
-    price: '₹55,000',
+    price: 'Discuss on Call',
     duration: '6N / 7D',
     highlights: '5★ Overnight Cruise + Golden Hands Bridge + Seaplane'
   }
@@ -92,7 +92,7 @@ export default function InteractiveBoardingPass() {
 • Duration: ${destInfo.duration}
 • Departure: ${departureMonth}
 • Travelers: ${travelers}
-• Estimated Budget: ${destInfo.price} / person
+• Pricing: Discuss Custom Quote on Call
 
 Please confirm seat availability and send the official day-by-day customized itinerary.`;
 
@@ -324,9 +324,9 @@ Please confirm seat availability and send the official day-by-day customized iti
                 </div>
 
                 <div>
-                  <span className="text-[10px] uppercase font-bold text-slate-400 block">Package Price</span>
+                  <span className="text-[10px] uppercase font-bold text-slate-400 block">Package Quote</span>
                   <span className="font-black text-amber-300 block text-xs mt-0.5">
-                    {destInfo.price} / Pax
+                    Discuss on Call
                   </span>
                 </div>
               </div>

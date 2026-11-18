@@ -65,18 +65,18 @@ export default function ServicesAndBookingGuide() {
   const bookingSteps = [
     {
       step: '01',
-      title: 'Select Package or Use Estimator',
-      desc: 'Browse curated packages on the website or drag the interactive budget slider to calculate duration, travelers, and hotel luxury tier.'
+      title: 'Select Destination or Itinerary',
+      desc: 'Browse curated luxury packages on the website or customize your dream destination and preferred hotel tier.'
     },
     {
       step: '02',
-      title: '1-Click WhatsApp Consultation',
-      desc: 'Click "Enquire on WhatsApp" or call +91 95129 35701. Connect with our Surat travel specialist within 15 minutes.'
+      title: 'Call to Discuss Custom Pricing',
+      desc: 'Call +91 95129 35701 or click WhatsApp. Discuss your travel dates, group size, and custom quotation directly with our Surat specialist.'
     },
     {
       step: '03',
       title: 'Receive Custom PDF Itinerary',
-      desc: 'Get an official day-by-day branded brochure with exact hotel names, flight options, private sightseeing, and transparent pricing.'
+      desc: 'Get an official day-by-day branded brochure with handpicked 5-star hotels, flights, private transfers, and tailored pricing.'
     },
     {
       step: '04',

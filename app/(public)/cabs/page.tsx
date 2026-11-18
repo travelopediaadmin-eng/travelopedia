@@ -19,6 +19,7 @@ import {
 import { SAMPLE_CABS } from '@/data/travel-services-data';
 import { CabOption } from '@/types/travel';
 import { useCurrency } from '@/context/CurrencyContext';
+import { COMPANY_DETAILS } from '@/lib/utils';
 
 export default function CabsPage() {
   const { formatPrice } = useCurrency();
@@ -177,19 +178,30 @@ export default function CabsPage() {
 
               <div className="p-6 pt-0 border-t border-slate-100 flex items-center justify-between">
                 <div>
-                  <span className="text-[10px] uppercase font-bold text-slate-400 block">Total Fixed Fare</span>
-                  <span className="text-2xl font-black font-serif text-navy-950">
-                    {formatPrice(cab.baseFare)}
+                  <span className="text-[10px] uppercase font-bold text-slate-400 block">Cab Fare</span>
+                  <span className="text-lg font-black font-serif text-navy-950 block">
+                    Fare on Request
                   </span>
                 </div>
 
-                <button
-                  type="button"
-                  onClick={() => handleBookCab(cab)}
-                  className="px-6 py-2.5 rounded-full bg-navy-950 hover:bg-navy-900 text-white font-bold text-xs uppercase tracking-wider shadow-md hover:scale-105 active:scale-95 transition-all"
-                >
-                  Book Cab
-                </button>
+                <div className="flex items-center gap-2">
+                  <a
+                    href={`tel:${COMPANY_DETAILS.phoneRaw}`}
+                    className="px-4 py-2 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center gap-1 shadow-md hover:scale-105 active:scale-95 transition-all"
+                    title="Call to Discuss Cab Booking"
+                  >
+                    <PhoneCall className="w-3.5 h-3.5" />
+                    <span>Call to Book</span>
+                  </a>
+
+                  <button
+                    type="button"
+                    onClick={() => handleBookCab(cab)}
+                    className="px-4 py-2 rounded-full bg-navy-950 hover:bg-navy-900 text-white font-bold text-xs uppercase tracking-wider shadow-md hover:scale-105 active:scale-95 transition-all"
+                  >
+                    Inquire
+                  </button>
+                </div>
               </div>
             </div>
           ))}
@@ -278,8 +290,8 @@ export default function CabsPage() {
 
                   <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs flex justify-between items-center">
                     <div>
-                      <span className="text-slate-500 block">Total Fixed Fare:</span>
-                      <span className="font-bold text-lg text-navy-950 font-serif">{formatPrice(selectedCab.baseFare)}</span>
+                      <span className="text-slate-500 block">Cab Tariff:</span>
+                      <span className="font-bold text-base text-navy-950 font-serif">Fare Discussed on Call</span>
                     </div>
                     <span className="text-emerald-700 font-bold bg-emerald-100 px-2.5 py-1 rounded-full text-[11px]">
                       Tolls &amp; State Tax Included
@@ -299,7 +311,7 @@ export default function CabsPage() {
                     type="submit"
                     className="flex-1 py-3 rounded-full bg-brand-500 hover:bg-brand-600 text-white font-bold text-xs uppercase tracking-wider shadow-lg"
                   >
-                    Confirm Chauffeur
+                    Request Cab Booking Call
                   </button>
                 </div>
               </form>

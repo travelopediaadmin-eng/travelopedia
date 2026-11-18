@@ -137,7 +137,7 @@ export default function GenZBentoGrid({
 
               <div className="mt-4 flex items-center justify-between pt-3 border-t border-white/20">
                 <span className="text-sm font-bold text-logo-peach">
-                  From ₹48,000 / person
+                  Custom Quote on Call
                 </span>
                 <span className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-white group-hover:translate-x-1 transition-transform">
                   <span>Explore Tours</span>

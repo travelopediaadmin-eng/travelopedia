@@ -37,7 +37,7 @@ export default function CustomTourPage() {
     adults: '2',
     children: '0',
     hotelCategory: '4-Star Deluxe',
-    budgetPerPerson: '₹50,000 - ₹1,00,000',
+    budgetPerPerson: 'Flexible / Discuss on Call',
     needsFlights: true,
     needsVisa: true,
     needsTransfers: true,
@@ -467,17 +467,17 @@ export default function CustomTourPage() {
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold text-slate-700 mb-1">Approx. Budget Per Person (Excluding International Flights)</label>
+                      <label className="block text-xs font-bold text-slate-700 mb-1">Holiday Tier &amp; Budget Preference</label>
                       <select
                         value={formData.budgetPerPerson}
                         onChange={(e) => setFormData({ ...formData, budgetPerPerson: e.target.value })}
                         className="w-full p-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-sm font-semibold text-slate-900 focus:outline-none"
                       >
-                        <option value="Under ₹35,000 / person">Under ₹35,000 / person (Budget Friendly)</option>
-                        <option value="₹35,000 - ₹50,000 / person">₹35,000 - ₹50,000 / person (Economy Deluxe)</option>
-                        <option value="₹50,000 - ₹1,00,000 / person">₹50,000 - ₹1,00,000 / person (Premium Holiday)</option>
-                        <option value="₹1,00,000 - ₹2,00,000 / person">₹1,00,000 - ₹2,00,000 / person (Luxury Experience)</option>
-                        <option value="₹2,00,000+ / person">₹2,00,000+ / person (Ultra-Luxury / Europe)</option>
+                        <option value="Flexible / Discuss on Call">Flexible / Open to Specialist Recommendation (Discuss on Call)</option>
+                        <option value="Standard Deluxe Holiday">Standard Deluxe Holiday (Discuss on Call)</option>
+                        <option value="Premium 5-Star Luxury">Premium 5-Star Luxury (Discuss on Call)</option>
+                        <option value="Exclusive Private Pool Villas / Heritage">Exclusive Private Pool Villas / Heritage (Discuss on Call)</option>
+                        <option value="Bespoke Ultra-Luxury Europe / Worldwide">Bespoke Ultra-Luxury Worldwide (Discuss on Call)</option>
                       </select>
                     </div>
 

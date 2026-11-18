@@ -122,11 +122,11 @@ export default function VisaPage() {
                 </div>
                 <div>
                   <span className="text-slate-400 block mb-0.5">Embassy Fee</span>
-                  <span className="font-bold text-slate-800">{formatPrice(currentVisa.embassyFee)}</span>
+                  <span className="font-bold text-slate-800">As per Consulate</span>
                 </div>
                 <div>
-                  <span className="text-slate-400 block mb-0.5">Travelopedia Fee</span>
-                  <span className="font-bold text-brand-600">{formatPrice(currentVisa.serviceFee)}</span>
+                  <span className="text-slate-400 block mb-0.5">Assistance Fee</span>
+                  <span className="font-bold text-brand-600">Discuss on Call</span>
                 </div>
               </div>
 
@@ -250,11 +250,11 @@ export default function VisaPage() {
 
                     <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs">
                       <div className="flex justify-between mb-1">
-                        <span className="text-slate-500">Total Consultation Fee:</span>
-                        <span className="font-bold text-navy-950 font-serif">{formatPrice(currentVisa.serviceFee)}</span>
+                        <span className="text-slate-500">Documentation &amp; Filing:</span>
+                        <span className="font-bold text-navy-950 font-serif">Discuss on Call</span>
                       </div>
                       <span className="text-[10px] text-slate-400 block leading-tight">
-                        Embassy fee paid directly to VFS upon biometric appointment.
+                        Embassy &amp; biometrics fees verified based on nationality &amp; visa type.
                       </span>
                     </div>
                   </div>

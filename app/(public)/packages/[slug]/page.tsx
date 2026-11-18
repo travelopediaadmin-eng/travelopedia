@@ -459,26 +459,19 @@ export default function PackageDetailPage() {
               
               {/* Pricing Header */}
               <div className="pb-5 mb-5 border-b border-slate-100">
-                <span className="text-xs text-slate-400 font-semibold block uppercase">Guaranteed Best Price</span>
-                <div className="flex items-baseline gap-2 mt-1">
-                  <span className="text-3xl font-extrabold font-serif text-navy-950">
-                    {formatPrice(pkg.discountedPrice)}
+                <span className="text-xs text-brand-600 font-bold block uppercase tracking-wider">Custom Itinerary Quotation</span>
+                <div className="mt-1">
+                  <span className="text-2xl sm:text-3xl font-extrabold font-serif text-navy-950 block">
+                    Price on Request
                   </span>
-                  {pkg.basePrice > pkg.discountedPrice && (
-                    <span className="text-sm text-slate-400 line-through">
-                      {formatPrice(pkg.basePrice)}
-                    </span>
-                  )}
                 </div>
-                <span className="text-xs text-slate-500 font-medium mt-0.5 block">
-                  per person on twin sharing basis
-                </span>
-                
-                {pkg.basePrice > pkg.discountedPrice && (
-                  <div className="mt-2.5 inline-block px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-200">
-                    You save {formatPrice(pkg.basePrice - pkg.discountedPrice)} per person
-                  </div>
-                )}
+                <p className="text-xs text-slate-500 font-medium mt-1.5 leading-relaxed">
+                  Every luxury holiday is bespoke. Final rates depend on your travel dates, room category & group size. Call our holiday specialist to discuss your personalized quotation.
+                </p>
+                <div className="mt-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-bold border border-emerald-200">
+                  <Phone className="w-3.5 h-3.5 text-emerald-600" />
+                  <span>Call to discuss custom inclusions & dates</span>
+                </div>
               </div>
 
               {/* Action Buttons */}
@@ -551,14 +544,22 @@ export default function PackageDetailPage() {
       {/* Floating Bottom Bar on Mobile */}
       <div className="lg:hidden fixed bottom-0 inset-x-0 bg-white/95 backdrop-blur-md border-t border-slate-200 p-3 shadow-2xl z-40 flex items-center justify-between gap-3">
         <div>
-          <span className="text-[10px] text-slate-400 block font-semibold uppercase">From</span>
-          <span className="text-lg font-black font-serif text-navy-950">
-            {formatPrice(pkg.discountedPrice)}
+          <span className="text-[10px] text-brand-600 block font-bold uppercase tracking-wider">Custom Quote</span>
+          <span className="text-base font-black font-serif text-navy-950">
+            Price on Request
           </span>
-          <span className="text-[10px] text-slate-500 block">/ person</span>
         </div>
 
         <div className="flex items-center gap-2 flex-1 justify-end">
+          <a
+            href={`tel:${COMPANY_DETAILS.phoneRaw}`}
+            className="p-3 rounded-xl bg-navy-950 text-white flex items-center justify-center shadow-md"
+            aria-label="Call Surat Desk"
+            title="Call to Discuss"
+          >
+            <Phone className="w-4 h-4 fill-white" />
+          </a>
+
           <a
             href={whatsappUrl}
             target="_blank"
@@ -566,14 +567,14 @@ export default function PackageDetailPage() {
             className="p-3 rounded-xl bg-emerald-500 text-white flex items-center justify-center shadow-md"
             aria-label="Enquire on WhatsApp"
           >
-            <MessageCircle className="w-5 h-5 fill-white" />
+            <MessageCircle className="w-4 h-4 fill-white" />
           </a>
 
           <button
             onClick={() => setIsModalOpen(true)}
-            className="flex-1 py-3 px-4 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-md shadow-brand-500/25"
+            className="flex-1 py-3 px-3 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-bold text-xs flex items-center justify-center gap-1 shadow-md shadow-brand-500/25"
           >
-            <span>Inquire Now</span>
+            <span>Inquire</span>
           </button>
         </div>
       </div>

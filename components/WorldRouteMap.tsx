@@ -545,12 +545,11 @@ export default function WorldRouteMap() {
               {/* Right: Pricing & 1-Click CTA */}
               <div className="md:col-span-3 flex flex-row md:flex-col items-center md:items-end justify-between gap-3">
                 <div className="text-left md:text-right">
-                  <span className="text-[10px] uppercase tracking-wider font-semibold text-slate-400 block">
-                    All-Inclusive Tour
+                  <span className="text-[10px] uppercase tracking-wider font-bold text-brand-600 block">
+                    Tailored Luxury Tour
                   </span>
-                  <div className="text-xl sm:text-2xl font-black text-navy-950 font-serif">
-                    {formatPrice(selectedRoute.price)}
-                    <span className="text-xs font-normal text-slate-500"> /person</span>
+                  <div className="text-lg sm:text-xl font-black text-navy-950 font-serif">
+                    Discuss on Call
                   </div>
                 </div>
 

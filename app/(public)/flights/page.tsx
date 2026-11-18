@@ -16,7 +16,8 @@ import {
   Utensils, 
   ChevronRight,
   Ticket,
-  AlertCircle
+  AlertCircle,
+  Phone
 } from 'lucide-react';
 import { SAMPLE_FLIGHTS } from '@/data/travel-services-data';
 import { FlightTicket } from '@/types/travel';
@@ -276,19 +277,30 @@ export default function FlightsPage() {
                   {/* Pricing & Booking Action */}
                   <div className="sm:border-l sm:border-slate-100 sm:pl-6 flex sm:flex-col items-center sm:items-end justify-between sm:justify-center gap-2">
                     <div className="text-left sm:text-right">
-                      <span className="text-2xl font-black text-navy-950 font-serif block">
-                        {formatPrice(flight.price)}
+                      <span className="text-lg sm:text-xl font-black text-navy-950 font-serif block">
+                        Fare on Request
                       </span>
-                      <span className="text-[10px] text-slate-400 block">per adult • all inclusive</span>
+                      <span className="text-[10px] text-emerald-600 font-semibold block">Live PNR Fare via Call</span>
                     </div>
 
-                    <button
-                      type="button"
-                      onClick={() => handleBookClick(flight)}
-                      className="px-6 py-2.5 rounded-full bg-navy-950 hover:bg-navy-900 text-white font-bold text-xs uppercase tracking-wider shadow-md hover:scale-105 active:scale-95 transition-all"
-                    >
-                      Book Flight
-                    </button>
+                    <div className="flex items-center gap-2">
+                      <a
+                        href={`tel:${COMPANY_DETAILS.phoneRaw}`}
+                        className="px-4 py-2 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center gap-1.5 shadow-md hover:scale-105 active:scale-95 transition-all"
+                        title="Call to Discuss Fare"
+                      >
+                        <Phone className="w-3.5 h-3.5" />
+                        <span>Call to Book</span>
+                      </a>
+
+                      <button
+                        type="button"
+                        onClick={() => handleBookClick(flight)}
+                        className="px-4 py-2 rounded-full bg-navy-950 hover:bg-navy-900 text-white font-bold text-xs uppercase tracking-wider shadow-md hover:scale-105 active:scale-95 transition-all"
+                      >
+                        Inquire
+                      </button>
+                    </div>
                   </div>
                 </div>
 
@@ -390,11 +402,11 @@ export default function FlightsPage() {
 
                   <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs flex justify-between items-center">
                     <div>
-                      <span className="text-slate-500 block">Total Payable Fare:</span>
-                      <span className="font-bold text-lg text-navy-950 font-serif">{formatPrice(selectedFlight.price)}</span>
+                      <span className="text-slate-500 block">Flight Fare:</span>
+                      <span className="font-bold text-base text-navy-950 font-serif">Fare Confirmed on Call</span>
                     </div>
                     <span className="text-emerald-700 font-bold bg-emerald-100 px-2.5 py-1 rounded-full text-[11px]">
-                      Instant E-Ticket
+                      Surat PNR Desk
                     </span>
                   </div>
                 </div>
@@ -411,7 +423,7 @@ export default function FlightsPage() {
                     type="submit"
                     className="flex-1 py-3 rounded-full bg-brand-500 hover:bg-brand-600 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-brand-500/25 transition-all"
                   >
-                    Confirm &amp; Issue E-Ticket
+                    Request Booking Call
                   </button>
                 </div>
               </form>

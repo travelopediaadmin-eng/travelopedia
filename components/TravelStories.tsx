@@ -38,7 +38,7 @@ const STORIES: Story[] = [
     fullImage: 'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=1200&q=80',
     badge: 'Aesthetic Favorite 🇬🇷',
     duration: '7 Nights / 8 Days',
-    price: '₹1,95,000',
+    price: 'Discuss on Call',
     likes: 1240
   },
   {
@@ -49,7 +49,7 @@ const STORIES: Story[] = [
     fullImage: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80',
     badge: 'Trending in Surat 🔥',
     duration: '5 Nights / 6 Days',
-    price: '₹78,000',
+    price: 'Discuss on Call',
     likes: 428
   },
   {
@@ -60,7 +60,7 @@ const STORIES: Story[] = [
     fullImage: 'https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?auto=format&fit=crop&w=1200&q=80',
     badge: 'Surat Family Favorite ❄️',
     duration: '8 Nights / 9 Days',
-    price: '₹1,85,000',
+    price: 'Discuss on Call',
     likes: 892
   },
   {
@@ -71,7 +71,7 @@ const STORIES: Story[] = [
     fullImage: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1200&q=80',
     badge: 'Honeymoon Choice 💖',
     duration: '6 Nights / 7 Days',
-    price: '₹62,000',
+    price: 'Discuss on Call',
     likes: 671
   },
   {
@@ -82,7 +82,7 @@ const STORIES: Story[] = [
     fullImage: 'https://images.unsplash.com/photo-1595815771614-ade9d652a65d?auto=format&fit=crop&w=1200&q=80',
     badge: '100% Pure Veg & Jain 🏔️',
     duration: '5 Nights / 6 Days',
-    price: '₹38,500',
+    price: 'Discuss on Call',
     likes: 1204
   },
   {
@@ -93,7 +93,7 @@ const STORIES: Story[] = [
     fullImage: 'https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1200&q=80',
     badge: 'Gen-Z Trending ⚡',
     duration: '6 Nights / 7 Days',
-    price: '₹55,000',
+    price: 'Discuss on Call',
     likes: 512
   },
   {
@@ -104,7 +104,7 @@ const STORIES: Story[] = [
     fullImage: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80',
     badge: 'Ultra Luxury 🥂',
     duration: '7 Nights / 8 Days',
-    price: '₹2,10,000',
+    price: 'Discuss on Call',
     likes: 749
   }
 ];
@@ -352,7 +352,7 @@ export default function TravelStories() {
                       {activeStory.duration}
                     </span>
                     <span className="text-sm font-black text-amber-300">
-                      Starting {activeStory.price}
+                      Quote: Discuss on Call
                     </span>
                   </div>
                 </div>

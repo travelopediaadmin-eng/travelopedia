@@ -16,11 +16,13 @@ import {
   Coffee, 
   Wifi, 
   Bed, 
-  FileText 
+  FileText,
+  Phone
 } from 'lucide-react';
 import { SAMPLE_HOTELS } from '@/data/travel-services-data';
 import { HotelProperty, HotelRoom } from '@/types/travel';
 import { useCurrency } from '@/context/CurrencyContext';
+import { COMPANY_DETAILS } from '@/lib/utils';
 
 export default function HotelsPage() {
   const { formatPrice } = useCurrency();
@@ -248,19 +250,30 @@ export default function HotelsPage() {
 
                             <div className="flex items-center justify-between sm:justify-end gap-3 shrink-0">
                               <div className="text-right">
-                                <span className="font-serif font-bold text-base text-navy-950 block">
-                                  {formatPrice(room.pricePerNight)}
+                                <span className="font-serif font-bold text-sm text-navy-950 block">
+                                  Tariff on Request
                                 </span>
-                                <span className="text-[10px] text-slate-400">/ night + taxes</span>
+                                <span className="text-[10px] text-emerald-600 font-semibold">Seasonal &amp; Group Discounts</span>
                               </div>
 
-                              <button
-                                type="button"
-                                onClick={() => handleBookRoom(hotel, room)}
-                                className="px-4 py-2 rounded-full bg-navy-950 hover:bg-navy-900 text-white font-bold text-xs uppercase tracking-wider shadow-sm transition-all"
-                              >
-                                Reserve
-                              </button>
+                              <div className="flex items-center gap-2">
+                                <a
+                                  href={`tel:${COMPANY_DETAILS.phoneRaw}`}
+                                  className="px-3.5 py-1.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center gap-1 shadow-sm transition-all"
+                                  title="Call to Discuss Tariff"
+                                >
+                                  <Phone className="w-3 h-3" />
+                                  <span>Call</span>
+                                </a>
+
+                                <button
+                                  type="button"
+                                  onClick={() => handleBookRoom(hotel, room)}
+                                  className="px-4 py-1.5 rounded-full bg-navy-950 hover:bg-navy-900 text-white font-bold text-xs uppercase tracking-wider shadow-sm transition-all"
+                                >
+                                  Inquire
+                                </button>
+                              </div>
                             </div>
                           </div>
                         ))}
@@ -351,8 +364,8 @@ export default function HotelsPage() {
 
                   <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs flex justify-between items-center">
                     <div>
-                      <span className="text-slate-500 block">Rate per night:</span>
-                      <span className="font-bold text-lg text-navy-950 font-serif">{formatPrice(selectedRoom.pricePerNight)}</span>
+                      <span className="text-slate-500 block">Room Tariff:</span>
+                      <span className="font-bold text-base text-navy-950 font-serif">Tariff Discussed on Call</span>
                     </div>
                     <span className="text-emerald-700 font-bold bg-emerald-100 px-2.5 py-1 rounded-full text-[11px]">
                       Breakfast &amp; Jain Meals Included
@@ -372,7 +385,7 @@ export default function HotelsPage() {
                     type="submit"
                     className="flex-1 py-3 rounded-full bg-brand-500 hover:bg-brand-600 text-white font-bold text-xs uppercase tracking-wider shadow-lg"
                   >
-                    Confirm Hotel Voucher
+                    Request Stay Call
                   </button>
                 </div>
               </form>

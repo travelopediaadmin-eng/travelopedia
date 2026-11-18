@@ -13,7 +13,8 @@ import {
   MessageCircle, 
   Check, 
   Calculator,
-  ArrowRight
+  ArrowRight,
+  Phone
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { COMPANY_DETAILS, formatPrice } from '@/lib/utils';
@@ -254,23 +255,23 @@ export default function TripCostEstimator() {
                 <span>Live Cost Breakdown</span>
               </div>
 
-              <span className="text-xs text-slate-400 font-semibold block uppercase tracking-wider">
-                Total Estimated Tour Investment
+              <span className="text-xs text-brand-300 font-bold block uppercase tracking-wider">
+                Personalized Tour Quotation
               </span>
 
-              {/* Huge animated price */}
-              <div className="mt-2 flex items-baseline gap-2">
-                <span className="text-4xl sm:text-5xl font-black font-serif text-white tracking-tight">
-                  {formatPrice(totalTripCost)}
+              {/* Discuss on Call Display */}
+              <div className="mt-2">
+                <span className="text-3xl sm:text-4xl font-black font-serif text-white tracking-tight block">
+                  Discuss Quote on Call
                 </span>
               </div>
 
-              <div className="mt-1 text-xs text-logo-coral font-medium">
-                ~ {formatPrice(estimatedPerPerson)} / person ({travelers} travelers)
+              <div className="mt-2 text-xs text-slate-300 leading-relaxed">
+                Exact rates depend on real-time flight tariffs, travel dates & luxury hotel tier. Call or WhatsApp our holiday desk for an instant customized quotation.
               </div>
 
               {/* What is included in this estimate */}
-              <div className="mt-8 pt-6 border-t border-white/15 space-y-2.5 text-xs text-slate-300">
+              <div className="mt-6 pt-5 border-t border-white/15 space-y-2.5 text-xs text-slate-300">
                 <div className="flex items-center gap-2">
                   <Check className="w-4 h-4 text-emerald-400 shrink-0" />
                   <span>{duration - 1} Nights in handpicked {hotelTier}</span>
@@ -301,13 +302,21 @@ export default function TripCostEstimator() {
             {/* Instant Action CTA */}
             <div className="mt-8 pt-6 border-t border-white/15 space-y-3">
               <a
+                href={`tel:${COMPANY_DETAILS.phoneRaw}`}
+                className="w-full py-3.5 rounded-2xl bg-white hover:bg-slate-100 text-slate-900 font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-xl hover:scale-102 transition-all duration-200"
+              >
+                <Phone className="w-4 h-4 text-brand-600" />
+                <span>Call Surat Desk: {COMPANY_DETAILS.phone}</span>
+              </a>
+
+              <a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-4 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-xl hover:scale-102 transition-all duration-200"
+                className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-xl hover:scale-102 transition-all duration-200"
               >
                 <MessageCircle className="w-4 h-4 fill-white" />
-                <span>Lock This Quote on WhatsApp</span>
+                <span>Discuss Details on WhatsApp</span>
               </a>
 
               <p className="text-[10px] text-slate-400 text-center leading-snug">
