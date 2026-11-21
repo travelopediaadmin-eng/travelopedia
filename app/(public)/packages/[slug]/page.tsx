@@ -23,12 +23,108 @@ import {
   Star, 
   ArrowLeft,
   Info,
-  Compass
+  Compass,
+  Scale,
+  Sun,
+  CloudSun,
+  Luggage,
+  CreditCard,
+  Printer,
+  Copy
 } from 'lucide-react';
 import { TravelPackage } from '@/types/travel';
 import { INITIAL_PACKAGES } from '@/data/seed-data';
 import { formatPrice, COMPANY_DETAILS, getWhatsAppInquiryUrl } from '@/lib/utils';
 import QuickEnquiryModal from '@/components/QuickEnquiryModal';
+
+const getDestinationAdvisory = (dest: string, cat: string) => {
+  const d = dest.toLowerCase();
+  if (d.includes('santorini') || d.includes('greece')) {
+    return {
+      temp: '22°C - 28°C',
+      season: 'Apr - Oct (Golden Aegean Sun)',
+      clothing: 'Light breathable linen, sunglasses & walking loafers',
+      currency: 'Euro (€)',
+      visaTime: '15-20 Days (Schengen Visa Slot Assistance)',
+      jainCare: 'Authentic Greek pure veg dining & Jain meal arrangements in Fira & Oia.'
+    };
+  }
+  if (d.includes('dubai') || d.includes('abu dhabi')) {
+    return {
+      temp: '24°C - 32°C',
+      season: 'Oct - Apr (Pleasant evenings & beach weather)',
+      clothing: 'Smart casuals, light cottons & modest attire for grand mosques',
+      currency: 'UAE Dirham (AED)',
+      visaTime: '72 Hours (Express UAE E-Visa included)',
+      jainCare: 'Full Jain thali dinners arranged on Marina Dhow Cruise & desert camp.'
+    };
+  }
+  if (d.includes('swiss') || d.includes('switzerland') || d.includes('paris')) {
+    return {
+      temp: '12°C - 21°C',
+      season: 'May - Dec (Alpine blooming to snow wonderland)',
+      clothing: 'Layered thermals, fleece jacket, waterproof boots & UV eyewear',
+      currency: 'Swiss Franc (CHF) / Euro (€)',
+      visaTime: '20-25 Days (VIP biometrics slot coordination)',
+      jainCare: 'Reserved pure vegetarian / Jain hot meal stops at Mt. Titlis and Jungfraujoch summits.'
+    };
+  }
+  if (d.includes('bali')) {
+    return {
+      temp: '26°C - 31°C',
+      season: 'Year-Round Tropical Sun (Dry spell May - Oct)',
+      clothing: 'Breezy tropicals, resort swimwear, sunhat & light rain mac',
+      currency: 'Indonesian Rupiah (IDR)',
+      visaTime: 'Instant E-VOA / Visa on Arrival',
+      jainCare: 'Pre-ordered Jain floating breakfast & chef-customized Indian menu at villa.'
+    };
+  }
+  if (d.includes('vietnam')) {
+    return {
+      temp: '22°C - 30°C',
+      season: 'Sep - Apr (Mild & clear skies)',
+      clothing: 'Breathable activewear, temple scarves & walking shoes',
+      currency: 'Vietnamese Dong (VND)',
+      visaTime: '3-5 Working Days E-Visa',
+      jainCare: 'Indian pure veg specialty dinners arranged on Halong Bay luxury cruise.'
+    };
+  }
+  if (d.includes('kashmir')) {
+    return {
+      temp: '5°C - 18°C',
+      season: 'All Seasons (Tulip Spring / Snow Winter)',
+      clothing: 'Heavy woolens, gloves, thermals & snow boots in Gulmarg',
+      currency: 'Indian Rupee (INR)',
+      visaTime: 'Domestic (No visa needed, Aadhaar ID required)',
+      jainCare: '100% Pure Veg & Jain kitchen dedicated houseboat on Dal Lake.'
+    };
+  }
+  return {
+    temp: '22°C - 29°C',
+    season: 'Ideal Travel Months',
+    clothing: 'Comfortable leisure wear & smart evening casuals',
+    currency: cat === 'international' ? 'International Forex' : 'Indian Rupee (INR)',
+    visaTime: cat === 'international' ? 'Visa guidance provided by Surat team' : 'Domestic Tour',
+    jainCare: 'Dedicated pure veg & Jain meal preferences communicated to partner hotels.'
+  };
+};
+
+const getTravelModeBadge = (title: string, desc: string) => {
+  const t = (title + ' ' + desc).toLowerCase();
+  if (t.includes('flight') || t.includes('airport') || t.includes('arrival') || t.includes('depart')) {
+    return { label: 'Airport Transfer & Flight', icon: Plane, color: 'text-indigo-700 bg-indigo-50 border-indigo-200' };
+  }
+  if (t.includes('cruise') || t.includes('catamaran') || t.includes('boat') || t.includes('yacht') || t.includes('ferry') || t.includes('island')) {
+    return { label: 'Private Yacht / Cruise', icon: Sparkles, color: 'text-cyan-800 bg-cyan-50 border-cyan-200' };
+  }
+  if (t.includes('cable car') || t.includes('train') || t.includes('rail') || t.includes('tgv') || t.includes('express')) {
+    return { label: 'Scenic Rail / Cable Car', icon: Clock, color: 'text-purple-800 bg-purple-50 border-purple-200' };
+  }
+  if (t.includes('safari') || t.includes('4x4') || t.includes('dune') || t.includes('desert')) {
+    return { label: '4x4 Desert Safari', icon: Car, color: 'text-amber-800 bg-amber-50 border-amber-200' };
+  }
+  return { label: 'Private AC Chauffeur', icon: Car, color: 'text-emerald-800 bg-emerald-50 border-emerald-200' };
+};
 
 export default function PackageDetailPage() {
   const params = useParams();
@@ -39,6 +135,7 @@ export default function PackageDetailPage() {
   const [activeImage, setActiveImage] = useState<string>('');
   const [expandedDays, setExpandedDays] = useState<{ [key: number]: boolean }>({ 1: true });
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [copiedToast, setCopiedToast] = useState(false);
 
   useEffect(() => {
     // Look up package
@@ -99,6 +196,27 @@ export default function PackageDetailPage() {
 
   const durationStr = `${pkg.durationNights} Nights / ${pkg.durationDays} Days`;
   const whatsappUrl = getWhatsAppInquiryUrl(pkg.title, durationStr);
+  const advisory = getDestinationAdvisory(pkg.destination, pkg.category);
+
+  const handleCopyLink = () => {
+    if (typeof window !== 'undefined') {
+      navigator.clipboard.writeText(window.location.href);
+      setCopiedToast(true);
+      setTimeout(() => setCopiedToast(false), 2500);
+    }
+  };
+
+  const handleCompare = () => {
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('open-trip-compare'));
+    }
+  };
+
+  const handlePrint = () => {
+    if (typeof window !== 'undefined') {
+      window.print();
+    }
+  };
 
   const toggleDay = (dayNum: number) => {
     setExpandedDays(prev => ({ ...prev, [dayNum]: !prev[dayNum] }));
@@ -160,15 +278,42 @@ export default function PackageDetailPage() {
             </p>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-2.5">
+            <button
+              onClick={handleCompare}
+              className="px-3.5 py-2.5 rounded-xl bg-white hover:bg-slate-50 text-navy-950 font-bold text-xs flex items-center gap-1.5 transition-all border border-slate-200 shadow-sm hover:shadow"
+              title="Compare with other signature packages"
+            >
+              <Scale className="w-4 h-4 text-amber-500" />
+              <span>Compare Trip</span>
+            </button>
+
+            <button
+              onClick={handleCopyLink}
+              className="px-3.5 py-2.5 rounded-xl bg-white hover:bg-slate-50 text-slate-800 font-bold text-xs flex items-center gap-1.5 transition-all border border-slate-200 shadow-sm hover:shadow"
+              title="Copy itinerary URL"
+            >
+              {copiedToast ? (
+                <>
+                  <Check className="w-4 h-4 text-emerald-600" />
+                  <span className="text-emerald-700">Link Copied!</span>
+                </>
+              ) : (
+                <>
+                  <Copy className="w-4 h-4 text-slate-500" />
+                  <span>Share</span>
+                </>
+              )}
+            </button>
+
             <a
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2.5 rounded-xl bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200 font-bold text-xs flex items-center gap-1.5 transition-colors"
+              className="px-4 py-2.5 rounded-xl bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200 font-bold text-xs flex items-center gap-1.5 transition-colors shadow-sm"
             >
               <MessageCircle className="w-4 h-4 fill-emerald-600" />
-              <span>Share on WhatsApp</span>
+              <span>WhatsApp Itinerary</span>
             </a>
           </div>
         </div>
@@ -253,6 +398,70 @@ export default function PackageDetailPage() {
           </div>
         </div>
 
+        {/* Live Destination Climate & Traveler Advisory */}
+        <div className="bg-gradient-to-br from-navy-950 via-slate-900 to-navy-900 rounded-3xl p-6 sm:p-7 text-white shadow-xl border border-white/10 mb-8">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5 border-b border-white/10 pb-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-2xl bg-amber-400/20 text-amber-300 flex items-center justify-center shrink-0">
+                <Sun className="w-5 h-5 text-amber-300" />
+              </div>
+              <div>
+                <h3 className="font-serif font-bold text-base sm:text-lg text-white">
+                  Seasonal Climate &amp; Traveler Advisory for {pkg.destination}
+                </h3>
+                <p className="text-xs text-slate-300">
+                  Curated guidance for Gujarat &amp; Surat travelers planning this itinerary.
+                </p>
+              </div>
+            </div>
+
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-xs font-bold w-fit">
+              <ShieldCheck className="w-3.5 h-3.5" />
+              <span>Surat Desk Verified</span>
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+            {/* Tile 1: Weather & Temp */}
+            <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+              <div className="flex items-center gap-2 text-amber-300 font-bold mb-1">
+                <CloudSun className="w-4 h-4" />
+                <span>Weather &amp; Climate</span>
+              </div>
+              <p className="text-base font-bold text-white font-serif">{advisory.temp}</p>
+              <span className="text-[11px] text-slate-300 mt-1 block leading-tight">{advisory.season}</span>
+            </div>
+
+            {/* Tile 2: Wardrobe & Attire */}
+            <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+              <div className="flex items-center gap-2 text-blue-300 font-bold mb-1">
+                <Luggage className="w-4 h-4" />
+                <span>Packing &amp; Attire</span>
+              </div>
+              <p className="text-slate-200 leading-relaxed line-clamp-3">{advisory.clothing}</p>
+            </div>
+
+            {/* Tile 3: Currency & Visa Processing */}
+            <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+              <div className="flex items-center gap-2 text-emerald-300 font-bold mb-1">
+                <CreditCard className="w-4 h-4" />
+                <span>Currency &amp; Visa Speed</span>
+              </div>
+              <p className="text-white font-bold">{advisory.currency}</p>
+              <span className="text-[11px] text-slate-300 mt-1 block leading-tight">{advisory.visaTime}</span>
+            </div>
+
+            {/* Tile 4: Jain & Veg Meals */}
+            <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+              <div className="flex items-center gap-2 text-orange-300 font-bold mb-1">
+                <Utensils className="w-4 h-4" />
+                <span>Jain &amp; Pure Veg Dining</span>
+              </div>
+              <p className="text-slate-200 leading-relaxed line-clamp-3">{advisory.jainCare}</p>
+            </div>
+          </div>
+        </div>
+
         {/* Main Content Layout with Sticky Sidebar */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
@@ -321,6 +530,8 @@ export default function PackageDetailPage() {
               <div className="space-y-4">
                 {pkg.itinerary.map((day) => {
                   const isExpanded = !!expandedDays[day.dayNumber];
+                  const travelMode = getTravelModeBadge(day.title, day.description);
+                  const ModeIcon = travelMode.icon;
 
                   return (
                     <div 
@@ -341,9 +552,16 @@ export default function PackageDetailPage() {
                             D{day.dayNumber}
                           </div>
                           <div>
-                            <span className="text-[11px] font-bold uppercase tracking-wider text-brand-600 block">
-                              Day {day.dayNumber}
-                            </span>
+                            <div className="flex flex-wrap items-center gap-2 mb-0.5">
+                              <span className="text-[11px] font-bold uppercase tracking-wider text-brand-600">
+                                Day {day.dayNumber}
+                              </span>
+                              <span className="text-slate-300">•</span>
+                              <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold border ${travelMode.color}`}>
+                                <ModeIcon className="w-3 h-3" />
+                                <span>{travelMode.label}</span>
+                              </span>
+                            </div>
                             <h4 className="text-sm sm:text-base font-bold text-navy-950 font-serif">
                               {day.title}
                             </h4>
@@ -451,6 +669,71 @@ export default function PackageDetailPage() {
               </div>
             </div>
 
+            {/* Travelopedia Luxury Standard vs Generic Booking Portals */}
+            <div className="bg-gradient-to-br from-amber-50/60 via-white to-orange-50/40 rounded-3xl p-6 sm:p-8 shadow-sm border border-amber-200/80">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
+                <div>
+                  <span className="text-xs font-bold text-amber-700 uppercase tracking-widest block">The Surat Luxury Standard</span>
+                  <h3 className="text-lg sm:text-xl font-bold font-serif text-navy-950 mt-1">
+                    Why Gujarat&apos;s Elite Families Choose The Travelopedia
+                  </h3>
+                </div>
+                <span className="px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-bold w-fit">
+                  Virtuoso Partner Quality
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                <div className="p-4 rounded-2xl bg-white border border-amber-100 shadow-sm flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+                    <Check className="w-4 h-4 stroke-[2.5]" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-navy-950 text-sm">Dedicated Private Chauffeur</h4>
+                    <p className="text-slate-600 mt-1 leading-relaxed">
+                      Zero waiting for generic shuttle buses. Your private Mercedes, Audi, or Innova Crysta is on standby exclusively for your family.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-4 rounded-2xl bg-white border border-amber-100 shadow-sm flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+                    <Utensils className="w-4 h-4 text-emerald-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-navy-950 text-sm">Strict Jain &amp; Pure Veg Protocols</h4>
+                    <p className="text-slate-600 mt-1 leading-relaxed">
+                      We coordinate directly with international executive chefs for root-vegetable free, no onion, no garlic preparations before check-in.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-4 rounded-2xl bg-white border border-amber-100 shadow-sm flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+                    <Phone className="w-4 h-4 text-emerald-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-navy-950 text-sm">Surat Desk WhatsApp On-Trip Support</h4>
+                    <p className="text-slate-600 mt-1 leading-relaxed">
+                      No generic call centers or robotic IVRs. Directly speak to our local team at 7, E-Space, VIP Road, Vesu anytime across time zones.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-4 rounded-2xl bg-white border border-amber-100 shadow-sm flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+                    <Sparkles className="w-4 h-4 text-emerald-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-navy-950 text-sm">Curated 4★ &amp; 5★ View Accommodations</h4>
+                    <p className="text-slate-600 mt-1 leading-relaxed">
+                      Caldera sea-facing cave suites, private infinity plunge pools, and alpine balcony rooms hand-verified by our destination scouts.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
 
           {/* Right Column: Sticky Booking / Inquiry Widget */}
@@ -501,6 +784,14 @@ export default function PackageDetailPage() {
                   <Phone className="w-4 h-4 text-brand-500" />
                   <span>Call Surat Desk: {COMPANY_DETAILS.phone}</span>
                 </a>
+
+                <button
+                  onClick={handlePrint}
+                  className="w-full py-2.5 rounded-2xl bg-slate-50 hover:bg-slate-100 text-slate-700 font-semibold text-xs flex items-center justify-center gap-2 border border-slate-200 transition-colors"
+                >
+                  <Printer className="w-4 h-4 text-slate-500" />
+                  <span>Print / Save Itinerary Summary</span>
+                </button>
               </div>
 
               {/* Surat Trust Highlights */}

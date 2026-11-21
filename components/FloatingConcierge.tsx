@@ -9,7 +9,7 @@ export default function FloatingConcierge() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3 select-none">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end gap-3 select-none">
       
       {/* Quick Interactive Menu Popover */}
       <AnimatePresence>
@@ -18,7 +18,8 @@ export default function FloatingConcierge() {
             initial={{ opacity: 0, scale: 0.9, y: 10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 10 }}
-            className="bg-navy-950/95 backdrop-blur-2xl border border-white/20 text-white rounded-3xl p-5 shadow-2xl w-72 mb-1"
+            id="concierge-menu"
+            className="bg-navy-950/95 backdrop-blur-2xl border border-white/20 text-white rounded-3xl p-5 shadow-2xl w-[calc(100vw-2rem)] max-w-72 mb-1"
           >
             <div className="flex items-center justify-between border-b border-white/10 pb-3 mb-3">
               <div className="flex items-center gap-2">
@@ -30,6 +31,7 @@ export default function FloatingConcierge() {
               <button
                 onClick={() => setIsOpen(false)}
                 className="text-slate-400 hover:text-white p-1"
+                aria-label="Close concierge menu"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -71,10 +73,13 @@ export default function FloatingConcierge() {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="px-5 py-3 rounded-full bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 text-white font-bold text-xs uppercase tracking-wider flex items-center gap-2.5 shadow-2xl shadow-blue-600/40 border border-blue-400/40 ring-4 ring-blue-500/20"
+        className="px-3.5 py-2.5 sm:px-5 sm:py-3 rounded-full bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 text-white font-bold text-[10px] sm:text-xs uppercase tracking-wider flex items-center gap-2.5 shadow-2xl shadow-blue-600/40 border border-blue-400/40 ring-4 ring-blue-500/20"
+        aria-label="Ask Travelo Concierge"
+        aria-expanded={isOpen}
       >
         <Sparkles className="w-4 h-4 text-amber-300 animate-spin-slow" />
-        <span>Ask Travelo Concierge</span>
+        <span className="sm:hidden">Ask Travelo</span>
+        <span className="hidden sm:inline">Ask Travelo Concierge</span>
       </motion.button>
     </div>
   );

@@ -7,6 +7,7 @@ import Footer from '@/components/Footer';
 import FloatingConcierge from '@/components/FloatingConcierge';
 import LiveSocialProof from '@/components/LiveSocialProof';
 import WorldMapBackground from '@/components/WorldMapBackground';
+import TripComparisonDrawer from '@/components/TripComparisonDrawer';
 
 export default function PublicLayout({
   children,
@@ -27,6 +28,7 @@ export default function PublicLayout({
       <Footer />
       <FloatingConcierge />
       <LiveSocialProof />
+      <TripComparisonDrawer />
     </div>
   );
 }

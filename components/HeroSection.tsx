@@ -190,7 +190,7 @@ export default function HeroSection({ onSearch }: HeroSectionProps) {
   };
 
   return (
-    <section className="relative min-h-[92vh] sm:min-h-[95vh] flex items-center justify-center bg-black overflow-hidden pt-32 sm:pt-36 pb-16 px-4 sm:px-6 lg:px-8">
+    <section className="relative min-h-[92vh] sm:min-h-[95vh] flex items-center bg-black overflow-hidden pt-28 sm:pt-32 pb-12 px-4 sm:px-6 lg:px-8">
       
       {/* 1. Cinematic Full-Bleed Background Carousel */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -207,50 +207,129 @@ export default function HeroSection({ onSearch }: HeroSectionProps) {
         ))}
 
         {/* Layered Luxury Dark Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/70" />
-        <div className="absolute inset-0 bg-black/20 backdrop-blur-[0.5px]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#10121a]/90 via-[#10121a]/65 to-[#10121a]/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#10121a]/90 via-transparent to-[#10121a]/25" />
       </div>
 
       {/* 2. Brand Identity Glowing Ambient Blobs */}
       <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-logo-lavender/15 blur-[140px] pointer-events-none animate-bubble-1" />
       <div className="absolute bottom-1/4 right-1/4 w-[450px] h-[450px] rounded-full bg-logo-coral/15 blur-[140px] pointer-events-none animate-bubble-2" />
 
-      {/* 3. Main Center Content Container */}
-      <div className="relative z-10 max-w-5xl mx-auto w-full text-center flex flex-col items-center">
-        
-        {/* Top Surat Desk Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: -15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-bold uppercase tracking-widest text-white shadow-xl mb-6"
-        >
-          <span className="w-2 h-2 rounded-full bg-logo-coral animate-ping" />
-          <span>{t('trustedPartner')} • Since 2016</span>
-        </motion.div>
+      {/* 3. Editorial hero content */}
+      <div className="relative z-10 max-w-7xl mx-auto w-full">
+        <div className="grid lg:grid-cols-[1.05fr_0.95fr] items-center gap-8 lg:gap-14">
+          <div className="max-w-2xl">
+            <motion.div
+              initial={{ opacity: 0, y: -15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[10px] sm:text-xs font-bold uppercase tracking-[0.16em] text-white shadow-xl mb-6"
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+              </span>
+              <span>{t('trustedPartner')} <span className="text-white/50">•</span> Surat, India</span>
+            </motion.div>
 
-        {/* Main Headline (Clean, Luxury, Proportional) */}
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.15 }}
-          className="text-4xl sm:text-6xl md:text-7xl font-serif text-white tracking-tight leading-[1.1] max-w-4xl drop-shadow-2xl"
-        >
-          {t('heroTitle1')} <br className="hidden sm:inline" />
-          <span className="italic font-serif font-light text-logo-peach drop-shadow">
-            {t('heroTitle2')}
-          </span>
-        </motion.h1>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.15 }}
+              className="text-5xl sm:text-6xl lg:text-7xl xl:text-[5.5rem] font-serif text-white tracking-tight leading-[0.98] max-w-3xl drop-shadow-2xl"
+            >
+              {t('heroTitle1')}
+              <span className="block italic font-light text-logo-peach mt-2">
+                {t('heroTitle2')}
+              </span>
+            </motion.h1>
 
-        {/* Subtitle */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.25 }}
-          className="mt-4 text-sm sm:text-base md:text-lg text-slate-200 max-w-2xl font-light leading-relaxed drop-shadow"
-        >
-          {t('heroSubtitle')}
-        </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.25 }}
+              className="mt-6 text-sm sm:text-base md:text-lg text-white/75 max-w-xl font-light leading-relaxed drop-shadow"
+            >
+              {t('heroSubtitle')}
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.35 }}
+              className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs sm:text-sm text-white/80"
+            >
+              <span className="inline-flex items-center gap-2"><Star className="w-4 h-4 fill-amber-300 text-amber-300" /> Rated 4.9 by Surat travellers</span>
+              <span className="inline-flex items-center gap-2"><ShieldCheck className="w-4 h-4 text-emerald-300" /> Your trip, thoughtfully planned</span>
+            </motion.div>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96, y: 16 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="relative mx-auto w-full max-w-[500px] lg:ml-auto"
+          >
+            <div className="relative aspect-[1.2/1] sm:aspect-[1.35/1] overflow-hidden rounded-[2rem] border border-white/30 bg-white/10 p-2 shadow-[0_32px_90px_rgba(0,0,0,0.42)]">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeSlide}
+                  initial={{ opacity: 0, scale: 1.04 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.7 }}
+                  className="absolute inset-2 overflow-hidden rounded-[1.55rem]"
+                >
+                  <img
+                    src={slides[activeSlide].url}
+                    alt={slides[activeSlide].title}
+                    className="h-full w-full object-cover"
+                  />
+                </motion.div>
+              </AnimatePresence>
+              <div className="absolute inset-2 rounded-[1.55rem] bg-gradient-to-t from-black/75 via-black/5 to-black/15" />
+              <div className="absolute inset-x-7 top-7 flex items-center justify-between">
+                <span className="rounded-full border border-white/25 bg-black/25 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.18em] text-white backdrop-blur-md">
+                  A little further, a lot more wonder
+                </span>
+                <span className="rounded-full bg-white/15 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-md">
+                  0{activeSlide + 1} <span className="text-white/60">/ 0{slides.length}</span>
+                </span>
+              </div>
+              <div className="absolute inset-x-7 bottom-7 text-white">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-logo-peach">
+                  {slides[activeSlide].tag}
+                </p>
+                <h2 className="mt-2 max-w-sm font-serif text-2xl sm:text-3xl leading-tight">
+                  {slides[activeSlide].title}
+                </h2>
+                <div className="mt-5 flex items-center gap-2">
+                  {slides.map((slide, index) => (
+                    <button
+                      key={slide.url}
+                      type="button"
+                      onClick={() => setActiveSlide(index)}
+                      aria-label={`Show ${slide.tag} destination`}
+                      aria-pressed={activeSlide === index}
+                      className={`h-1.5 rounded-full transition-all ${
+                        activeSlide === index ? 'w-8 bg-white' : 'w-1.5 bg-white/55 hover:bg-white'
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className="absolute -bottom-5 -left-5 hidden sm:flex items-center gap-3 rounded-2xl border border-white/50 bg-white/95 px-4 py-3 shadow-xl backdrop-blur-xl">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-50 text-emerald-700">
+                <PhoneCall className="h-5 w-5" />
+              </div>
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Real people, always here</p>
+                <p className="text-sm font-bold text-navy-950">Your Surat travel desk</p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
 
         {/* =========================================================================
             8-SERVICE UNIVERSAL NAVIGATION TABS & SEARCH FORM (MakeMyTrip Luxe Style)
@@ -259,10 +338,10 @@ export default function HeroSection({ onSearch }: HeroSectionProps) {
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.35 }}
-          className="mt-8 sm:mt-10 w-full max-w-4xl"
+          className="mt-10 sm:mt-14 w-full"
         >
           {/* Universal 8 Service Category Switcher */}
-          <div className="flex items-center justify-start sm:justify-center gap-2 overflow-x-auto pb-3 mb-3 max-w-full no-scrollbar px-1">
+          <div className="flex items-center justify-start gap-2 overflow-x-auto pb-3 mb-2 max-w-full no-scrollbar px-1">
             {[
               { id: 'packages' as const, label: 'Holiday Packages', icon: Compass, color: 'text-brand-400' },
               { id: 'flights' as const, label: 'Flights', icon: Plane, color: 'text-sky-400' },
@@ -295,7 +374,7 @@ export default function HeroSection({ onSearch }: HeroSectionProps) {
 
           <form
             onSubmit={handleSearch}
-            className="bg-black/60 backdrop-blur-2xl rounded-3xl sm:rounded-full border border-white/25 shadow-[0_20px_50px_rgba(0,0,0,0.7)] p-2.5 sm:p-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-2 hover:border-logo-coral/40 transition-all text-left"
+            className="bg-navy-950/90 backdrop-blur-2xl rounded-3xl sm:rounded-full border border-white/25 shadow-[0_24px_70px_rgba(0,0,0,0.38)] p-2.5 sm:p-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-2 hover:border-logo-peach/60 transition-all text-left"
           >
             {/* 1. TOUR PACKAGES SEARCH */}
             {activeTab === 'packages' && (
@@ -711,7 +790,7 @@ export default function HeroSection({ onSearch }: HeroSectionProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.45 }}
-          className="mt-6 flex items-center justify-center gap-2 flex-wrap"
+          className="mt-5 flex items-center justify-start gap-2 flex-wrap"
         >
           <span className="text-xs uppercase tracking-wider text-slate-400 font-bold mr-1">
             {t('popularNow')}
@@ -732,7 +811,7 @@ export default function HeroSection({ onSearch }: HeroSectionProps) {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.55 }}
-          className="mt-10 sm:mt-12 flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs text-slate-300 pt-6 border-t border-white/10 w-full"
+          className="mt-8 sm:mt-10 flex flex-wrap items-center justify-start gap-x-8 gap-y-3 text-xs text-slate-300 pt-5 border-t border-white/15 w-full"
         >
           <div className="flex items-center gap-1.5">
             <Star className="w-4 h-4 fill-amber-400 text-amber-400" />

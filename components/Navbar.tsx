@@ -64,7 +64,7 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center gap-5">
+          <div className="hidden sm:flex items-center gap-5">
             <span className="flex items-center gap-1.5 text-slate-300">
               <MapPin className="w-3.5 h-3.5 text-logo-coral shrink-0" />
               <span className="truncate">{t('suratOffice')}</span>
@@ -75,9 +75,9 @@ export default function Navbar() {
             </span>
           </div>
 
-          <div className="flex items-center gap-3 sm:gap-4">
+          <div className="ml-auto flex items-center gap-3 sm:gap-4">
             {/* Language Switcher Pill */}
-            <div className="flex items-center bg-white/10 rounded-full p-0.5 text-[10px] font-bold">
+            <div className="hidden sm:flex items-center bg-white/10 rounded-full p-0.5 text-[10px] font-bold">
               <button
                 type="button"
                 onClick={() => setLanguage('en')}
@@ -115,7 +115,7 @@ export default function Navbar() {
               value={currency}
               onChange={(e) => setCurrency(e.target.value as CurrencyCode)}
               aria-label="Select Currency"
-              className="bg-white/10 hover:bg-white/15 text-slate-200 hover:text-white text-[10px] font-bold rounded-full px-2 py-0.5 border border-white/20 focus:outline-none cursor-pointer transition-colors"
+              className="hidden sm:block bg-white/10 hover:bg-white/15 text-slate-200 hover:text-white text-[10px] font-bold rounded-full px-2 py-0.5 border border-white/20 focus:outline-none cursor-pointer transition-colors"
             >
               <option value="INR" className="bg-navy-950 text-white">INR (₹)</option>
               <option value="USD" className="bg-navy-950 text-white">USD ($)</option>
@@ -124,19 +124,19 @@ export default function Navbar() {
               <option value="GBP" className="bg-navy-950 text-white">GBP (£)</option>
             </select>
 
-            <span className="text-white/20">|</span>
+            <span className="hidden sm:inline text-white/20">|</span>
 
             <a 
               href={`tel:${COMPANY_DETAILS.phoneRaw}`} 
-              className="flex items-center gap-1.5 text-slate-200 hover:text-white transition-colors"
+              className="flex items-center gap-1.5 text-[10px] sm:text-[11px] text-slate-200 hover:text-white transition-colors"
             >
               <Phone className="w-3 h-3 text-logo-peach" />
               <span className="font-semibold">{COMPANY_DETAILS.phone}</span>
             </a>
-            <span className="text-white/20">|</span>
+            <span className="hidden md:inline text-white/20">|</span>
             <Link 
               href="/admin/login" 
-              className="flex items-center gap-1 text-slate-400 hover:text-amber-400 transition-colors"
+              className="hidden md:flex items-center gap-1 text-slate-400 hover:text-amber-400 transition-colors"
               title="Admin Staff Portal"
             >
               <Lock className="w-3 h-3" />
@@ -386,6 +386,8 @@ export default function Navbar() {
               onClick={() => setIsOpen(!isOpen)}
               className="lg:hidden p-2 rounded-xl text-slate-800 bg-slate-100 hover:bg-slate-200 transition-colors"
               aria-label="Toggle menu"
+              aria-expanded={isOpen}
+              aria-controls="mobile-navigation"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -394,8 +396,7 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Navigation Drawer */}
-        {isOpen && (
-          <div className="lg:hidden absolute inset-x-0 top-full bg-white border-b border-slate-200 p-6 shadow-2xl text-slate-800 max-h-[85vh] overflow-y-auto">
+        <div id="mobile-navigation" hidden={!isOpen} className="lg:hidden absolute inset-x-0 top-full bg-white border-b border-slate-200 p-6 shadow-2xl text-slate-800 max-h-[85vh] overflow-y-auto">
             {/* Mobile Language Switcher */}
             <div className="mb-4 pb-4 border-b border-slate-100 flex items-center justify-between">
               <span className="text-xs font-bold text-slate-600">Language / ભાષા:</span>
@@ -421,6 +422,7 @@ export default function Navbar() {
               <select
                 value={currency}
                 onChange={(e) => setCurrency(e.target.value as CurrencyCode)}
+                aria-label="Select Currency"
                 className="bg-slate-100 text-slate-800 text-xs font-bold rounded-lg px-2.5 py-1 border border-slate-200 focus:outline-none"
               >
                 <option value="INR">INR (₹)</option>
@@ -482,8 +484,7 @@ export default function Navbar() {
                 </div>
               </div>
             </div>
-          </div>
-        )}
+        </div>
       </div>
 
       {/* Luxury Brand Gradient Scroll Progress Hairline Indicator */}

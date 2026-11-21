@@ -34,6 +34,9 @@ import InteractiveBoardingPass from '@/components/InteractiveBoardingPass';
 import ServicesAndBookingGuide from '@/components/ServicesAndBookingGuide';
 import AnimatedCounter from '@/components/AnimatedCounter';
 import WorldRouteMap from '@/components/WorldRouteMap';
+import LuxuryThemeShowcase from '@/components/LuxuryThemeShowcase';
+import SuratVIPOfficeTour from '@/components/SuratVIPOfficeTour';
+import TravelConciergeFAQ from '@/components/TravelConciergeFAQ';
 import { TravelPackage, Destination } from '@/types/travel';
 import { INITIAL_PACKAGES, INITIAL_DESTINATIONS } from '@/data/seed-data';
 import { COMPANY_DETAILS, getGeneralWhatsAppUrl } from '@/lib/utils';
@@ -169,6 +172,9 @@ export default function HomePage() {
 
       {/* 5. Interactive Ultra-Light Luxury World Map & Surat Departure Flight Radar */}
       <WorldRouteMap />
+
+      {/* 5B. Curated Signature Luxury Collections (Villas, Glaciers, Palaces, Multi-Gen) */}
+      <LuxuryThemeShowcase />
 
       {/* 6. Featured Packages Grid with Kinetic Vibe Mood Engine */}
       <section id="packages-section" className="py-24 bg-slate-50 border-t border-slate-200/60">
@@ -419,7 +425,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. Custom Tour Planning Callout Banner */}
+      {/* 5. Virtual VIP Road Vesu Flagship Office Lounge & Coffee Appointment */}
+      <SuratVIPOfficeTour />
+
+      {/* 5B. Custom Tour Planning Callout Banner */}
       <section className="py-20 bg-gradient-to-r from-navy-950 via-navy-900 to-navy-950 text-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
           <div>
@@ -455,6 +464,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* 5C. Comprehensive Surat Travel Concierge FAQ & Advisory */}
+      <TravelConciergeFAQ />
 
       {/* 6. Surat Travelers Reviews */}
       <section className="py-24 bg-slate-50">
