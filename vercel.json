@@ -3,7 +3,7 @@
   "crons": [
     {
       "path": "/api/sphere-os/cron/chaser",
-      "schedule": "0 * * * *"
+      "schedule": "0 0 * * *"
     }
   ]
 }
