@@ -1,0 +1,152 @@
+[
+  {
+    "id": "cl-1795278236068",
+    "name": "Zaveri Royal Jewels",
+    "vertical": "Luxury Diamond Retail",
+    "package": {
+      "reels": 24,
+      "posts": 4,
+      "stories": 20,
+      "shoots": 1,
+      "adBudget": 25000
+    },
+    "monthlyFee": 95000,
+    "healthStatus": "green",
+    "healthReason": "Initial onboarding sprint",
+    "approvalSlaHours": 12,
+    "autoApprove": true,
+    "accountLead": "Saakshi",
+    "backupLead": "Founder",
+    "handles": {
+      "instagram": "@zaveriroyaljewels"
+    },
+    "driveFolder": "01-Brand/Zaveri Royal Jewels",
+    "reportDay": 5,
+    "evergreenCount": 6
+  },
+  {
+    "id": "c1",
+    "name": "Zaveri & Sons Heritage",
+    "vertical": "Fine Jewellery",
+    "package": {
+      "reels": 12,
+      "posts": 8,
+      "stories": 30,
+      "shoots": 1,
+      "adBudget": 45000
+    },
+    "monthlyFee": 75000,
+    "healthStatus": "green",
+    "healthReason": "All 12 reels on schedule, D-5 clearance passed.",
+    "approvalSlaHours": 24,
+    "autoApprove": true,
+    "accountLead": "Riddhi",
+    "backupLead": "Ops Lead",
+    "handles": {
+      "instagram": "@zaveriheritage"
+    },
+    "driveFolder": "01-Zaveri-Heritage",
+    "reportDay": 5,
+    "evergreenCount": 8
+  },
+  {
+    "id": "c2",
+    "name": "Urban Chai & Co.",
+    "vertical": "QSR / Cafe Chain",
+    "package": {
+      "reels": 16,
+      "posts": 6,
+      "stories": 40,
+      "shoots": 2,
+      "adBudget": 30000
+    },
+    "monthlyFee": 60000,
+    "healthStatus": "amber",
+    "healthReason": "Client approval pending for 28 hrs on Reel #8. Escalated to Ops Lead.",
+    "approvalSlaHours": 24,
+    "autoApprove": false,
+    "accountLead": "Riddhi",
+    "backupLead": "Anjali",
+    "handles": {
+      "instagram": "@urbanchai.official"
+    },
+    "driveFolder": "02-Urban-Chai",
+    "reportDay": 5,
+    "evergreenCount": 6
+  },
+  {
+    "id": "c3",
+    "name": "Kalyan Silk Studio",
+    "vertical": "Ethnic Fashion",
+    "package": {
+      "reels": 20,
+      "posts": 10,
+      "stories": 45,
+      "shoots": 2,
+      "adBudget": 80000
+    },
+    "monthlyFee": 95000,
+    "healthStatus": "red",
+    "healthReason": "Raw footage upload delayed by 8 hours from yesterday shoot. Ingest Gate alert.",
+    "approvalSlaHours": 24,
+    "autoApprove": false,
+    "accountLead": "Ops Lead",
+    "backupLead": "Riddhi",
+    "handles": {
+      "instagram": "@kalyansilkstudio"
+    },
+    "driveFolder": "03-Kalyan-Silks",
+    "reportDay": 3,
+    "evergreenCount": 5
+  },
+  {
+    "id": "c4",
+    "name": "Vesu Fitness Club",
+    "vertical": "Health & Gym",
+    "package": {
+      "reels": 10,
+      "posts": 8,
+      "stories": 20,
+      "shoots": 1,
+      "adBudget": 25000
+    },
+    "monthlyFee": 45000,
+    "healthStatus": "green",
+    "healthReason": "Month-end deliverables ready 6 days ahead of schedule.",
+    "approvalSlaHours": 48,
+    "autoApprove": true,
+    "accountLead": "Anjali",
+    "backupLead": "Saakshi",
+    "handles": {
+      "instagram": "@vesufitness"
+    },
+    "driveFolder": "04-Vesu-Fitness",
+    "reportDay": 7,
+    "evergreenCount": 7
+  },
+  {
+    "id": "c5",
+    "name": "Shreeji Gourmet Sweets",
+    "vertical": "FMCG / Retail",
+    "package": {
+      "reels": 14,
+      "posts": 8,
+      "stories": 25,
+      "shoots": 1,
+      "adBudget": 50000
+    },
+    "monthlyFee": 65000,
+    "healthStatus": "amber",
+    "healthReason": "Festival campaign planning for Uttarayan needs Creative Lead approval.",
+    "approvalSlaHours": 24,
+    "autoApprove": true,
+    "accountLead": "Riddhi",
+    "backupLead": "Ops Lead",
+    "handles": {
+      "instagram": "@shreejigourmet"
+    },
+    "driveFolder": "05-Shreeji-Gourmet",
+    "reportDay": 5,
+    "evergreenCount": 6
+  }
+]

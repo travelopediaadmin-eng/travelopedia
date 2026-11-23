@@ -2,6 +2,18 @@ import fs from 'fs';
 import path from 'path';
 import { TravelPackage, Destination, Enquiry, EnquiryStatus } from '@/types/travel';
 import { INITIAL_PACKAGES, INITIAL_DESTINATIONS, INITIAL_ENQUIRIES } from '@/data/seed-data';
+import {
+  INITIAL_CLIENTS,
+  INITIAL_DECISIONS,
+  INITIAL_TASKS,
+  INITIAL_CONTENT_ITEMS,
+  INITIAL_VENDOR_DELIVERABLES,
+  Client,
+  DecisionItem,
+  TaskItem,
+  ContentItem,
+  VendorDeliverable,
+} from '@/data/sphere-os-mock';
 
 interface DatabaseSchema {
   packages: TravelPackage[];
@@ -13,15 +25,15 @@ interface DatabaseSchema {
     id: string;
     email: string;
     name: string;
-    passwordHash: string; // Plaintext or hash for admin
+    passwordHash: string;
     role: string;
   };
 }
 
 const DATA_DIR = path.join(process.cwd(), 'data');
 const DB_FILE = path.join(DATA_DIR, 'travelo-db.json');
+const SPHERE_DB_DIR = path.join(process.cwd(), 'data', 'db');
 
-// In-memory fallback if fs is constrained
 let inMemoryDb: DatabaseSchema | null = null;
 
 function getInitialDatabase(): DatabaseSchema {
@@ -29,11 +41,13 @@ function getInitialDatabase(): DatabaseSchema {
     packages: INITIAL_PACKAGES,
     destinations: INITIAL_DESTINATIONS,
     enquiries: INITIAL_ENQUIRIES,
+    bookings: [],
+    payments: [],
     adminUser: {
       id: 'admin-1',
       email: 'admin@thetravelopedia.com',
       name: 'The TraveloPedia Admin',
-      passwordHash: 'admin123', // default demo password
+      passwordHash: 'admin123',
       role: 'superadmin'
     }
   };
@@ -105,26 +119,8 @@ export function getPackageById(id: string): TravelPackage | null {
   return pkg || null;
 }
 
-export function savePackage(packageData: Omit<TravelPackage, 'id' | 'createdAt'> & { id?: string }): TravelPackage {
+export function savePackage(packageData: Omit<TravelPackage, 'id' | 'createdAt'>): TravelPackage {
   const db = readDb();
-  
-  if (packageData.id) {
-    // Update existing
-    const index = db.packages.findIndex(p => p.id === packageData.id);
-    if (index !== -1) {
-      const updated: TravelPackage = {
-        ...db.packages[index],
-        ...packageData,
-        id: packageData.id,
-        updatedAt: new Date().toISOString()
-      };
-      db.packages[index] = updated;
-      writeDb(db);
-      return updated;
-    }
-  }
-
-  // Create new
   const newPackage: TravelPackage = {
     ...packageData,
     id: `pkg-${Date.now()}`,
@@ -326,3 +322,76 @@ export function recordPayment(payment: any) {
   return payment;
 }
 
+// =================== SPHERE-OS PERSISTENCE ===================
+
+function ensureSphereDbDir() {
+  if (!fs.existsSync(SPHERE_DB_DIR)) {
+    fs.mkdirSync(SPHERE_DB_DIR, { recursive: true });
+  }
+}
+
+function readJsonFile<T>(filename: string, fallback: T): T {
+  ensureSphereDbDir();
+  const filePath = path.join(SPHERE_DB_DIR, filename);
+  try {
+    if (!fs.existsSync(filePath)) {
+      fs.writeFileSync(filePath, JSON.stringify(fallback, null, 2), 'utf-8');
+      return fallback;
+    }
+    const data = fs.readFileSync(filePath, 'utf-8');
+    return JSON.parse(data) as T;
+  } catch (err) {
+    console.error(`Error reading ${filename}, using fallback:`, err);
+    return fallback;
+  }
+}
+
+function writeJsonFile<T>(filename: string, data: T): void {
+  ensureSphereDbDir();
+  const filePath = path.join(SPHERE_DB_DIR, filename);
+  try {
+    fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8');
+  } catch (err) {
+    console.error(`Error writing ${filename}:`, err);
+  }
+}
+
+export function getPersistentClients(): Client[] {
+  return readJsonFile<Client[]>('clients.json', INITIAL_CLIENTS);
+}
+
+export function savePersistentClients(clients: Client[]): void {
+  writeJsonFile('clients.json', clients);
+}
+
+export function getPersistentTasks(): TaskItem[] {
+  return readJsonFile<TaskItem[]>('tasks.json', INITIAL_TASKS);
+}
+
+export function savePersistentTasks(tasks: TaskItem[]): void {
+  writeJsonFile('tasks.json', tasks);
+}
+
+export function getPersistentContent(): ContentItem[] {
+  return readJsonFile<ContentItem[]>('content.json', INITIAL_CONTENT_ITEMS);
+}
+
+export function savePersistentContent(content: ContentItem[]): void {
+  writeJsonFile('content.json', content);
+}
+
+export function getPersistentDecisions(): DecisionItem[] {
+  return readJsonFile<DecisionItem[]>('decisions.json', INITIAL_DECISIONS);
+}
+
+export function savePersistentDecisions(decisions: DecisionItem[]): void {
+  writeJsonFile('decisions.json', decisions);
+}
+
+export function getPersistentVendors(): VendorDeliverable[] {
+  return readJsonFile<VendorDeliverable[]>('vendors.json', INITIAL_VENDOR_DELIVERABLES);
+}
+
+export function savePersistentVendors(vendors: VendorDeliverable[]): void {
+  writeJsonFile('vendors.json', vendors);
+}

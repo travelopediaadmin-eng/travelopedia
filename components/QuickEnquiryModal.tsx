@@ -1,9 +1,10 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { X, Send, CheckCircle2, MessageCircle, Phone, Calendar, User, Mail, Sparkles } from 'lucide-react';
+import { X, Send, CheckCircle2, MessageCircle, Phone, Calendar, User, Mail, Sparkles, ShieldCheck } from 'lucide-react';
 import { TravelPackage } from '@/types/travel';
 import { COMPANY_DETAILS, getWhatsAppInquiryUrl } from '@/lib/utils';
+import EmailVerificationPendingModal from '@/components/EmailVerificationPendingModal';
 
 interface QuickEnquiryModalProps {
   pkg?: TravelPackage | null;
@@ -25,22 +26,55 @@ export default function QuickEnquiryModal({ pkg, isOpen, onClose }: QuickEnquiry
   });
 
   const [loading, setLoading] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
 
+  // Verification Pending State
+  const [showPendingModal, setShowPendingModal] = useState(false);
+  const [pendingRequestId, setPendingRequestId] = useState('');
+  const [pendingRequestNumber, setPendingRequestNumber] = useState('');
+  const [pendingEmail, setPendingEmail] = useState('');
+
   useEffect(() => {
-    if (isOpen) {
-      setSubmitted(false);
-      setError('');
-    }
-  }, [isOpen, pkg]);
+    if (!isOpen) return;
+
+    setError('');
+    setShowPendingModal(false);
+    setLoading(false);
+    setFormData({
+      customerName: '',
+      phone: '',
+      email: '',
+      travelDate: '',
+      adults: '2',
+      children: '0',
+      hotelCategory: '4-Star',
+      estimatedBudget: '',
+      specialRequests: ''
+    });
+    document.body.style.overflow = 'hidden';
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isOpen, pkg, onClose]);
 
   if (!isOpen) return null;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.customerName || !formData.phone) {
-      setError('Please provide your name and phone number.');
+      setError('Please provide your full name and phone number.');
+      return;
+    }
+
+    if (!formData.email || !formData.email.includes('@')) {
+      setError('Please provide a valid email address for itinerary verification.');
       return;
     }
 
@@ -48,22 +82,39 @@ export default function QuickEnquiryModal({ pkg, isOpen, onClose }: QuickEnquiry
     setError('');
 
     try {
-      const res = await fetch('/api/enquiries', {
+      const destination = pkg?.destination || 'Custom Luxury Destination';
+      const requirements = [
+        `Package: ${pkg?.title || 'Custom Request'}`,
+        `Hotel: ${formData.hotelCategory}`,
+        `Travelers: ${formData.adults} Adults, ${formData.children} Children`,
+        formData.specialRequests ? `Special notes: ${formData.specialRequests}` : null
+      ].filter(Boolean).join(' | ');
+
+      const res = await fetch('/api/requests/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          ...formData,
-          packageId: pkg?.id,
-          packageTitle: pkg?.title || 'Custom Travel Enquiry',
-          destination: pkg?.destination || 'Requested Destination',
-          source: pkg ? 'Package Page' : 'Quick Inquiry'
+          customer_name: formData.customerName,
+          customer_mobile: formData.phone,
+          customer_email: formData.email,
+          destination,
+          travel_start_date: formData.travelDate || 'Flexible',
+          travellers_count: Number(formData.adults) || 2,
+          budget: formData.estimatedBudget || 'Flexible / Discuss on Call',
+          requirements,
+          source: pkg ? `Package Page: ${pkg.title}` : 'Quick Inquiry Modal'
         })
       });
 
-      if (!res.ok) throw new Error('Submission failed');
-      setSubmitted(true);
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Submission failed');
+
+      setPendingRequestId(data.requestId);
+      setPendingRequestNumber(data.requestNumber);
+      setPendingEmail(data.email);
+      setShowPendingModal(true);
     } catch (err: any) {
-      setError('Unable to send inquiry. Please try again or chat via WhatsApp.');
+      setError(err.message || 'Unable to submit enquiry. Please try again or chat via WhatsApp.');
     } finally {
       setLoading(false);
     }
@@ -74,70 +125,41 @@ export default function QuickEnquiryModal({ pkg, isOpen, onClose }: QuickEnquiry
   const whatsappUrl = getWhatsAppInquiryUrl(packageTitle, duration);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-navy-950/70 backdrop-blur-sm animate-fade-in">
-      <div className="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl border border-slate-200 relative animate-scale-up">
-        
-        {/* Header */}
-        <div className="bg-gradient-to-r from-navy-950 to-navy-900 text-white p-6 relative">
-          <button
-            onClick={onClose}
-            aria-label="Close Modal"
-            className="absolute top-5 right-5 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors"
-          >
-            <X className="w-4 h-4" />
-          </button>
+    <>
+      <div
+        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-navy-950/70 backdrop-blur-sm animate-fade-in"
+        onMouseDown={(event) => {
+          if (event.target === event.currentTarget) onClose();
+        }}
+      >
+        <div className="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl border border-slate-200 relative animate-scale-up">
           
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-brand-500/20 text-amber-300 text-xs font-semibold mb-2">
-            <Sparkles className="w-3 h-3" />
-            <span>Surat Travel Specialist</span>
+          {/* Header */}
+          <div className="bg-gradient-to-r from-navy-950 to-navy-900 p-6 text-white relative">
+            <button
+              onClick={onClose}
+              type="button"
+              aria-label="Close enquiry form"
+              className="absolute top-4 right-4 p-2 rounded-full text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
+            >
+              <X className="w-5 h-5" />
+            </button>
+            <div className="flex items-center gap-2 text-brand-400 text-xs font-bold uppercase tracking-wider mb-1">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Bespoke Luxury Consultation</span>
+            </div>
+            <h3 className="font-serif font-bold text-xl text-white">
+              {pkg ? 'Request Custom Itinerary & Quote' : 'Plan Your Bespoke Holiday'}
+            </h3>
+            <p className="text-xs text-slate-300 mt-1 line-clamp-1">
+              {pkg ? pkg.title : 'Connect with our Surat VIP Road travel specialists'}
+            </p>
           </div>
 
-          <h3 className="text-xl font-bold font-serif text-white">
-            {pkg ? 'Enquire About This Tour' : 'Plan Your Dream Vacation'}
-          </h3>
-          <p className="text-xs text-slate-300 mt-1 line-clamp-1">
-            {packageTitle}
-          </p>
-        </div>
-
-        {/* Content */}
-        <div className="p-6">
-          {submitted ? (
-            <div className="text-center py-6">
-              <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-4">
-                <CheckCircle2 className="w-8 h-8" />
-              </div>
-              <h4 className="text-xl font-bold text-navy-950 font-serif">Inquiry Received!</h4>
-              <p className="text-sm text-slate-600 mt-2 max-w-sm mx-auto">
-                Thank you, <strong>{formData.customerName}</strong>! Our destination expert from our Surat office will connect with you within 30 minutes.
-              </p>
-
-              <div className="mt-6 flex flex-col gap-3">
-                <a
-                  href={whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-md"
-                >
-                  <MessageCircle className="w-4 h-4 fill-white" />
-                  <span>Instant Follow-up on WhatsApp</span>
-                </a>
-
-                <button
-                  onClick={() => {
-                    setSubmitted(false);
-                    onClose();
-                  }}
-                  className="text-xs text-slate-500 hover:text-slate-800 font-semibold"
-                >
-                  Close Window
-                </button>
-              </div>
-            </div>
-          ) : (
+          <div className="p-6">
             <form onSubmit={handleSubmit} className="space-y-4">
               {error && (
-                <div className="p-3 text-xs bg-red-50 text-red-600 rounded-xl border border-red-200">
+                <div className="p-3 bg-red-50 border border-red-200 rounded-xl text-xs text-red-600 font-medium">
                   {error}
                 </div>
               )}
@@ -145,16 +167,16 @@ export default function QuickEnquiryModal({ pkg, isOpen, onClose }: QuickEnquiry
               {/* Name & Phone */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">Your Full Name *</label>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Full Name *</label>
                   <div className="relative">
-                    <User className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
+                    <User className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
                     <input
                       type="text"
                       required
                       placeholder="e.g. Rajesh Shah"
                       value={formData.customerName}
                       onChange={(e) => setFormData({ ...formData, customerName: e.target.value })}
-                      className="w-full pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500"
+                      className="w-full pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500"
                     />
                   </div>
                 </div>
@@ -162,14 +184,14 @@ export default function QuickEnquiryModal({ pkg, isOpen, onClose }: QuickEnquiry
                 <div>
                   <label className="block text-xs font-bold text-slate-700 mb-1">WhatsApp / Phone *</label>
                   <div className="relative">
-                    <Phone className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
+                    <Phone className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
                     <input
                       type="tel"
                       required
-                      placeholder="+91 98XXX XXXXX"
+                      placeholder="+91 98765 43210"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500"
+                      className="w-full pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500"
                     />
                   </div>
                 </div>
@@ -178,28 +200,31 @@ export default function QuickEnquiryModal({ pkg, isOpen, onClose }: QuickEnquiry
               {/* Email & Travel Date */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">Email (Optional)</label>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">
+                    Email Address * <span className="text-[10px] text-brand-600 font-semibold">(Verification Required)</span>
+                  </label>
                   <div className="relative">
-                    <Mail className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
+                    <Mail className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
                     <input
                       type="email"
-                      placeholder="rajesh@gmail.com"
+                      required
+                      placeholder="rajesh@example.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500"
+                      className="w-full pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">Approx. Travel Date</label>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Tentative Travel Date</label>
                   <div className="relative">
-                    <Calendar className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
+                    <Calendar className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
                     <input
                       type="date"
                       value={formData.travelDate}
                       onChange={(e) => setFormData({ ...formData, travelDate: e.target.value })}
-                      className="w-full pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500"
+                      className="w-full pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500"
                     />
                   </div>
                 </div>
@@ -250,7 +275,7 @@ export default function QuickEnquiryModal({ pkg, isOpen, onClose }: QuickEnquiry
 
               {/* Special Requests */}
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Special Requirements (e.g. Jain / Veg food, flights, etc.)</label>
+                <label className="block text-xs font-bold text-slate-700 mb-1">Special Requirements (e.g. Jain / Pure Veg, Flight assistance)</label>
                 <textarea
                   rows={2}
                   placeholder="Tell us if you require pure vegetarian/Jain food, specific flight timings from Surat or Mumbai..."
@@ -265,10 +290,10 @@ export default function QuickEnquiryModal({ pkg, isOpen, onClose }: QuickEnquiry
                 <button
                   type="submit"
                   disabled={loading}
-                  className="flex-1 py-3 px-4 rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 hover:from-brand-600 hover:to-brand-700 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-brand-500/20 disabled:opacity-70 transition-all"
+                  className="flex-1 py-3.5 px-4 rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 hover:from-brand-600 hover:to-brand-700 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-brand-500/20 disabled:opacity-70 transition-all"
                 >
                   <Send className="w-4 h-4" />
-                  <span>{loading ? 'Submitting...' : 'Request Detailed Itinerary'}</span>
+                  <span>{loading ? 'Submitting & Verifying...' : 'Submit & Verify Email'}</span>
                 </button>
 
                 <a
@@ -282,13 +307,29 @@ export default function QuickEnquiryModal({ pkg, isOpen, onClose }: QuickEnquiry
                 </a>
               </div>
 
-              <p className="text-[11px] text-slate-400 text-center">
-                🔒 Your privacy is 100% protected. No spam. Direct consultation from Surat desk.
-              </p>
+              <div className="flex items-center justify-center gap-1.5 text-[11px] text-slate-400">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                <span>Protected by Supabase Auth Email Verification. Zero spam.</span>
+              </div>
             </form>
-          )}
+          </div>
         </div>
       </div>
-    </div>
+
+      {/* Verification Pending Modal */}
+      {showPendingModal && (
+        <EmailVerificationPendingModal
+          isOpen={showPendingModal}
+          onClose={() => {
+            setShowPendingModal(false);
+            onClose();
+          }}
+          requestId={pendingRequestId}
+          requestNumber={pendingRequestNumber}
+          email={pendingEmail}
+          onEmailChanged={(newE) => setPendingEmail(newE)}
+        />
+      )}
+    </>
   );
 }

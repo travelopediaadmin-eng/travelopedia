@@ -18,7 +18,10 @@ import {
   Utensils, 
   Car,
   ChevronRight,
-  Filter
+  Filter,
+  Search,
+  X,
+  ArrowUpDown
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import HeroSection from '@/components/HeroSection';
@@ -47,6 +50,7 @@ export default function HomePage() {
   const [activeTab, setActiveTab] = useState<'All' | 'international' | 'domestic' | 'Honeymoon' | 'Family'>('All');
   const [activeVibe, setActiveVibe] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
+  const [sortBy, setSortBy] = useState<'featured' | 'title' | 'shortest' | 'longest'>('featured');
   const [selectedPackage, setSelectedPackage] = useState<TravelPackage | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -147,6 +151,13 @@ export default function HomePage() {
     return true;
   });
 
+  const sortedPackages = [...filteredPackages].sort((a, b) => {
+    if (sortBy === 'title') return a.title.localeCompare(b.title);
+    if (sortBy === 'shortest') return a.durationDays - b.durationDays;
+    if (sortBy === 'longest') return b.durationDays - a.durationDays;
+    return packages.indexOf(a) - packages.indexOf(b);
+  });
+
   const openInquiryModal = (pkg: TravelPackage) => {
     setSelectedPackage(pkg);
     setIsModalOpen(true);
@@ -203,7 +214,7 @@ export default function HomePage() {
           <VibeSelector activeVibe={activeVibe} onSelectVibe={handleSelectVibe} />
 
           {/* Category Tabs & Quick Filter */}
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-10">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-5">
             <div className="flex flex-wrap items-center gap-2">
               {[
                 { id: 'All', label: 'All Packages' },
@@ -234,29 +245,78 @@ export default function HomePage() {
             </div>
 
             {/* Quick search input */}
-            <div className="w-full md:w-72">
+            <div className="w-full md:w-72 relative">
+              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
               <input
                 type="text"
+                aria-label="Search packages"
                 placeholder="Search packages by keyword..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-full bg-white border border-slate-200 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-brand-500/20 shadow-sm"
+                className="w-full pl-10 pr-10 py-2.5 rounded-full bg-white border border-slate-200 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-brand-500/20 shadow-sm"
               />
+              {searchQuery && (
+                <button
+                  type="button"
+                  onClick={() => setSearchQuery('')}
+                  aria-label="Clear search"
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 p-1 rounded-full text-slate-400 hover:text-slate-700 hover:bg-slate-100"
+                >
+                  <X className="w-3.5 h-3.5" />
+                </button>
+              )}
+            </div>
+          </div>
+
+          <div className="flex flex-wrap items-center justify-between gap-3 mb-8 pb-5 border-b border-slate-200/80">
+            <p className="text-xs font-semibold text-slate-500" aria-live="polite">
+              <span className="text-navy-950">{sortedPackages.length}</span>{' '}
+              {sortedPackages.length === 1 ? 'package' : 'packages'} found
+              {searchQuery ? ` for "${searchQuery}"` : ''}
+            </p>
+            <div className="flex items-center gap-2">
+              {(searchQuery || activeTab !== 'All' || activeVibe !== 'all') && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSearchQuery('');
+                    setActiveTab('All');
+                    setActiveVibe('all');
+                  }}
+                  className="px-3 py-2 text-xs font-bold text-brand-600 hover:text-brand-700"
+                >
+                  Clear filters
+                </button>
+              )}
+              <div className="relative">
+                <ArrowUpDown className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400" />
+                <select
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
+                  aria-label="Sort packages"
+                  className="appearance-none pl-8 pr-8 py-2 rounded-full bg-white border border-slate-200 text-xs font-bold text-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500/20"
+                >
+                  <option value="featured">Featured</option>
+                  <option value="title">Name A-Z</option>
+                  <option value="shortest">Shortest trip</option>
+                  <option value="longest">Longest trip</option>
+                </select>
+              </div>
             </div>
           </div>
 
           {/* Packages Grid */}
           <AnimatePresence mode="wait">
-            {filteredPackages.length > 0 ? (
+            {sortedPackages.length > 0 ? (
               <motion.div 
-                key={activeTab + searchQuery}
+                key={activeTab + searchQuery + sortBy}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
               >
-                {filteredPackages.map((pkg) => (
+                {sortedPackages.map((pkg) => (
                   <PackageCard 
                     key={pkg.id} 
                     pkg={pkg} 

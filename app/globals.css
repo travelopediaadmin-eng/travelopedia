@@ -5,6 +5,12 @@
 :root {
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-serif: 'Playfair Display', Georgia, Cambria, serif;
+  --sphere-bg: #0A0D14;
+  --sphere-card: rgba(255, 255, 255, 0.03);
+  --sphere-border: rgba(255, 255, 255, 0.06);
+  --sphere-glow-purple: rgba(168, 85, 247, 0.15);
+  --sphere-glow-cyan: rgba(6, 182, 212, 0.15);
+  --sphere-glow-emerald: rgba(16, 185, 129, 0.15);
   --logo-lavender: #BAC4E2;
   --logo-coral: #F7B8B0;
   --logo-peach: #FACFA6;
@@ -16,30 +22,90 @@ html {
 }
 
 body {
-  color: #2D2B2D;
-  background-color: #faf9f7;
+  color: rgba(255, 255, 255, 0.9);
+  background-color: #0A0D14;
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom modern scrollbar matching brand periwinkle & coral */
+/* Dark theme scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
-
 ::-webkit-scrollbar-track {
-  background: #f1f0ee;
+  background: #0A0D14;
 }
-
 ::-webkit-scrollbar-thumb {
-  background: #bac4e2;
-  border-radius: 4px;
+  background: rgba(168, 85, 247, 0.3);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(168, 85, 247, 0.5);
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #e86351;
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Glass card base */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+}
+
+.glass-card-hover:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 32px rgba(168, 85, 247, 0.08);
+}
+
+/* Glassmorphism nav */
+.glass-nav {
+  background: rgba(10, 13, 20, 0.88);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.dark-glass {
+  background: rgba(10, 13, 20, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Glow effects */
+.glow-purple { box-shadow: 0 0 40px -10px rgba(168, 85, 247, 0.3); }
+.glow-cyan { box-shadow: 0 0 40px -10px rgba(6, 182, 212, 0.3); }
+.glow-emerald { box-shadow: 0 0 40px -10px rgba(16, 185, 129, 0.3); }
+.glow-orange { box-shadow: 0 0 40px -10px rgba(249, 115, 22, 0.3); }
+.glow-rose { box-shadow: 0 0 40px -10px rgba(244, 63, 94, 0.3); }
+
+/* Gradient text utilities */
+.gradient-text-purple {
+  background: linear-gradient(135deg, #C084FC, #818CF8, #67E8F9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.gradient-text-emerald {
+  background: linear-gradient(135deg, #6EE7B7, #34D399, #06B6D4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.gradient-text-warm {
+  background: linear-gradient(135deg, #FCD34D, #F97316, #EF4444);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* Logo Color Text Gradients */
@@ -67,18 +133,49 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
-.glass-nav {
-  background: rgba(23, 21, 24, 0.88);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(186, 196, 226, 0.15);
+/* Animated gradient border */
+@keyframes borderGlow {
+  0%, 100% { border-color: rgba(168, 85, 247, 0.2); }
+  33% { border-color: rgba(6, 182, 212, 0.2); }
+  66% { border-color: rgba(16, 185, 129, 0.2); }
+}
+.animate-border-glow {
+  animation: borderGlow 6s ease-in-out infinite;
 }
 
-.dark-glass {
-  background: rgba(23, 21, 24, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+/* Pulse glow for orb */
+@keyframes orbPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(168, 85, 247, 0.3), 0 0 60px rgba(6, 182, 212, 0.1); }
+  50% { box-shadow: 0 0 40px rgba(168, 85, 247, 0.5), 0 0 80px rgba(6, 182, 212, 0.2); }
+}
+.animate-orb-pulse {
+  animation: orbPulse 3s ease-in-out infinite;
+}
+
+/* Shimmer effect for cards */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+@keyframes cardShimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+.shimmer-effect {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer-effect::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0) 100%);
+  transform: translateX(-100%);
+  pointer-events: none;
+}
+.shimmer-effect:hover::after {
+  animation: shimmer 1.5s ease-in-out;
 }
 
 /* Ken Burns slow background motion */
@@ -93,7 +190,6 @@ body {
     transform: scale(1) translate(0, 0);
   }
 }
-
 .animate-kenburns {
   animation: kenburns 28s ease-in-out infinite;
 }
@@ -135,11 +231,9 @@ body {
 .animate-bubble-1 {
   animation: bubbleFloat1 18s ease-in-out infinite;
 }
-
 .animate-bubble-2 {
   animation: bubbleFloat2 22s ease-in-out infinite 2s;
 }
-
 .animate-bubble-3 {
   animation: bubbleFloat3 20s ease-in-out infinite 4s;
 }
@@ -175,57 +269,17 @@ body {
 .animate-float-1 {
   animation: floatSlow 5s ease-in-out infinite;
 }
-
 .animate-float-2 {
   animation: floatMedium 6s ease-in-out infinite 0.8s;
 }
-
 .animate-float-3 {
   animation: floatFast 4.5s ease-in-out infinite 1.5s;
 }
-
 .animate-float-4 {
   animation: floatSlow 5.5s ease-in-out infinite 2.2s;
 }
-
 .animate-float-5 {
   animation: floatMedium 6.5s ease-in-out infinite 3s;
-}
-
-/* Shimmer card hover effect */
-@keyframes cardShimmer {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-.shimmer-effect {
-  position: relative;
-  overflow: hidden;
-}
-
-.shimmer-effect::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.25) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  transform: translateX(-100%);
-  pointer-events: none;
-}
-
-.shimmer-effect:hover::after {
-  animation: cardShimmer 1.2s ease-in-out;
 }
 
 /* Blinking cursor for animated search typing */
@@ -233,19 +287,66 @@ body {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
 }
-
 .animate-blink {
   animation: blink 1s infinite;
 }
 
-/* Animated flight arc dash flow on World Route Radar - Slow, elegant radar glide */
+/* Animated flight arc dash flow on World Route Radar */
 @keyframes flightDash {
   to {
     stroke-dashoffset: -48;
   }
 }
-
 .animate-flight-dash {
   animation: flightDash 4.5s linear infinite;
 }
 
+/* Page transition - Fade in up */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-in-up {
+  animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Modal animation - Scale in */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.animate-scale-in {
+  animation: scaleIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Sidebar animation - Slide in right */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.animate-slide-in-right {
+  animation: slideInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Smooth number counter styling */
+.font-tabular {
+  font-variant-numeric: tabular-nums;
+}

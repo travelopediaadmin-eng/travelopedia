@@ -1,23 +1,22 @@
 import {
-  INITIAL_CLIENTS,
-  INITIAL_DECISIONS,
-  INITIAL_TASKS,
-  INITIAL_CONTENT_ITEMS,
-  INITIAL_VENDOR_DELIVERABLES,
   Client,
   DecisionItem,
   TaskItem,
   ContentItem,
   VendorDeliverable,
 } from '@/data/sphere-os-mock';
-
-// In-memory fallback state to ensure the app works 100% out of the box
-// Even before the user inputs their Airtable credentials.
-let inMemoryClients: Client[] = [...INITIAL_CLIENTS];
-let inMemoryDecisions: DecisionItem[] = [...INITIAL_DECISIONS];
-let inMemoryTasks: TaskItem[] = [...INITIAL_TASKS];
-let inMemoryContent: ContentItem[] = [...INITIAL_CONTENT_ITEMS];
-let inMemoryVendors: VendorDeliverable[] = [...INITIAL_VENDOR_DELIVERABLES];
+import {
+  getPersistentClients,
+  savePersistentClients,
+  getPersistentTasks,
+  savePersistentTasks,
+  getPersistentContent,
+  savePersistentContent,
+  getPersistentDecisions,
+  savePersistentDecisions,
+  getPersistentVendors,
+  savePersistentVendors,
+} from '@/lib/db';
 
 const AIRTABLE_API_KEY = process.env.AIRTABLE_API_KEY;
 const AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID;
@@ -61,13 +60,15 @@ async function airtableFetch(tableName: string, options: RequestInit = {}) {
 // CLIENTS REPOSITORY
 // ----------------------------------------------------
 export async function getClients(): Promise<Client[]> {
+  const localClients = getPersistentClients();
+
   if (!isAirtableConfigured) {
-    return inMemoryClients;
+    return localClients;
   }
 
   try {
     const data = await airtableFetch('Clients');
-    if (!data?.records) return inMemoryClients;
+    if (!data?.records) return localClients;
 
     return data.records.map((r: any) => ({
       id: r.id,
@@ -93,25 +94,78 @@ export async function getClients(): Promise<Client[]> {
       evergreenCount: Number(r.fields['Evergreen Count'] || 6),
     }));
   } catch (err) {
-    console.warn('Falling back to local mock data for clients:', err);
-    return inMemoryClients;
+    console.warn('Falling back to local persistent data for clients:', err);
+    return localClients;
   }
+}
+
+export async function addClient(clientData: Partial<Client>): Promise<Client> {
+  const current = getPersistentClients();
+  const newClient: Client = {
+    id: `cl-${Date.now()}`,
+    name: clientData.name || 'New Client',
+    vertical: clientData.vertical || 'Commercial Retail',
+    package: clientData.package || {
+      reels: 12,
+      posts: 4,
+      stories: 20,
+      shoots: 1,
+      adBudget: 25000,
+    },
+    monthlyFee: clientData.monthlyFee || 50000,
+    healthStatus: 'green',
+    healthReason: 'Initial onboarding sprint',
+    approvalSlaHours: clientData.approvalSlaHours || 24,
+    autoApprove: clientData.autoApprove ?? true,
+    accountLead: clientData.accountLead || 'Saakshi',
+    backupLead: clientData.backupLead || 'Founder',
+    handles: clientData.handles || { instagram: `@${(clientData.name || 'brand').toLowerCase().replace(/\s+/g, '')}` },
+    driveFolder: `01-Brand/${clientData.name}`,
+    reportDay: 5,
+    evergreenCount: 6,
+  };
+
+  const updated = [newClient, ...current];
+  savePersistentClients(updated);
+
+  if (isAirtableConfigured) {
+    try {
+      await airtableFetch('Clients', {
+        method: 'POST',
+        body: JSON.stringify({
+          fields: {
+            'Client Name': newClient.name,
+            'Vertical': newClient.vertical,
+            'Monthly Retainer INR': newClient.monthlyFee,
+            'Approval SLA Hours': newClient.approvalSlaHours,
+            'Auto Approve': newClient.autoApprove,
+          },
+        }),
+      });
+    } catch (err) {
+      console.warn('Could not sync new client to Airtable immediately:', err);
+    }
+  }
+
+  return newClient;
 }
 
 // ----------------------------------------------------
 // TASKS REPOSITORY (Staff My Day)
 // ----------------------------------------------------
 export async function getTasks(assignee?: string): Promise<TaskItem[]> {
+  const localTasks = getPersistentTasks();
+
   if (!isAirtableConfigured) {
     if (assignee) {
-      return inMemoryTasks.filter((t) => t.assignee.toLowerCase() === assignee.toLowerCase());
+      return localTasks.filter((t) => t.assignee.toLowerCase() === assignee.toLowerCase());
     }
-    return inMemoryTasks;
+    return localTasks;
   }
 
   try {
     const data = await airtableFetch('Tasks');
-    if (!data?.records) return inMemoryTasks;
+    if (!data?.records) return localTasks;
 
     const mapped = data.records.map((r: any) => {
       const sopRaw = r.fields['SOP Checklist'] || '';
@@ -144,14 +198,15 @@ export async function getTasks(assignee?: string): Promise<TaskItem[]> {
     }
     return mapped;
   } catch (err) {
-    console.warn('Falling back to local mock data for tasks:', err);
-    return inMemoryTasks;
+    console.warn('Falling back to local persistent tasks:', err);
+    return localTasks;
   }
 }
 
 export async function updateTaskStatus(taskId: string, newStatus: TaskItem['status']): Promise<boolean> {
-  // Update in-memory
-  inMemoryTasks = inMemoryTasks.map((t) => (t.id === taskId ? { ...t, status: newStatus } : t));
+  const current = getPersistentTasks();
+  const updated = current.map((t) => (t.id === taskId ? { ...t, status: newStatus } : t));
+  savePersistentTasks(updated);
 
   if (!isAirtableConfigured) return true;
 
@@ -171,17 +226,47 @@ export async function updateTaskStatus(taskId: string, newStatus: TaskItem['stat
   }
 }
 
+export async function addTask(taskData: Partial<TaskItem>): Promise<TaskItem> {
+  const current = getPersistentTasks();
+  const newTask: TaskItem = {
+    id: `t-${Date.now()}`,
+    contentId: taskData.contentId || 'cnt-gen',
+    clientName: taskData.clientName || 'General Agency',
+    title: taskData.title || 'Untitled Task',
+    type: taskData.type || 'edit',
+    assignee: taskData.assignee || 'Saakshi',
+    dueTime: taskData.dueTime || 'Today, 6:00 PM',
+    status: taskData.status || 'todo',
+    effortPoints: taskData.effortPoints || 3,
+    brief: taskData.brief || {
+      language: 'Hinglish',
+      summary: 'Execute task according to client Brand Brain and Export standard.',
+      hook3Sec: 'High-energy hook in first 3 seconds.',
+      cta: 'Check bio link.',
+      referenceLinks: [],
+      defaultRule: 'If in doubt, follow 10-minute decision rule.',
+      sopChecklist: ['Verify 1080x1920 9:16', 'Check -14 LUFS audio level', 'Safe zones cleared'],
+    },
+  };
+
+  const updated = [newTask, ...current];
+  savePersistentTasks(updated);
+  return newTask;
+}
+
 // ----------------------------------------------------
 // DECISIONS REPOSITORY (Founder Decision Queue)
 // ----------------------------------------------------
 export async function getDecisions(): Promise<DecisionItem[]> {
-  return inMemoryDecisions;
+  return getPersistentDecisions();
 }
 
 export async function resolveDecision(decisionId: string, actionChosen: string): Promise<boolean> {
-  inMemoryDecisions = inMemoryDecisions.map((d) =>
-    d.id === decisionId ? { ...d, status: 'approved' } : d
+  const current = getPersistentDecisions();
+  const updated = current.map((d) =>
+    d.id === decisionId ? { ...d, status: 'approved' as const } : d
   );
+  savePersistentDecisions(updated);
   return true;
 }
 
@@ -189,7 +274,36 @@ export async function resolveDecision(decisionId: string, actionChosen: string):
 // CONTENT ITEMS REPOSITORY (Client Review Portal)
 // ----------------------------------------------------
 export async function getContentItems(): Promise<ContentItem[]> {
-  return inMemoryContent;
+  return getPersistentContent();
+}
+
+export async function addContentItem(contentData: Partial<ContentItem>): Promise<ContentItem> {
+  const current = getPersistentContent();
+  const scheduledPostTime = contentData.scheduledPostTime || new Date().toISOString();
+  const newItem: ContentItem = {
+    id: `cnt-${Date.now()}`,
+    clientName: contentData.clientName || 'The Travelopedia',
+    title: contentData.title || 'Untitled Post',
+    platform: contentData.platform || 'Instagram',
+    format: contentData.format || 'Reel',
+    pillar: contentData.pillar || 'Travel Showcase',
+    postDate: contentData.postDate || scheduledPostTime,
+    scheduledPostTime,
+    status: contentData.status || 'Scheduled',
+    assignee: contentData.assignee || 'Unassigned',
+    clientApprovalStatus: contentData.clientApprovalStatus || 'pending',
+    caption: contentData.caption || '',
+    firstComment: contentData.firstComment || '',
+    videoUrl: contentData.videoUrl || 'https://assets.illustrativesphere.com/demo.mp4',
+    thumbnailUrl: contentData.thumbnailUrl || '',
+    evergreenFallbackAvailable: contentData.evergreenFallbackAvailable ?? false,
+    isEvergreen: contentData.isEvergreen ?? false,
+    proofUrl: contentData.proofUrl || '',
+  };
+
+  const updated = [newItem, ...current];
+  savePersistentContent(updated);
+  return newItem;
 }
 
 export async function updateContentApproval(
@@ -197,16 +311,18 @@ export async function updateContentApproval(
   approvalStatus: ContentItem['clientApprovalStatus'],
   feedback?: string
 ): Promise<boolean> {
-  inMemoryContent = inMemoryContent.map((c) =>
+  const current = getPersistentContent();
+  const updated = current.map((c) =>
     c.id === contentId
       ? {
           ...c,
           clientApprovalStatus: approvalStatus,
-          status: approvalStatus === 'approved' ? 'Scheduled' : 'In edit',
+          status: approvalStatus === 'approved' ? ('Scheduled' as const) : ('In edit' as const),
           clientFeedback: feedback || c.clientFeedback,
         }
       : c
   );
+  savePersistentContent(updated);
   return true;
 }
 
@@ -214,7 +330,7 @@ export async function updateContentApproval(
 // VENDOR DELIVERABLES REPOSITORY (Vendor Ledger)
 // ----------------------------------------------------
 export async function getVendorDeliverables(): Promise<VendorDeliverable[]> {
-  return inMemoryVendors;
+  return getPersistentVendors();
 }
 
 export async function recordVendorIngest(data: {
@@ -222,7 +338,8 @@ export async function recordVendorIngest(data: {
   itemsDelivered: number;
   itemsAccepted: number;
 }): Promise<boolean> {
-  inMemoryVendors = inMemoryVendors.map((v) =>
+  const current = getPersistentVendors();
+  const updated = current.map((v) =>
     v.id === data.vendorId
       ? {
           ...v,
@@ -231,5 +348,6 @@ export async function recordVendorIngest(data: {
         }
       : v
   );
+  savePersistentVendors(updated);
   return true;
 }

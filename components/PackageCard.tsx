@@ -18,7 +18,9 @@ import {
   ChevronRight,
   ShieldCheck,
   Star,
-  Phone
+  Phone,
+  Heart,
+  Share2
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { TravelPackage } from '@/types/travel';
@@ -34,7 +36,28 @@ export default function PackageCard({ pkg, onQuickInquire }: PackageCardProps) {
   const { formatPrice } = useCurrency();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
   const images = pkg.gallery && pkg.gallery.length > 0 ? pkg.gallery : [pkg.heroImage];
+
+  useEffect(() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem('travelopedia_wishlist') || '[]');
+      setIsSaved(Array.isArray(saved) && saved.includes(pkg.slug));
+    } catch {
+      setIsSaved(false);
+    }
+
+    const syncSaved = () => {
+      try {
+        const saved = JSON.parse(localStorage.getItem('travelopedia_wishlist') || '[]');
+        setIsSaved(Array.isArray(saved) && saved.includes(pkg.slug));
+      } catch {
+        setIsSaved(false);
+      }
+    };
+    window.addEventListener('travel-wishlist-updated', syncSaved);
+    return () => window.removeEventListener('travel-wishlist-updated', syncSaved);
+  }, [pkg.slug]);
 
   const durationText = `${pkg.durationNights}N / ${pkg.durationDays}D`;
   const whatsappUrl = getWhatsAppInquiryUrl(pkg.title, `${pkg.durationNights} Nights / ${pkg.durationDays} Days`);
@@ -49,6 +72,36 @@ export default function PackageCard({ pkg, onQuickInquire }: PackageCardProps) {
 
     return () => clearInterval(timer);
   }, [isHovered, images.length]);
+
+  const toggleSaved = (event: React.MouseEvent) => {
+    event.preventDefault();
+    event.stopPropagation();
+    let saved: string[] = [];
+    try {
+      const value = JSON.parse(localStorage.getItem('travelopedia_wishlist') || '[]');
+      saved = Array.isArray(value) ? value : [];
+    } catch {
+      saved = [];
+    }
+
+    const next = saved.includes(pkg.slug)
+      ? saved.filter(slug => slug !== pkg.slug)
+      : [...saved, pkg.slug];
+    localStorage.setItem('travelopedia_wishlist', JSON.stringify(next));
+    setIsSaved(next.includes(pkg.slug));
+    window.dispatchEvent(new CustomEvent('travel-wishlist-updated'));
+  };
+
+  const sharePackage = async (event: React.MouseEvent) => {
+    event.preventDefault();
+    event.stopPropagation();
+    const url = `${window.location.origin}/packages/${pkg.slug}`;
+    if (navigator.share) {
+      await navigator.share({ title: pkg.title, text: pkg.subtitle, url }).catch(() => {});
+    } else {
+      await navigator.clipboard?.writeText(url);
+    }
+  };
 
   const nextImage = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -136,6 +189,34 @@ export default function PackageCard({ pkg, onQuickInquire }: PackageCardProps) {
         <div className="absolute bottom-3 left-3 flex items-center gap-1.5 text-white bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold z-10">
           <Clock className="w-3.5 h-3.5 text-logo-peach" />
           <span>{durationText}</span>
+        </div>
+
+        {/* Availability + Save/Share Actions */}
+        <div className="absolute top-3 right-3 flex items-center gap-1.5 z-20">
+          <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-white/90 text-navy-950 text-[10px] font-bold shadow-sm backdrop-blur-md">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            Popular this week
+          </span>
+          <button
+            type="button"
+            onClick={toggleSaved}
+            className={`w-8 h-8 rounded-full backdrop-blur-md border border-white/30 flex items-center justify-center transition-colors ${
+              isSaved ? 'bg-brand-500 text-white' : 'bg-black/45 text-white hover:bg-black/70'
+            }`}
+            aria-label={isSaved ? `Remove ${pkg.title} from saved trips` : `Save ${pkg.title}`}
+            title={isSaved ? 'Remove from saved trips' : 'Save trip'}
+          >
+            <Heart className={`w-3.5 h-3.5 ${isSaved ? 'fill-white' : ''}`} />
+          </button>
+          <button
+            type="button"
+            onClick={sharePackage}
+            className="w-8 h-8 rounded-full bg-black/45 hover:bg-black/70 text-white backdrop-blur-md border border-white/30 flex items-center justify-center"
+            aria-label={`Share ${pkg.title}`}
+            title="Share trip"
+          >
+            <Share2 className="w-3.5 h-3.5" />
+          </button>
         </div>
       </div>
 

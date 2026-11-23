@@ -39,7 +39,7 @@ export interface TaskItem {
   contentId: string;
   clientName: string;
   title: string;
-  type: 'design' | 'edit' | 'brief' | 'qc' | 'schedule';
+  type: 'design' | 'edit' | 'brief' | 'qc' | 'schedule' | 'shoot' | 'ingest' | 'approval';
   assignee: 'Saakshi' | 'Riddhi' | 'Anjali' | 'Ops Lead';
   dueTime: string;
   status: 'todo' | 'in_progress' | 'done' | 'blocked';
@@ -59,10 +59,12 @@ export interface ContentItem {
   id: string;
   clientName: string;
   title: string;
+  platform?: string;
   format: 'Reel' | 'Carousel' | 'Static' | 'Story';
   pillar: string;
   postDate: string;
-  status: 'Idea' | 'Brief ready' | 'Shoot scheduled' | 'Shot' | 'Ingested' | 'In edit' | 'QC' | 'Client approval' | 'Scheduled' | 'Posted';
+  scheduledPostTime?: string;
+  status: 'Idea' | 'Planned' | 'Brief ready' | 'Shoot scheduled' | 'Shot' | 'Ingested' | 'In edit' | 'QC' | 'Client approval' | 'Scheduled' | 'Posted';
   assignee: string;
   caption: string;
   firstComment: string;
@@ -73,6 +75,8 @@ export interface ContentItem {
   clientApprovalStatus: 'pending' | 'approved' | 'rework_requested';
   clientFeedback?: string;
   evergreenFallbackAvailable: boolean;
+  isEvergreen?: boolean;
+  proofUrl?: string;
 }
 
 export interface VendorDeliverable {

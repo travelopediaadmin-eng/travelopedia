@@ -20,12 +20,16 @@ import {
   Utensils
 } from 'lucide-react';
 import { COMPANY_DETAILS, getGeneralWhatsAppUrl } from '@/lib/utils';
+import EmailVerificationPendingModal from '@/components/EmailVerificationPendingModal';
 
 export default function CustomTourPage() {
   const [currentStep, setCurrentStep] = useState(1);
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
+  const [showPendingModal, setShowPendingModal] = useState(false);
+  const [pendingRequestId, setPendingRequestId] = useState('');
+  const [pendingRequestNumber, setPendingRequestNumber] = useState('');
 
   const [formData, setFormData] = useState({
     destination: '',
@@ -87,30 +91,31 @@ export default function CustomTourPage() {
     ].filter(Boolean).join(' | ');
 
     try {
-      const res = await fetch('/api/enquiries', {
+      const res = await fetch('/api/requests/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          customerName: formData.customerName,
-          phone: formData.phone,
-          email: formData.email,
+          customer_name: formData.customerName,
+          customer_mobile: formData.phone,
+          customer_email: formData.email,
           destination: formData.destination,
-          packageTitle: `Custom ${formData.duration} ${formData.destination} Tour`,
-          travelDate: formData.travelDate || 'Flexible',
-          durationDays: formData.duration,
-          adults: Number(formData.adults) || 2,
-          children: Number(formData.children) || 0,
-          hotelCategory: formData.hotelCategory,
-          estimatedBudget: formData.budgetPerPerson,
-          specialRequests: formattedNotes,
-          source: 'Custom Tour'
+          travel_start_date: formData.travelDate || 'Flexible',
+          travellers_count: Number(formData.adults) || 2,
+          budget: formData.budgetPerPerson,
+          requirements: formattedNotes,
+          source: 'Bespoke Tour Wizard'
         })
       });
 
-      if (!res.ok) throw new Error('Submission failed');
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Submission failed');
+
+      setPendingRequestId(data.requestId);
+      setPendingRequestNumber(data.requestNumber);
+      setShowPendingModal(true);
       setSubmitted(true);
     } catch (err: any) {
-      setError('Unable to submit inquiry. Please try again or message us directly on WhatsApp.');
+      setError(err.message || 'Unable to submit inquiry. Please try again or message us directly on WhatsApp.');
     } finally {
       setLoading(false);
     }
@@ -580,6 +585,18 @@ export default function CustomTourPage() {
             <span>Call: {COMPANY_DETAILS.phone}</span>
           </a>
         </div>
+
+        {/* Email Verification Pending Modal */}
+        {showPendingModal && (
+          <EmailVerificationPendingModal
+            isOpen={showPendingModal}
+            onClose={() => setShowPendingModal(false)}
+            requestId={pendingRequestId}
+            requestNumber={pendingRequestNumber}
+            email={formData.email}
+            onEmailChanged={(newE) => setFormData({ ...formData, email: newE })}
+          />
+        )}
 
       </div>
     </div>
