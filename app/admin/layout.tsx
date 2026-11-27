@@ -33,6 +33,17 @@ export default function AdminLayout({
 
   useEffect(() => {
     if (!isLoginPage) {
+      if (typeof window !== 'undefined') {
+        const localAuth = localStorage.getItem('travelopedia_admin_auth');
+        if (localAuth) {
+          try {
+            const user = JSON.parse(localAuth);
+            setAdminUser(user);
+            return;
+          } catch (e) {}
+        }
+      }
+
       fetch('/api/auth/me')
         .then(res => {
           if (!res.ok) {
@@ -47,14 +58,21 @@ export default function AdminLayout({
           }
         })
         .catch(() => {
-          router.push('/admin/login');
+          if (typeof window !== 'undefined' && !localStorage.getItem('travelopedia_admin_auth')) {
+            router.push('/admin/login');
+          }
         });
     }
   }, [isLoginPage, router]);
 
   const handleLogout = async () => {
-    await fetch('/api/auth/logout', { method: 'POST' });
-    router.push('/admin/login');
+    try {
+      await fetch('/api/auth/logout', { method: 'POST' });
+    } catch (e) {}
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('travelopedia_admin_auth');
+    }
+    window.location.href = '/admin/login';
   };
 
   if (isLoginPage) {

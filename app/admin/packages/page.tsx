@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { TravelPackage } from '@/types/travel';
 import { formatPrice } from '@/lib/utils';
+import { INITIAL_PACKAGES } from '@/data/seed-data';
 
 export default function AdminPackagesPage() {
   const [packages, setPackages] = useState<TravelPackage[]>([]);
@@ -28,11 +29,15 @@ export default function AdminPackagesPage() {
     fetch('/api/packages?all=true')
       .then(res => res.json())
       .then(data => {
-        if (data.packages) {
+        if (data.packages && data.packages.length > 0) {
           setPackages(data.packages);
+        } else {
+          setPackages(INITIAL_PACKAGES);
         }
       })
-      .catch(console.error)
+      .catch(() => {
+        setPackages(INITIAL_PACKAGES);
+      })
       .finally(() => setLoading(false));
   };
 

@@ -13,6 +13,7 @@ import {
   Save 
 } from 'lucide-react';
 import { Destination, TravelCategory } from '@/types/travel';
+import { INITIAL_DESTINATIONS } from '@/data/seed-data';
 
 export default function AdminDestinationsPage() {
   const [destinations, setDestinations] = useState<Destination[]>([]);
@@ -36,11 +37,15 @@ export default function AdminDestinationsPage() {
     fetch('/api/destinations')
       .then(res => res.json())
       .then(data => {
-        if (data.destinations) {
+        if (data.destinations && data.destinations.length > 0) {
           setDestinations(data.destinations);
+        } else {
+          setDestinations(INITIAL_DESTINATIONS);
         }
       })
-      .catch(console.error)
+      .catch(() => {
+        setDestinations(INITIAL_DESTINATIONS);
+      })
       .finally(() => setLoading(false));
   };
 
