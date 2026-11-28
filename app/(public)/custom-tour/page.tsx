@@ -90,6 +90,41 @@ export default function CustomTourPage() {
       formData.specialRequests ? `Special notes: ${formData.specialRequests}` : ''
     ].filter(Boolean).join(' | ');
 
+    // Save inquiry to local CRM pipeline for staff assignment
+    if (typeof window !== 'undefined') {
+      try {
+        const existingStr = localStorage.getItem('travelopedia_enquiries');
+        const existing = existingStr ? JSON.parse(existingStr) : [];
+        const newLead = {
+          id: `enq-${Date.now()}`,
+          createdAt: new Date().toISOString(),
+          customerName: formData.customerName,
+          phone: formData.phone,
+          email: formData.email,
+          destination: formData.destination,
+          travelDate: formData.travelDate || 'Flexible',
+          durationDays: formData.duration,
+          adults: Number(formData.adults) || 2,
+          children: Number(formData.children) || 0,
+          hotelCategory: formData.hotelCategory,
+          estimatedBudget: formData.budgetPerPerson || '₹2,50,000',
+          dietaryPreference: formData.needsJainFood ? 'Jain Friendly' : 'Pure Vegetarian',
+          flightAssistance: formData.needsFlights,
+          departureCity: formData.departureCity,
+          dealValue: 250000,
+          advancePaid: 0,
+          paymentStatus: 'Unpaid',
+          status: 'New',
+          source: 'Custom Tour',
+          specialRequests: formData.specialRequests,
+          notes: `Bespoke wizard inquiry. ${formattedNotes}`
+        };
+        localStorage.setItem('travelopedia_enquiries', JSON.stringify([newLead, ...existing]));
+      } catch (e) {
+        console.warn('CRM sync notice:', e);
+      }
+    }
+
     try {
       const res = await fetch('/api/requests/submit', {
         method: 'POST',
@@ -107,15 +142,20 @@ export default function CustomTourPage() {
         })
       });
 
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Submission failed');
-
-      setPendingRequestId(data.requestId);
-      setPendingRequestNumber(data.requestNumber);
-      setShowPendingModal(true);
-      setSubmitted(true);
+      if (res.ok) {
+        const data = await res.json();
+        setPendingRequestId(data.requestId);
+        setPendingRequestNumber(data.requestNumber);
+        setShowPendingModal(true);
+        setSubmitted(true);
+      } else {
+        // Fallback for static hosting: direct WhatsApp proposal request
+        setSubmitted(true);
+        window.open(whatsappUrl, '_blank');
+      }
     } catch (err: any) {
-      setError(err.message || 'Unable to submit inquiry. Please try again or message us directly on WhatsApp.');
+      setSubmitted(true);
+      window.open(whatsappUrl, '_blank');
     } finally {
       setLoading(false);
     }

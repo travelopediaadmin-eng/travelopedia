@@ -20,8 +20,11 @@ export default function QuickEnquiryModal({ pkg, isOpen, onClose }: QuickEnquiry
     travelDate: '',
     adults: '2',
     children: '0',
-    hotelCategory: '4-Star',
+    hotelCategory: '5-Star Luxury',
     estimatedBudget: '',
+    dietaryPreference: 'Jain Friendly',
+    departureCity: 'Surat',
+    flightAssistance: true,
     specialRequests: ''
   });
 
@@ -47,8 +50,11 @@ export default function QuickEnquiryModal({ pkg, isOpen, onClose }: QuickEnquiry
       travelDate: '',
       adults: '2',
       children: '0',
-      hotelCategory: '4-Star',
+      hotelCategory: '5-Star Luxury',
       estimatedBudget: '',
+      dietaryPreference: 'Jain Friendly',
+      departureCity: 'Surat',
+      flightAssistance: true,
       specialRequests: ''
     });
     document.body.style.overflow = 'hidden';
@@ -87,8 +93,47 @@ export default function QuickEnquiryModal({ pkg, isOpen, onClose }: QuickEnquiry
         `Package: ${pkg?.title || 'Custom Request'}`,
         `Hotel: ${formData.hotelCategory}`,
         `Travelers: ${formData.adults} Adults, ${formData.children} Children`,
+        `Dietary: ${formData.dietaryPreference}`,
+        `Departure: ${formData.departureCity}`,
         formData.specialRequests ? `Special notes: ${formData.specialRequests}` : null
       ].filter(Boolean).join(' | ');
+
+      // Save directly into local CRM store for 15-40 staff management
+      if (typeof window !== 'undefined') {
+        try {
+          const existingStr = localStorage.getItem('travelopedia_enquiries');
+          const existing = existingStr ? JSON.parse(existingStr) : [];
+          const newLead = {
+            id: `enq-${Date.now()}`,
+            createdAt: new Date().toISOString(),
+            customerName: formData.customerName,
+            phone: formData.phone,
+            email: formData.email,
+            packageId: pkg?.id,
+            packageTitle: pkg?.title || 'Custom Tour',
+            destination: destination,
+            travelDate: formData.travelDate || 'Flexible',
+            durationDays: pkg ? `${pkg.durationDays} Days` : 'Custom Duration',
+            adults: Number(formData.adults) || 2,
+            children: Number(formData.children) || 0,
+            hotelCategory: formData.hotelCategory,
+            estimatedBudget: formData.estimatedBudget || (pkg ? `₹${(pkg.discountedPrice * 2).toLocaleString('en-IN')}` : '₹2,00,000'),
+            dietaryPreference: formData.dietaryPreference,
+            flightAssistance: formData.flightAssistance,
+            departureCity: formData.departureCity,
+            dealValue: pkg ? pkg.discountedPrice * (Number(formData.adults) || 2) : 200000,
+            advancePaid: 0,
+            paymentStatus: 'Unpaid',
+            status: 'New',
+            source: pkg ? 'Package Page' : 'Quick Inquiry',
+            specialRequests: formData.specialRequests,
+            notes: `Website Lead. Food: ${formData.dietaryPreference}, City: ${formData.departureCity}`
+          };
+          localStorage.setItem('travelopedia_enquiries', JSON.stringify([newLead, ...existing]));
+        } catch (localErr) {
+          console.warn('Local CRM save notice:', localErr);
+        }
+      }
 
       const res = await fetch('/api/requests/submit', {
         method: 'POST',
@@ -106,15 +151,23 @@ export default function QuickEnquiryModal({ pkg, isOpen, onClose }: QuickEnquiry
         })
       });
 
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Submission failed');
-
-      setPendingRequestId(data.requestId);
-      setPendingRequestNumber(data.requestNumber);
-      setPendingEmail(data.email);
-      setShowPendingModal(true);
+      if (res.ok) {
+        const data = await res.json();
+        setPendingRequestId(data.requestId);
+        setPendingRequestNumber(data.requestNumber);
+        setPendingEmail(data.email);
+        setShowPendingModal(true);
+      } else {
+        // Fallback for static hosting: direct WhatsApp confirmation
+        const directMsg = `Namaste The TraveloPedia! I have submitted an inquiry for ${destination} for ${formData.adults} Adults. Contact: ${formData.customerName} (${formData.phone}), Food: ${formData.dietaryPreference}. Please share the luxury itinerary.`;
+        window.open(`https://wa.me/${COMPANY_DETAILS.phoneRaw}?text=${encodeURIComponent(directMsg)}`, '_blank');
+        onClose();
+      }
     } catch (err: any) {
-      setError(err.message || 'Unable to submit enquiry. Please try again or chat via WhatsApp.');
+      // Fallback for static hosting
+      const directMsg = `Namaste The TraveloPedia! I have submitted an inquiry for ${pkg?.destination || 'Custom Destination'} for ${formData.adults} Adults. Contact: ${formData.customerName} (${formData.phone}), Food: ${formData.dietaryPreference}. Please share the luxury itinerary.`;
+      window.open(`https://wa.me/${COMPANY_DETAILS.phoneRaw}?text=${encodeURIComponent(directMsg)}`, '_blank');
+      onClose();
     } finally {
       setLoading(false);
     }
@@ -269,6 +322,36 @@ export default function QuickEnquiryModal({ pkg, isOpen, onClose }: QuickEnquiry
                     <option value="5-Star">5-Star Luxury</option>
                     <option value="3-Star">3-Star Standard</option>
                     <option value="Private Villa">Private Pool Villa</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* Dietary & Departure City Row */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-[11px] font-bold text-slate-700 mb-1">Dietary Preference</label>
+                  <select
+                    value={formData.dietaryPreference}
+                    onChange={(e) => setFormData({ ...formData, dietaryPreference: e.target.value })}
+                    className="w-full p-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-emerald-700 focus:outline-none"
+                  >
+                    <option value="Jain Friendly">Jain Friendly (No Onion/Garlic/Potato)</option>
+                    <option value="Pure Vegetarian">Pure Vegetarian (Indian Veg Meals)</option>
+                    <option value="Regular / Any">Regular / Any Meals</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-[11px] font-bold text-slate-700 mb-1">Departure City</label>
+                  <select
+                    value={formData.departureCity}
+                    onChange={(e) => setFormData({ ...formData, departureCity: e.target.value })}
+                    className="w-full p-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold focus:outline-none"
+                  >
+                    <option value="Surat">Surat (STV / Direct / Connecting)</option>
+                    <option value="Mumbai">Mumbai (BOM Airport / Chhatrapati Shivaji)</option>
+                    <option value="Ahmedabad">Ahmedabad (AMD Airport)</option>
+                    <option value="Delhi">Delhi (DEL Airport)</option>
                   </select>
                 </div>
               </div>

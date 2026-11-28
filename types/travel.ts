@@ -69,6 +69,9 @@ export type EnquiryStatus =
   | 'Confirmed' 
   | 'Cancelled';
 
+export type DietaryPreference = 'Jain Friendly' | 'Pure Vegetarian' | 'Regular / Any';
+export type PaymentStatus = 'Unpaid' | 'Advance Received' | 'Full Paid';
+
 export interface Enquiry {
   id: string;
   createdAt: string;
@@ -88,6 +91,46 @@ export interface Enquiry {
   status: EnquiryStatus;
   notes?: string;
   source: 'Package Page' | 'Custom Tour' | 'Quick Inquiry' | 'Hero Search' | 'Contact Form';
+  assignedStaffId?: string;
+  assignedStaffName?: string;
+  dietaryPreference?: DietaryPreference;
+  flightAssistance?: boolean;
+  departureCity?: string;
+  dealValue?: number;
+  advancePaid?: number;
+  paymentStatus?: PaymentStatus;
+  followUpDate?: string;
+}
+
+export type StaffDepartment = 
+  | 'International Holidays' 
+  | 'Domestic Tours' 
+  | 'Visa & Ticketing' 
+  | 'Customized Luxury' 
+  | 'Finance & Accounts';
+
+export type StaffRole = 
+  | 'Managing Director'
+  | 'Senior Holiday Specialist' 
+  | 'Travel Consultant' 
+  | 'Visa Operations Manager' 
+  | 'Air Ticketing Executive'
+  | 'Accounts Executive';
+
+export interface StaffMember {
+  id: string;
+  name: string;
+  employeeCode: string;
+  department: StaffDepartment;
+  role: StaffRole;
+  phone: string;
+  email: string;
+  avatar: string;
+  activeLeadsCount: number;
+  completedBookingsCount: number;
+  totalRevenueGenerated: number;
+  status: 'active' | 'on_leave' | 'inactive';
+  joinedDate: string;
 }
 
 export interface AdminUser {
@@ -231,5 +274,17 @@ export interface VisaRequirement {
   checklist: string[];
   biometricsRequired: boolean;
   expressAvailable: boolean;
+}
+
+export interface WebsitePage {
+  id: string;
+  slug: string;
+  title: string;
+  category: 'core' | 'service' | 'policy' | 'custom';
+  metaTitle: string;
+  metaDescription: string;
+  isActive: boolean;
+  isCustom: boolean;
+  updatedAt: string;
 }
 

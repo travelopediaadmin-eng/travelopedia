@@ -47,7 +47,7 @@ export default function AdminLoginPage() {
             loggedInAt: new Date().toISOString()
           }));
         }
-        window.location.href = '/admin/dashboard';
+        window.location.href = '/admin/dashboard/';
         return;
       }
 

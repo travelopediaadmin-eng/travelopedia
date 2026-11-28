@@ -26,6 +26,25 @@ export default function AdminDashboardPage() {
   const [loading, setLoading] = useState(true);
 
   const fetchDashboardData = () => {
+    // Read from localStorage first for instant static reactivity
+    if (typeof window !== 'undefined') {
+      try {
+        const storedEnq = localStorage.getItem('travelopedia_enquiries');
+        const enqs: Enquiry[] = storedEnq ? JSON.parse(storedEnq) : INITIAL_ENQUIRIES;
+        setRecentEnquiries(enqs);
+        setStats({
+          totalPackages: 12,
+          totalDestinations: 24,
+          totalEnquiries: enqs.length,
+          pendingEnquiries: enqs.filter(e => e.status === 'New').length,
+          newToday: enqs.filter(e => e.status === 'New').length,
+          activePackages: 12
+        });
+        setLoading(false);
+        return;
+      } catch (e) {}
+    }
+
     fetch('/api/stats')
       .then(res => res.json())
       .then(data => {
@@ -37,7 +56,9 @@ export default function AdminDashboardPage() {
             totalPackages: 12,
             totalDestinations: 24,
             totalEnquiries: INITIAL_ENQUIRIES.length,
-            pendingEnquiries: INITIAL_ENQUIRIES.filter(e => e.status === 'New').length
+            pendingEnquiries: INITIAL_ENQUIRIES.filter(e => e.status === 'New').length,
+            newToday: 2,
+            activePackages: 12
           });
           setRecentEnquiries(INITIAL_ENQUIRIES);
         }
@@ -47,7 +68,9 @@ export default function AdminDashboardPage() {
           totalPackages: 12,
           totalDestinations: 24,
           totalEnquiries: INITIAL_ENQUIRIES.length,
-          pendingEnquiries: INITIAL_ENQUIRIES.filter(e => e.status === 'New').length
+          pendingEnquiries: INITIAL_ENQUIRIES.filter(e => e.status === 'New').length,
+          newToday: 2,
+          activePackages: 12
         });
         setRecentEnquiries(INITIAL_ENQUIRIES);
       })
@@ -203,6 +226,81 @@ export default function AdminDashboardPage() {
           </div>
         </div>
 
+      </div>
+
+      {/* CRM & Enterprise Business Management Suite Banner */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <Link
+          href="/admin/crm"
+          className="p-5 rounded-3xl bg-gradient-to-br from-brand-500 to-brand-600 text-white shadow-lg shadow-brand-500/20 hover:scale-[1.02] transition-all flex flex-col justify-between"
+        >
+          <div>
+            <span className="px-2 py-0.5 rounded-full text-[9px] font-black uppercase tracking-wider bg-white/20 text-white mb-2 inline-block">
+              Kanban Pipeline
+            </span>
+            <h3 className="font-bold text-base">CRM Sales Pipeline</h3>
+            <p className="text-xs text-brand-100 mt-1">
+              Drag-and-drop lead stages, Jain food preferences &amp; 1-click WhatsApp quotes.
+            </p>
+          </div>
+          <div className="pt-3 flex items-center justify-between text-xs font-bold border-t border-white/20 mt-3">
+            <span>Open Sales CRM &rarr;</span>
+          </div>
+        </Link>
+
+        <Link
+          href="/admin/staff"
+          className="p-5 rounded-3xl bg-white border border-slate-200 shadow-sm hover:shadow-md hover:border-brand-300 transition-all flex flex-col justify-between group"
+        >
+          <div>
+            <span className="px-2 py-0.5 rounded-full text-[9px] font-black uppercase tracking-wider bg-blue-50 text-blue-700 mb-2 inline-block">
+              Capacity: 40 Desks
+            </span>
+            <h3 className="font-bold text-base text-slate-900 group-hover:text-brand-600 transition-colors">Staff Management</h3>
+            <p className="text-xs text-slate-500 mt-1">
+              Manage 15 to 40 specialists across Visa, Holidays, Flights &amp; Accounts.
+            </p>
+          </div>
+          <div className="pt-3 flex items-center justify-between text-xs font-bold text-slate-700 border-t border-slate-100 mt-3">
+            <span>Employee Roster &rarr;</span>
+          </div>
+        </Link>
+
+        <Link
+          href="/admin/business"
+          className="p-5 rounded-3xl bg-white border border-slate-200 shadow-sm hover:shadow-md hover:border-purple-300 transition-all flex flex-col justify-between group"
+        >
+          <div>
+            <span className="px-2 py-0.5 rounded-full text-[9px] font-black uppercase tracking-wider bg-purple-50 text-purple-700 mb-2 inline-block">
+              Finance &amp; Targets
+            </span>
+            <h3 className="font-bold text-base text-slate-900 group-hover:text-purple-600 transition-colors">Business &amp; Revenue</h3>
+            <p className="text-xs text-slate-500 mt-1">
+              Cash collection, advances, pending balances, targets &amp; staff rankings.
+            </p>
+          </div>
+          <div className="pt-3 flex items-center justify-between text-xs font-bold text-slate-700 border-t border-slate-100 mt-3">
+            <span>Executive Desk &rarr;</span>
+          </div>
+        </Link>
+
+        <Link
+          href="/admin/pages"
+          className="p-5 rounded-3xl bg-white border border-slate-200 shadow-sm hover:shadow-md hover:border-emerald-300 transition-all flex flex-col justify-between group"
+        >
+          <div>
+            <span className="px-2 py-0.5 rounded-full text-[9px] font-black uppercase tracking-wider bg-emerald-50 text-emerald-700 mb-2 inline-block">
+              CMS Controller
+            </span>
+            <h3 className="font-bold text-base text-slate-900 group-hover:text-emerald-600 transition-colors">Website Pages &amp; SEO</h3>
+            <p className="text-xs text-slate-500 mt-1">
+              Add new site pages, toggle visibility, customize titles &amp; Google meta tags.
+            </p>
+          </div>
+          <div className="pt-3 flex items-center justify-between text-xs font-bold text-slate-700 border-t border-slate-100 mt-3">
+            <span>Manage Pages &rarr;</span>
+          </div>
+        </Link>
       </div>
 
       {/* Recent Enquiries Table */}

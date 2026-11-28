@@ -31,3 +31,8 @@ next-env.d.ts
 # OS metadata
 .DS_Store
 Thumbs.db
+
+# Deploy packages and zip archives
+deploy_package/
+*.zip
+
